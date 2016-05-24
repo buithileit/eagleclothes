@@ -10,24 +10,21 @@
 
 <html>
 <head>
-<title>EAGLECLOTHES Bootstarp responsive Website Template| Home
-	:: w3layouts</title>
+<title>${appProperties["title.main"] }</title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
+
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript">
 	
 	
-	
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	 function hideURLbar(){ window.scrollTo(0,1); } 
 
 
 
@@ -57,7 +54,7 @@
 </script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-<!--
+
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -68,19 +65,22 @@
 		});
 	});
 </script>
--->
+
 </head>
 <body>
 	<!-- header-section-starts -->
+	<!-- 	<div class="header-menu"> -->
 	<div class="user-desc">
 		<div class="container">
 			<ul>
-				<li><a href="checkout.html">Checkout</a></li>
+				<li><a href="checkout.html">${appProperties["title.checkout"] }</a></li>
 				<li><i class="user"></i><a href="account.html">My Account</a></li>
 				<li><i class="cart"></i><a href="#">Cart (3)</a></li>
 			</ul>
 		</div>
 	</div>
+
+	<!-- 	</div> -->
 	<div class="header">
 		<div class="header-top">
 			<div class="container">
@@ -112,28 +112,28 @@
 			<div id="ipresenter">
 				<div id="intro" class="step" data-x="0" data-y="0"
 					data-thumbnail="images/thumbnails/1.jpg">
-					<img src="${banners[0]}" />
-					<h2>CHECK OUR LATEST FASHION</h2>
+					<img src="${banners[0].name}" />
+					<h2>${appProperties["banner.one"] }</h2>
 				</div>
 
 				<div id="capture" class="step" data-x="1100" data-y="1200"
 					data-scale="1.8" data-rotate="180"
 					data-thumbnail="images/thumbnails/2.jpg">
-					<img src="${banners[1]}" />
-					<h2>CHECK OUR LATEST FASHION</h2>
+					<img src="${banners[1].name}" />
+					<h2>${appProperties["banner.two"] }</h2>
 				</div>
 
 				<div id="view" class="step" data-x="-300" data-y="600"
 					data-scale="0.2" data-rotate="270"
 					data-thumbnail="images/thumbnails/3.jpg">
-					<img src="${banners[2]}" />
-					<h2>CHECK OUR LATEST FASHION</h2>
+					<img src="${banners[2].name}" />
+					<h2>${appProperties["banner.three"] }</h2>
 				</div>
-
-				<div id="intro" class="step" data-x="0" data-y="0"
-					data-thumbnail="images/thumbnails/1.jpg">
-					<img src="${banners[3]}" />
-					<h2>CHECK OUR LATEST FASHION</h2>
+				<div id="show" class="step" data-x="1000" data-y="-400"
+					data-scale="1.2" data-rotate="90"
+					data-thumbnail="images/thumbnails/3.jpg">
+					<img src="${banners[3].name}" />
+					<h2>${appProperties["banner.three"] }</h2>
 				</div>
 			</div>
 		</div>
@@ -161,7 +161,7 @@
 			<div class="container">
 				<div class="sales-head text-center">
 					<h3>
-						CHECK OUT OUR UNIQUE APPROACH TO <span>FASHION</span>
+						${appProperties["label.customerRights"] } <span>${appProperties["label.customerRights.W"] }</span>
 					</h3>
 				</div>
 				<div class="sales-grids">
