@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Uncomment and your base-package here: <context:component-scan base-package="org.springframework.samples.web"/> -->
+
+
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+
+	<bean id="appProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:messages_en.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+		<property name="exposedContextBeanNames" value="appProperties" />
+	</bean>
+
+	<mvc:view-controller path="/main.html" view-name="main" />
+	<mvc:view-controller path="/404.html" view-name="404" />
+	<mvc:view-controller path="/account.html"
+		view-name="account" />
+	<mvc:view-controller path="/checkout.html"
+		view-name="checkout" />
+	<mvc:view-controller path="/contact.html"
+		view-name="contact" />
+	<mvc:view-controller path="/products.html"
+		view-name="products" />
+	<mvc:view-controller path="/single.html" view-name="single" />
+
+	<!-- <mvc:view-controller path="/admin/mainAdmin.html" -->
+	<!-- view-name="mainadmin" /> -->
+	<mvc:view-controller path="/admin/blank-page.html"
+		view-name="admin/blank-page" />
+	<mvc:view-controller path="/admin/bootstrap-elements.html"
+		view-name="admin/bootstrap-elements" />
+	<mvc:view-controller path="/admin/bootstrap-grid.html"
+		view-name="admin/bootstrap-grid" />
+	<mvc:view-controller path="/admin/charts.html"
+		view-name="admin/charts" />
+	<mvc:view-controller path="/admin/forms.html"
+		view-name="admin/forms" />
+	<mvc:view-controller path="/admin/index-rtl.html"
+		view-name="admin/index-rtl" />
+	<mvc:view-controller path="/admin/tables.html"
+		view-name="admin/tables" />
+	<context:component-scan base-package="fashiontraditional.com.controller" />
+	<context:component-scan base-package="fashiontraditional.com.dao" />
+	<context:component-scan base-package="fashiontraditional.com.services" />
+
+	<bean id="bannerService" class="fashiontraditional.com.services.BannerServiceImpl"
+		scope="prototype"></bean>
+	<bean id="bannerDAO" class="fashiontraditional.com.dao.BannerDAOImpl"
+		scope="prototype"></bean>
+	<bean id="productService" class="fashiontraditional.com.services.ProductServiceImpl"
+		scope="prototype"></bean>
+	<bean id="productDAO" class="fashiontraditional.com.dao.ProductDAOImpl"
+		scope="prototype"></bean>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/fashion?userUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="username" value="le" />
+		<property name="password" value="125501532" />
+
+
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+
+		<property name="annotatedClasses">
+			<list>
+				<value>fashiontraditional.com.model.Banner</value>
+				<value>fashiontraditional.com.model.Catalog</value>
+				<value>fashiontraditional.com.model.Price</value>
+				<value>fashiontraditional.com.model.Product</value>
+				<value>fashiontraditional.com.model.CatalogDetail</value>
+				<value>fashiontraditional.com.model.Address</value>
+				<value>fashiontraditional.com.model.Comment</value>
+				<value>fashiontraditional.com.model.Rating</value>
+				<value>fashiontraditional.com.model.User</value>
+				<value>fashiontraditional.com.model.Order</value>
+				<value>fashiontraditional.com.model.OrderDetail</value>
+				<value>fashiontraditional.com.vo.ProductVO</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hbm2ddl.auto">create</prop>
+
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.connection.release_mode">on_close</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.fetch_size">1000</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hbm2ddl.auto">create</prop>
+				<!-- /config connection pool -->
+				<!-- /<prop key="hibernate.connection.provider_class"> -->
+
+				<!-- /org.hibernate.c3p0.internal.C3P0ConnectionProvider" -->
+
+				<!-- /</prop> -->
+
+				<prop key="hibernate.c3p0.min_size">1</prop>
+				<prop key="hibernate.c3p0.max_size">19</prop>
+				<prop key="hibernate.c3p0.timeout">120</prop>
+				<prop key="hibernate.c3p0.max_statements">10</prop>
+
+			</props>
+		</property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+</beans>

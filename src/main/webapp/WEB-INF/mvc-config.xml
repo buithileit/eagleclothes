@@ -30,16 +30,65 @@
 	</bean>
 
 	<mvc:view-controller path="/main.html" view-name="main" />
+	<mvc:view-controller path="/404.html" view-name="404" />
+	<mvc:view-controller path="/account.html"
+		view-name="account" />
+	<mvc:view-controller path="/checkout.html"
+		view-name="checkout" />
+	<mvc:view-controller path="/contact.html"
+		view-name="contact" />
+	<mvc:view-controller path="/products.html"
+		view-name="products" />
+	<mvc:view-controller path="/single.html" view-name="single" />
+
 	<!-- <mvc:view-controller path="/admin/mainAdmin.html" -->
 	<!-- view-name="mainadmin" /> -->
-	<context:component-scan base-package="fashiontraditional.com.controller" />
-	<context:component-scan base-package="fashiontraditional.com.dao" />
-	<context:component-scan base-package="fashiontraditional.com.services" />
-
+	<mvc:view-controller path="/admin/blank-page.html"
+		view-name="admin/blank-page" />
+	<mvc:view-controller path="/admin/bootstrap-elements.html"
+		view-name="admin/bootstrap-elements" />
+	<mvc:view-controller path="/admin/bootstrap-grid.html"
+		view-name="admin/bootstrap-grid" />
+	<mvc:view-controller path="/admin/charts.html"
+		view-name="admin/charts" />
+	<mvc:view-controller path="/admin/forms.html"
+		view-name="admin/forms" />
+	<mvc:view-controller path="/admin/index-rtl.html"
+		view-name="admin/index-rtl" />
+	<mvc:view-controller path="/admin/tables.html"
+		view-name="admin/tables" />
+	<context:component-scan base-package="fashiontraditional.com" />
+	<!-- <context:component-scan base-package="fashiontraditional.com.dao" /> -->
+	<!-- <context:component-scan base-package="fashiontraditional.com.services" 
+		/> -->
+	<!-- services -->
+	<bean id="addressService" class="fashiontraditional.com.services.AddressServiceImpl"
+		scope="prototype"></bean>
 	<bean id="bannerService" class="fashiontraditional.com.services.BannerServiceImpl"
 		scope="prototype"></bean>
+	<bean id="catalogDetailService"
+		class="fashiontraditional.com.services.CatalogDetailServiceImpl"
+		scope="prototype"></bean>
+	<bean id="catalogService" class="fashiontraditional.com.services.CatalogServiceImpl"
+		scope="prototype"></bean>
+	<bean id="orderDetailService" class="fashiontraditional.com.services.OrderDetailServiceImpl"
+		scope="prototype"></bean>
+	<bean id="orderService" class="fashiontraditional.com.services.OrderServiceImpl"
+		scope="prototype"></bean>
+	<bean id="priceService" class="fashiontraditional.com.services.PriceServiceImpl"
+		scope="prototype"></bean>
+	<bean id="productService" class="fashiontraditional.com.services.ProductServiceImpl"
+		scope="prototype"></bean>
+	<bean id="ratingService" class="fashiontraditional.com.services.RatingServiceImpl"
+		scope="prototype"></bean>
+	<bean id="userService" class="fashiontraditional.com.services.UserServiceImpl"
+		scope="prototype"></bean>
+	<!-- daos -->
 	<bean id="bannerDAO" class="fashiontraditional.com.dao.BannerDAOImpl"
 		scope="prototype"></bean>
+	<bean id="productDAO" class="fashiontraditional.com.dao.ProductDAOImpl"
+		scope="prototype"></bean>
+
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -49,19 +98,29 @@
 		<property name="username" value="le" />
 		<property name="password" value="125501532" />
 
-		<!-- /config connection pool -->
 
 	</bean>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+
 		<property name="annotatedClasses">
 			<list>
 				<value>fashiontraditional.com.model.Banner</value>
+				<value>fashiontraditional.com.model.Catalog</value>
+				<value>fashiontraditional.com.model.Price</value>
+				<value>fashiontraditional.com.model.Product</value>
+				<value>fashiontraditional.com.model.CatalogDetail</value>
+				<value>fashiontraditional.com.model.Address</value>
+				<value>fashiontraditional.com.model.Comment</value>
+				<value>fashiontraditional.com.model.Rating</value>
+				<value>fashiontraditional.com.model.User</value>
+				<value>fashiontraditional.com.model.Order</value>
+				<value>fashiontraditional.com.model.OrderDetail</value>
+				<value>fashiontraditional.com.vo.ProductVO</value>
 			</list>
 		</property>
-
-
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
@@ -78,8 +137,9 @@
 				<prop key="hibernate.cache.use_query_cache">false</prop>
 				<prop key="hibernate.cache.use_second_level_cache">false</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
-				<!-- <prop key="hibernate.connection.pool_size">10</prop> -->
-
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hbm2ddl.auto">create</prop>
+				<!-- /config connection pool -->
 				<!-- /<prop key="hibernate.connection.provider_class"> -->
 
 				<!-- /org.hibernate.c3p0.internal.C3P0ConnectionProvider" -->

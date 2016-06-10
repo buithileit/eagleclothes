@@ -33,8 +33,20 @@
 		<!-- Test -->
 		<junit.version>4.11</junit.version>
 
-	</properties>
 
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.3-SNAPSHOT</version>
+				<configuration>
+					<path>/</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencies>
 
 		<!-- Spring MVC -->
@@ -159,6 +171,13 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.tomcat.maven</groupId> -->
+		<!-- <artifactId>tomcat7-maven-plugin</artifactId> -->
+		<!-- <version>2.1</version> -->
+		<!-- <configuration> -->
+		<!-- <path>/</path> -->
+		<!-- </configuration> -->
+		<!-- </dependency> -->
 	</dependencies>
 </project>

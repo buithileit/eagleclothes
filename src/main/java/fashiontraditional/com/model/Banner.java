@@ -4,12 +4,23 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity(name = "BANNER")
 public class Banner implements Serializable {
 
 	private static final long serialVersionUID = 7815564168593347170L;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "ID")
+	private int id;
+	@Column(name = "NAME")
+	private String name;
+
+	@Column(name = "LINK_IMAGE", nullable = false)
+	private String linkImage;
 
 	public Banner() {
 		super();
@@ -21,10 +32,20 @@ public class Banner implements Serializable {
 		this.name = name;
 	}
 
-	@Id
-	private int id;
-	@Column
-	private String name;
+	public Banner(int id, String name, String linkImage) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.linkImage = linkImage;
+	}
+
+	public String getLinkImage() {
+		return linkImage;
+	}
+
+	public void setLinkImage(String linkImage) {
+		this.linkImage = linkImage;
+	}
 
 	public int getId() {
 		return id;
