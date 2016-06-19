@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fashiontraditional.com.dao.BannerDAO;
+import fashiontraditional.com.exception.DataAccessException;
 import fashiontraditional.com.model.Banner;
 
 @Service
@@ -14,7 +15,7 @@ public class BannerServiceImpl implements BannerService {
 	private BannerDAO bannerDAO;
 
 	@Override
-	public List<Banner> getBanners() {
+	public List<Banner> getBanners() throws DataAccessException {
 		// TODO Auto-generated method stub
 		return bannerDAO.getBanners();
 	}

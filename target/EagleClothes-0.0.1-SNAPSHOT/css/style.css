@@ -995,17 +995,16 @@ a.p-btn:hover {
 	margin-top: 5em;
 }
 
-.product-pic-info-price label {
-	width: 55px;
-	height: 77px;
-	background: url(../images/dis-tag.png) no-repeat 0px 0px;
-	display: inline-block;
-	position: absolute;
-	top: 0px;
-	right: 2em;
-	top: 1em;
-}
-
+/* .product-pic-info-price label { */
+/* 	width: 55px; */
+/* 	height: 77px; */
+/* 	background: url(../images/dis-tag.png) no-repeat 0px 0px; */
+/* 	display: inline-block; */
+/* 	position: absolute; */
+/* 	top: 0px; */
+/* 	right: 2em; */
+/* 	top: 1em; */
+/* } */
 .bottom-grids-right h2 {
 	color: #4f4844;
 	font-size: 1.5em;

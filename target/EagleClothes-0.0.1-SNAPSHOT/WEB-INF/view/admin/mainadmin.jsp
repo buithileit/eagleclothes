@@ -69,7 +69,7 @@
 									</span>
 									<div class="media-body">
 										<h5 class="media-heading">
-											<strong>John Smith</strong>
+											<strong>Le</strong>
 										</h5>
 										<p class="small text-muted">
 											<i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
@@ -85,7 +85,7 @@
 									</span>
 									<div class="media-body">
 										<h5 class="media-heading">
-											<strong>John Smith</strong>
+											<strong>Le</strong>
 										</h5>
 										<p class="small text-muted">
 											<i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
@@ -101,7 +101,7 @@
 									</span>
 									<div class="media-body">
 										<h5 class="media-heading">
-											<strong>John Smith</strong>
+											<strong>Le</strong>
 										</h5>
 										<p class="small text-muted">
 											<i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
@@ -133,7 +133,7 @@
 						<li><a href="#">View All</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b
+					data-toggle="dropdown"><i class="fa fa-user"></i> Le <b
 						class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>

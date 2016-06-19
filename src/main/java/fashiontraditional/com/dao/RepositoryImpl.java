@@ -7,12 +7,15 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import fashiontraditional.com.exception.DataAccessException;
 import fashiontraditional.com.exception.ErrorCode;
-import fashiontraditional.com.model.Banner;
 
-public class RepositoryImpl<T> implements Repository<T> {
+@Repository
+@Transactional(readOnly = true)
+public class RepositoryImpl<T> implements IRepository<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -27,8 +30,10 @@ public class RepositoryImpl<T> implements Repository<T> {
 			session.close();
 			// if (results == null || results.isEmpty())
 			// return null;
+
 			return results;
 		} catch (HibernateException e) {
+
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data");
 		}
@@ -37,14 +42,12 @@ public class RepositoryImpl<T> implements Repository<T> {
 	@Override
 	public List<T> findByName(Class<T> object, String name, Integer record,
 			Integer page) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<T> getListBySQL(Class<T> object, String sql, Integer record,
 			Integer page) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

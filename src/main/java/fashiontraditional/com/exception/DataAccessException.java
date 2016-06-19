@@ -14,4 +14,13 @@ public class DataAccessException extends Exception {
 		this.errorCode = code;
 	}
 
+	public Integer getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(Integer errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	
 }

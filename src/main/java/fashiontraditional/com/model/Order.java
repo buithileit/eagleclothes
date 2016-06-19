@@ -15,38 +15,50 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import fashiontraditional.com.model.enumType.Status;
+import fashiontraditional.com.model.enumType.StatusCheck;
+import fashiontraditional.com.model.enumType.StatusDeliver;
 
-@Entity(name = "ORDER")
+@Entity(name = "ORDER_USER")
 public class Order implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5303677008070826139L;
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
 	private long id;
+	@Column(name = "CODE")
+	private String code;
 	@Column(name = "NAME_PERSON_RECEICE")
 	private String namePersonReceice;
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
 	@Column(name = "DATE_ORDER")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dateOrder;
 	@Column(name = "DATE_RECEICE")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dateReceice;
 	@Column(name = "ADDRESS_RECEICE")
 	private String addressReceice;
-	@Column(name = "STATUS")
+	@Column(name = "STATUS_DELIVER")
 	@Enumerated(EnumType.ORDINAL)
-	private Status status;
+	private StatusDeliver statusDeliver;
+	@Column(name = "STATUS_CHECK")
+	@Enumerated(EnumType.ORDINAL)
+	private StatusCheck statusCheck;
 	@ManyToOne(targetEntity = User.class)
 	@JoinColumn(name = "USER_ID", referencedColumnName = "ID")
 	private User user;
 	@Column(name = "TOTAL_MONEY")
 	private double totalMoney;
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
 
 	public Date getDateOrder() {
 		return dateOrder;
@@ -112,12 +124,20 @@ public class Order implements Serializable {
 		this.addressReceice = addressReceice;
 	}
 
-	public Status getStatus() {
-		return status;
+	public StatusDeliver getStatusDeliver() {
+		return statusDeliver;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setStatusDeliver(StatusDeliver statusDeliver) {
+		this.statusDeliver = statusDeliver;
+	}
+
+	public StatusCheck getStatusCheck() {
+		return statusCheck;
+	}
+
+	public void setStatusCheck(StatusCheck statusCheck) {
+		this.statusCheck = statusCheck;
 	}
 
 }

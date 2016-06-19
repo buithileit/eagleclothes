@@ -2,28 +2,56 @@ package fashiontraditional.com.vo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.SecondaryTable;
+import javax.persistence.SecondaryTables;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PRODUCT")
 public class ProductVO implements Serializable {
 
-	private long id;
-	private int amount;
+	@Id
+	private Long id;
 	private String color;
-	private int size;
-	private double money;
+	private Integer size;
+	private String name;
+	private String image;
+	// private int promotion;
+	private Double money;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getAmount() {
-		return amount;
+	public String getName() {
+		return name;
 	}
 
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public Double getMoney() {
+		return money;
+	}
+
+	public void setMoney(Double money) {
+		this.money = money;
 	}
 
 	public String getColor() {
@@ -34,49 +62,19 @@ public class ProductVO implements Serializable {
 		this.color = color;
 	}
 
-	public int getSize() {
+	public Integer getSize() {
 		return size;
 	}
 
-	public void setSize(int size) {
+	public void setSize(Integer size) {
 		this.size = size;
 	}
 
-	public boolean plusAmount() {
-		this.amount++;
-		return true;
-
-	}
-
-	public double getMoney() {
-		return money;
-	}
-
-	public void setMoney(double money) {
-		this.money = money;
-	}
-
-	public boolean equals(ProductVO product) {
-		boolean result = false;
-		if ((this.id == product.id)
-				&& (this.color.equalsIgnoreCase(product.color))
-				&& (this.size == product.size)) {
-			result = true;
-		}
-		return result;
-	}
-
-	public void updateData(ProductVO product) {
-		if (product.size <= 0)
-			this.size = 1;
-		else
-			this.size = product.size;
-
-	}
-
-	public double sumMoney() {
-
-		return this.money * amount;
+	@Override
+	public String toString() {
+		return "ProductVO [id=" + id + ", color=" + color + ", size=" + size
+				+ ", name=" + name + ", image=" + image + ", money=" + money
+				+ "]";
 	}
 
 }

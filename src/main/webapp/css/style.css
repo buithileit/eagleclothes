@@ -211,6 +211,12 @@ i.cart {
 	padding: 0 8px;
 }
 
+.title-text {
+	background: #39c4da;
+	color: #fff;
+	padding: 0 8px;
+}
+
 .products-section {
 	padding: 2em 0;
 }
@@ -566,6 +572,31 @@ i.smart-phone {
 	padding: 10px 0;
 }
 
+.deliver_info_left {
+	float: left;
+	width: 35.33333%;
+	margin-left: 5.333%;
+}
+
+.deliver_info_left:first-child {
+	margin-left: 0;
+}
+
+.products_right {
+	float: left;
+	width: 59.33333%;
+	margin-left: 5.333%;
+}
+
+.products_right:first-child {
+	margin-left: 0;
+}
+.products_right th :nth-child(n) {
+	padding: 0.5%;
+}
+.products_right td :nth-child(n) {
+	padding: 0.5%;
+}
 .sky_form1 {
 	margin-bottom: -30px;
 }
@@ -995,17 +1026,16 @@ a.p-btn:hover {
 	margin-top: 5em;
 }
 
-.product-pic-info-price label {
-	width: 55px;
-	height: 77px;
-	background: url(../images/dis-tag.png) no-repeat 0px 0px;
-	display: inline-block;
-	position: absolute;
-	top: 0px;
-	right: 2em;
-	top: 1em;
-}
-
+/* .product-pic-info-price label { */
+/* 	width: 55px; */
+/* 	height: 77px; */
+/* 	background: url(../images/dis-tag.png) no-repeat 0px 0px; */
+/* 	display: inline-block; */
+/* 	position: absolute; */
+/* 	top: 0px; */
+/* 	right: 2em; */
+/* 	top: 1em; */
+/* } */
 .bottom-grids-right h2 {
 	color: #4f4844;
 	font-size: 1.5em;
@@ -2861,6 +2891,14 @@ ul.women_pagenation li.active a, ul.women_pagenation li a:hover {
 		font-size: 18px;
 	}
 	.registration_left {
+		width: 100%;
+		margin: 0 0 19px 0;
+	}
+	.deliver_info_left {
+		width: 100%;
+		margin: 0 0 19px 0;
+	}
+	.products_right {
 		width: 100%;
 		margin: 0 0 19px 0;
 	}

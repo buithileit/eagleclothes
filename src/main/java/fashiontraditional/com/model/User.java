@@ -39,6 +39,41 @@ public class User implements Serializable {
 	@Column(name = "STATUS")
 	@Enumerated(EnumType.ORDINAL)
 	private Status status;
+	@Column(name = "IMAGE_THUMBNAIL")
+	private String imageThumbnail;
+
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public TypeUser getTypeUser() {
+		return typeUser;
+	}
+
+	public void setTypeUser(TypeUser typeUser) {
+		this.typeUser = typeUser;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public String getImageThumbnail() {
+		return imageThumbnail;
+	}
+
+	public void setImageThumbnail(String imageThumbnail) {
+		this.imageThumbnail = imageThumbnail;
+	}
 
 	public long getId() {
 		return id;

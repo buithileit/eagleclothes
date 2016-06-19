@@ -3,18 +3,23 @@ package fashiontraditional.com.util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.validator.EmailValidator;
 
 import fashiontraditional.com.vo.UserVO;
 
 public class SystemUtil {
 
-	public static String generateHash(UserVO user)
-			throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	public static String generateHash(String email,
+			String password) throws NoSuchAlgorithmException,
+			UnsupportedEncodingException {
 		// SHA or MD5
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		String hash = "";
 
-		String input = user.toString();
+		String input = email + password;
 		byte[] data = input.getBytes("US-ASCII");
 
 		md.update(data);
@@ -35,5 +40,29 @@ public class SystemUtil {
 			return true;
 		}
 		return false;
+	}
+
+	@SuppressWarnings("deprecation")
+	public static boolean checkEmail(String email) {
+		boolean valid = EmailValidator.getInstance().isValid(email);
+
+		return valid;
+	}
+
+	@SuppressWarnings("deprecation")
+	public static boolean checkPhoneNumber(String phoneNumber) {
+
+		String regex = "^\\+?[0-9. ()-]{10,25}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(phoneNumber);
+
+		if (matcher.matches()) {
+			return true;
+		}
+		return false;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(checkPhoneNumber("01282470953"));
 	}
 }

@@ -14,9 +14,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-</script>
+
 <!--webfont-->
 <link
 	href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300,700'
@@ -98,10 +96,23 @@
 	<!-- header-section-starts -->
 	<div class="user-desc">
 		<div class="container">
+			<%-- 			<div id="message">${message}</div> --%>
 			<ul>
-				<li><a href="checkout.html">Checkout</a></li>
-				<li><i class="user"></i><a href="account.html">My Account</a></li>
-				<li><i class="cart"></i><a href="#">Cart (0)</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.user !=null }">
+						<li><i class="user"
+							style="background:${sessionScope.user.imageThumbnail};"></i> <a
+							href="account.html">${sessionScope.user.name}</a></li>
+						<li><a href="logout.html">${appProperties["title.logout"] }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="account.html">${appProperties["title.login"] }</a></li>
+						<li><a href="account.html">${appProperties["title.registry"] }</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><i class="cart"></i><a href="loadCheckout">Cart
+						(${sizeCart})</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -114,10 +125,11 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a href="index.html" data-hover="HOME">HOME</a></li>
-						<li><a href="404.html" data-hover="NEWS">NEWS</a></li>
-						<li><a class="active" href="products.html">PRODUCTS</a></li>
-						<li><a href="404.html" data-hover="FEATURES">FEATURES</a></li>
+						<li><a class="active" href="getMain">HOME</a></li>
+						<c:forEach items="${catalogsRoot }" var="catalog">
+							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
+								data-hover="${ catalog.name}">${ catalog.name}</a></li>
+						</c:forEach>
 						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
 					</ul>
 				</div>
@@ -143,19 +155,19 @@
 				<div class="grid images_3_of_2">
 					<ul id="etalage">
 						<li><a href="optionallink.html"> <img
-								class="etalage_thumb_image" src="images/d2.jpg"
+								class="etalage_thumb_image" src="${product.image }"
 								class="img-responsive" /> <img class="etalage_source_image"
-								src="images/d2.jpg" class="img-responsive" title="" />
+								src="${product.image }" class="img-responsive" title="" />
 						</a></li>
-						<li><img class="etalage_thumb_image" src="images/d1.jpg"
+						<li><img class="etalage_thumb_image" src="${product.image }"
 							class="img-responsive" /> <img class="etalage_source_image"
-							src="images/d1.jpg" class="img-responsive" title="" /></li>
-						<li><img class="etalage_thumb_image" src="images/d2.jpg"
+							src="${product.image }" class="img-responsive" title="" /></li>
+						<li><img class="etalage_thumb_image" src="${product.image }"
 							class="img-responsive" /> <img class="etalage_source_image"
-							src="images/d2.jpg" class="img-responsive" /></li>
-						<li><img class="etalage_thumb_image" src="images/d3.jpg"
+							src="${product.image }" class="img-responsive" /></li>
+						<li><img class="etalage_thumb_image" src="${product.image }"
 							class="img-responsive" /> <img class="etalage_source_image"
-							src="images/d3.jpg" class="img-responsive" /></li>
+							src="${product.image }" class="img-responsive" /></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
@@ -163,27 +175,25 @@
 				<!-- start span1_of_1 -->
 				<div class="span1_of_1_des">
 					<div class="desc1">
-						<h3>Lorem Ipsum is simply dummy text</h3>
-						<p>It is a long established fact that a reader will be
-							distracted by the readable content of a page when looking at its
-							layout.</p>
+						<h3>${product.name }</h3>
+						<p>${product.description }</p>
 						<h5>
 							<!-- 							Rs. 399 <a href="#">click for offer</a> -->
 						</h5>
 						<div class="available">
 							<h4>Available Options :</h4>
 							<ul>
-								<li>Color: <select>
-										<option>Silver</option>
-										<option>Black</option>
-										<option>Dark Black</option>
-										<option>Red</option>
-								</select></li>
+								<li>Color: <!-- 								<select> --> <%-- 								<c:forEach items="${product.color }"></c:forEach> --%>
+									<input type="color" value="#${product.color  }"> <%-- 										<option style="background:${product.color }" --%>
+									<!-- 											selected="selected"></option> --> <!-- 																				<option>Black</option> -->
+									<!-- 																				<option>Dark Black</option> --> <!-- 																				<option>Red</option> -->
+									<!-- 								</select> -->
+								</li>
 								<li>Size: <select>
-										<option>L</option>
-										<option>XL</option>
-										<option>S</option>
-										<option>M</option>
+										<option>${product.size }</option>
+										<!-- 										<option>XL</option> -->
+										<!-- 										<option>S</option> -->
+										<!-- 										<option>M</option> -->
 								</select>
 								</li>
 								<!-- 								<li>Quality: <select> -->
@@ -196,12 +206,13 @@
 								</li>
 							</ul>
 							<div class="btn_form">
-								<form>
+								<form
+									action="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">
 									<input type="submit" value="add to cart" title="" />
 								</form>
 							</div>
-							<span class="span_right"><a href="#">login to save in
-									wishlist </a></span>
+							<!-- 							<span class="span_right"><a href="#">login to save in -->
+							<!-- 									wishlist </a></span> -->
 							<div class="clearfix"></div>
 						</div>
 						<!-- 						<div class="filter-by-color"> -->
@@ -237,11 +248,11 @@
 		<!-- start tabs -->
 		<!--Horizontal Tab-->
 		<div id="horizontalTab">
-			<ul class="resp-tabs-list">
-				<li>More Information</li>
-				<li>Specifications</li>
-				<li>Reviews</li>
-			</ul>
+			<!-- 			<ul class="resp-tabs-list"> -->
+			<!-- 				<li>More Information</li> -->
+			<!-- 				<li>Specifications</li> -->
+			<!-- 				<li>Reviews</li> -->
+			<!-- 			</ul> -->
 			<div class="resp-tabs-container">
 				<div class="tab-content">
 					<p>Maecenas mauris velit, consequat sit amet feugiat rit, elit

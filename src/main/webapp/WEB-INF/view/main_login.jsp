@@ -67,10 +67,21 @@
 		<div class="container">
 			<%-- 			<div id="message">${message}</div> --%>
 			<ul>
-				<li><a href="login.html">${appProperties["title.login"] }</a></li>
-				<li><i class="user"></i><a href="registry.html">${appProperties["title.registry"] }</a></li>
-				<li><i class="cart"></i><a href="checkout.html">Cart
+				<c:choose>
+					<c:when test="${sessionScope.user !=null }">
+						<li><i class="user"
+							style="background:${sessionScope.user.imageThumbnail};"></i> <a
+							href="404.html">${sessionScope.user.name}</a></li>
+						<li><a href="logout.html">${appProperties["title.logout"] }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="loadLogin">${appProperties["title.login"] }</a></li>
+						<li><a href="loadLogin">${appProperties["title.registry"] }</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><i class="cart"></i><a href="loadCheckout">Cart
 						(${sizeCart})</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -86,9 +97,10 @@
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
 						<li><a class="active" href="getMain">HOME</a></li>
-						<li><a href="404.html" data-hover="CLOTHER">CLOTHER</a></li>
-						<li><a href="products.html" data-hover="PANTS">PANTS</a></li>
-						<li><a href="404.html" data-hover="DRESS">DRESS</a></li>
+						<c:forEach items="${catalogsRoot }" var="catalog">
+							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
+								data-hover="${ catalog.name}">${ catalog.name}</a></li>
+						</c:forEach>
 						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
 					</ul>
 				</div>
@@ -222,121 +234,33 @@
 								<!-- //requried-jsfiles-for owl -->
 								<!-- start content_slider -->
 								<div id="owl-demo" class="owl-carousel text-center">
-									<div class="item">
-										<div
-											onclick="location.href='shop?productId=1&color=BLUE&amount=1&size=35';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p1.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$129</span>
+									<c:forEach items="${productsFeatured}" var="product">
+										<div class="item">
+											<div
+												onclick="location.href='getProduct?productId=${product.id}';"
+												class="product-grid">
+												<div class="product-pic">
+													<img src="${product.image}" title="${product.name}" />
+												</div>
+												<div class="product-pic-info">
+													<h4>
+														<a href="#">${product.name}</a>
+													</h4>
+													<div class="product-pic-info-price-cart">
+														<div class="product-pic-info-price">
+															<span>${product.money}</span>
+														</div>
+														<div class="product-pic-info-cart">
+															<a class="p-btn"
+																href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">Add
+																to Cart</a>
+														</div>
+														<div class="clearfix"></div>
 													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn"
-															href="shop?productId=1&color=BLUE&amount=1&size=35">Add
-															to Cart</a>
-													</div>
-													<div class="clearfix"></div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="item">
-										<div
-											onclick="location.href='shop?productId=1&color=BLUE&amount=1&size=35';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p2.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$89</span>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn"
-															href="shop?productId=1&color=BLUE&amount=1&size=35">Add
-															to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single-page.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p3.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$149</span>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="/shop{1}">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p1.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$129</span>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="/shop{1}">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='/shop{1}';" class="product-grid">
-											<div class="product-pic">
-												<img src="images/p3.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$129</span>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="/shop{1}">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
+									</c:forEach>
 								</div>
 								<!--//sreen-gallery-cursual---->
 
@@ -366,255 +290,95 @@
 								<!-- //requried-jsfiles-for owl -->
 								<!-- start content_slider -->
 								<div id="owl-demo1" class="owl-carousel text-center">
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p4.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$35.99</span> <label> </label>
+									<c:forEach items="${productsNew}" var="product">
+										<div class="item">
+											<div
+												onclick="location.href='getProduct?productId=${product.id}';"
+												class="product-grid">
+												<div class="product-pic">
+													<img src="${product.image}" title="${product.name}" />
+												</div>
+												<div class="product-pic-info">
+													<h4>
+														<a href="#">${product.name}</a>
+													</h4>
+													<div class="product-pic-info-price-cart">
+														<div class="product-pic-info-price">
+															<span>${product.money}</span> <label> </label>
+														</div>
+														<div class="product-pic-info-cart">
+															<a class="p-btn"
+																href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">Add
+																to Cart</a>
+														</div>
+														<div class="clearfix"></div>
 													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="/shop{1}">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p5.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$86</span> <label> </label>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p6.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$149</span> <label> </label>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p1.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$129</span> <label> </label>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p4.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Woman's T - Shirt</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$129</span> <label> </label>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
+									</c:forEach>
+
 								</div>
 								<!--//sreen-gallery-cursual---->
 
 							</div>
 						</div>
-						<div class="product-section-head-text">
-							<!----sreen-gallery-cursual---->
-							<div class="sreen-gallery-cursual">
-								<!-- requried-jsfiles-for owl -->
-								<link href="css/owl.carousel.css" rel="stylesheet">
-								<script src="js/owl.carousel.js"></script>
-								<script>
-									$(document).ready(function() {
-										$("#owl-demo2").owlCarousel({
-											items : 3,
-											lazyLoad : true,
-											autoPlay : true,
-											navigation : false,
-											navigationText : false,
-											pagination : false,
+						<div class="d-products product-section-head-text">
+							<h3>
+								<span>POPULAR FROM OUR STORE</span>
+							</h3>
+							<div class="product-section-head-text">
+								<!----sreen-gallery-cursual---->
+								<div class="sreen-gallery-cursual">
+									<!-- requried-jsfiles-for owl -->
+									<link href="css/owl.carousel.css" rel="stylesheet">
+									<script src="js/owl.carousel.js"></script>
+									<script>
+										$(document).ready(function() {
+											$("#owl-demo2").owlCarousel({
+												items : 3,
+												lazyLoad : true,
+												autoPlay : true,
+												navigation : false,
+												navigationText : false,
+												pagination : false,
+											});
 										});
-									});
-								</script>
-								<!-- //requried-jsfiles-for owl -->
-								<!-- start content_slider -->
-								<div id="owl-demo2" class="owl-carousel text-center">
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p7.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Beautiful Shoes</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$35.99</span> <label> </label>
+									</script>
+									<!-- //requried-jsfiles-for owl -->
+									<!-- start content_slider -->
+									<div id="owl-demo2" class="owl-carousel text-center">
+										<c:forEach items="${productsPopular}" var="product">
+											<div class="item">
+												<div
+													onclick="location.href='getProduct?productId=${product.id}';"
+													class="product-grid">
+													<div class="product-pic">
+														<img src="${product.image }" title="${product.name }" />
 													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
+													<div class="product-pic-info">
+														<h4>
+															<a href="#">${product.name }</a>
+														</h4>
+														<div class="product-pic-info-price-cart">
+															<div class="product-pic-info-price">
+																<span>${product.money }</span> <label> </label>
+															</div>
+															<div class="product-pic-info-cart">
+																<a class="p-btn"
+																	href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">Add
+																	to Cart</a>
+															</div>
+															<div class="clearfix"></div>
+														</div>
 													</div>
-													<div class="clearfix"></div>
 												</div>
 											</div>
-										</div>
+										</c:forEach>
 									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p8.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Worker Boots</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$86</span> <label> </label>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p9.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Leather Boots</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$149</span> <label> </label>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p10.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Beautiful Shoes</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$129</span> <label> </label>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<div onclick="location.href='single.html';"
-											class="product-grid">
-											<div class="product-pic">
-												<img src="images/p8.jpg" title="Woman's T - Shirt" />
-											</div>
-											<div class="product-pic-info">
-												<h4>
-													<a href="#">Leather Boots</a>
-												</h4>
-												<div class="product-pic-info-price-cart">
-													<div class="product-pic-info-price">
-														<span>$129</span> <label> </label>
-													</div>
-													<div class="product-pic-info-cart">
-														<a class="p-btn" href="single.html">Add to Cart</a>
-													</div>
-													<div class="clearfix"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!--//sreen-gallery-cursual---->
+									<!--//sreen-gallery-cursual---->
 
+								</div>
 							</div>
 						</div>
 					</div>

@@ -2,27 +2,32 @@ package fashiontraditional.com.vo;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import fashiontraditional.com.bean.RegisterBean;
+import fashiontraditional.com.util.SystemUtil;
+
+@Entity
+@Table(name = "USER")
 public class UserVO implements Serializable {
 
-	@Column(name = "EMAIL")
+	@Id
+	private Long id;
 	private String email;
-	@Column(name = "PASSWORD")
-	private String password;
-	@Column(name = "NAME")
 	private String name;
-	@Column(name = "PHONE_NUMBER")
+	private String password;
 	private String phoneNumber;
-	@Column(name = "ADDRESS")
 	private String address;
+	private String imageThumbnail;
 
-	public String getEmail() {
-		return email;
+	public Long getId() {
+		return id;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getPassword() {
@@ -31,6 +36,22 @@ public class UserVO implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getImageThumbnail() {
+		return imageThumbnail;
+	}
+
+	public void setImageThumbnail(String imageThumbnail) {
+		this.imageThumbnail = imageThumbnail;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getName() {
@@ -65,4 +86,25 @@ public class UserVO implements Serializable {
 		return email + password + phoneNumber;
 	}
 
+	public boolean checkValues() {
+		boolean result = false;
+		if (SystemUtil.checkEmail(this.email)
+				&& SystemUtil.checkPhoneNumber(this.phoneNumber)
+				&& !SystemUtil.isNullOrEmpty(password)) {
+			result = true;
+		}
+		if (SystemUtil.isNullOrEmpty(name))
+			this.name = email;
+		return result;
+	}
+
+	public void setData(RegisterBean register) {
+		this.address = register.getAddress();
+		this.email = register.getEmail();
+		this.imageThumbnail = register.getImageThumbnail();
+		this.name = register.getName();
+		this.password = register.getPassword();
+		this.phoneNumber = register.getPhoneNumber();
+
+	}
 }

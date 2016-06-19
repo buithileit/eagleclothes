@@ -1,9 +1,12 @@
 package fashiontraditional.com.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name = "PRODUCT")
 public class Product {
@@ -28,14 +31,22 @@ public class Product {
 	@Column(name = "RATE")
 	private short rate;
 
-	// @OneToMany
-	// private Set<Color> colors;
+	@OneToMany(mappedBy = "product")
+	private Set<CatalogDetail> catalogDetails;
+
 	// @OneToMany
 	// private Set<String> sizes;
 
-	
 	public long getId() {
 		return id;
+	}
+
+	public Set<CatalogDetail> getCatalogDetails() {
+		return catalogDetails;
+	}
+
+	public void setCatalogDetails(Set<CatalogDetail> catalogDetails) {
+		this.catalogDetails = catalogDetails;
 	}
 
 	public String getImage() {

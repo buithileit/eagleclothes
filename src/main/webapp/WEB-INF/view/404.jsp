@@ -15,13 +15,7 @@
 <link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript">
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 
-
-</script>
 <!--webfont-->
 <link
 	href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300,700'
@@ -61,10 +55,23 @@
 	<!-- header-section-starts -->
 	<div class="user-desc">
 		<div class="container">
+			<%-- 			<div id="message">${message}</div> --%>
 			<ul>
-				<li><a href="checkout.html">Checkout</a></li>
-				<li><i class="user"></i><a href="account.html">My Account</a></li>
-				<li><i class="cart"></i><a href="#">Cart (3)</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.user !=null }">
+						<li><i class="user"
+							style="background:${sessionScope.user.imageThumbnail};"></i> <a
+							href="404.html">${sessionScope.user.name}</a></li>
+						<li><a href="logout.html">${appProperties["title.logout"] }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="loadLogin">${appProperties["title.login"] }</a></li>
+						<li><a href="loadLogin">${appProperties["title.registry"] }</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><i class="cart"></i><a href="loadCheckout">Cart
+						(${sizeCart})</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -78,9 +85,10 @@
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
 						<li><a href="index.html" data-hover="HOME">HOME</a></li>
-						<li><a href="404.html" data-hover="NEWS">NEWS</a></li>
-						<li><a href="products.html" data-hover="PRODUCTS">PRODUCTS</a></li>
-						<li><a href="404.html" data-hover="FEATURES">FEATURES</a></li>
+						<c:forEach items="${catalogsRoot }" var="catalog">
+							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
+								data-hover="${ catalog.name}">${ catalog.name}</a></li>
+						</c:forEach>
 						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
 					</ul>
 				</div>

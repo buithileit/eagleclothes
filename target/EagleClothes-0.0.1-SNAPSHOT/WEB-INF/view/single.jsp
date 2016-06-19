@@ -101,7 +101,7 @@
 			<ul>
 				<li><a href="checkout.html">Checkout</a></li>
 				<li><i class="user"></i><a href="account.html">My Account</a></li>
-				<li><i class="cart"></i><a href="#">Cart (3)</a></li>
+				<li><i class="cart"></i><a href="#">Cart (0)</a></li>
 			</ul>
 		</div>
 	</div>
@@ -168,7 +168,7 @@
 							distracted by the readable content of a page when looking at its
 							layout.</p>
 						<h5>
-							Rs. 399 <a href="#">click for offer</a>
+							<!-- 							Rs. 399 <a href="#">click for offer</a> -->
 						</h5>
 						<div class="available">
 							<h4>Available Options :</h4>
@@ -186,13 +186,13 @@
 										<option>M</option>
 								</select>
 								</li>
-								<li>Quality: <select>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-								</select>
+								<!-- 								<li>Quality: <select> -->
+								<!-- 										<option>1</option> -->
+								<!-- 										<option>2</option> -->
+								<!-- 										<option>3</option> -->
+								<!-- 										<option>4</option> -->
+								<!-- 										<option>5</option> -->
+								<!-- 								</select> -->
 								</li>
 							</ul>
 							<div class="btn_form">
@@ -204,158 +204,158 @@
 									wishlist </a></span>
 							<div class="clearfix"></div>
 						</div>
-						<div class="filter-by-color">
-							<h3>Filter by Color</h3>
-							<ul class="w_nav2">
-								<li><a class="color1" href="#"></a></li>
-								<li><a class="color2" href="#"></a></li>
-								<li><a class="color3" href="#"></a></li>
-								<li><a class="color4" href="#"></a></li>
-								<li><a class="color5" href="#"></a></li>
-								<li><a class="color10" href="#"></a></li>
-								<li><a class="color7" href="#"></a></li>
-								<li><a class="color8" href="#"></a></li>
-								<li><a class="color9" href="#"></a></li>
-								<li><a class="color10" href="#"></a></li>
-								<li><a class="color6" href="#"></a></li>
-								<li><a class="color13" href="#"></a></li>
-								<li><a class="color14" href="#"></a></li>
-								<li><a class="color15" href="#"></a></li>
-								<li><a class="color16" href="#"></a></li>
-								<li><a class="color17" href="#"></a></li>
-								<li><a class="color1" href="#"></a></li>
-								<li><a class="color3" href="#"></a></li>
-								<li><a class="color2" href="#"></a></li>
-							</ul>
+						<!-- 						<div class="filter-by-color"> -->
+						<!-- 							<h3>Filter by Color</h3> -->
+						<!-- 							<ul class="w_nav2"> -->
+						<!-- 								<li><a class="color1" href="#"></a></li> -->
+						<!-- 								<li><a class="color2" href="#"></a></li> -->
+						<!-- 								<li><a class="color3" href="#"></a></li> -->
+						<!-- 								<li><a class="color4" href="#"></a></li> -->
+						<!-- 								<li><a class="color5" href="#"></a></li> -->
+						<!-- 								<li><a class="color10" href="#"></a></li> -->
+						<!-- 								<li><a class="color7" href="#"></a></li> -->
+						<!-- 								<li><a class="color8" href="#"></a></li> -->
+						<!-- 								<li><a class="color9" href="#"></a></li> -->
+						<!-- 								<li><a class="color10" href="#"></a></li> -->
+						<!-- 								<li><a class="color6" href="#"></a></li> -->
+						<!-- 								<li><a class="color13" href="#"></a></li> -->
+						<!-- 								<li><a class="color14" href="#"></a></li> -->
+						<!-- 								<li><a class="color15" href="#"></a></li> -->
+						<!-- 								<li><a class="color16" href="#"></a></li> -->
+						<!-- 								<li><a class="color17" href="#"></a></li> -->
+						<!-- 								<li><a class="color1" href="#"></a></li> -->
+						<!-- 								<li><a class="color3" href="#"></a></li> -->
+						<!-- 								<li><a class="color2" href="#"></a></li> -->
+						<!-- 							</ul> -->
 
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-
-			<!-- start tabs -->
-			<!--Horizontal Tab-->
-			<div id="horizontalTab">
-				<ul class="resp-tabs-list">
-					<li>More Information</li>
-					<li>Specifications</li>
-					<li>Reviews</li>
-				</ul>
-				<div class="resp-tabs-container">
-					<div class="tab-content">
-						<p>Maecenas mauris velit, consequat sit amet feugiat rit, elit
-							vitaeert scelerisque elementum, turpis nisl accumsan ipsum Lorem
-							Ipsum is simply dummy text of the printing and typesetting
-							industry. and scrambled it to make a type specimen book. It has
-							survived Auction your website on Flippa and you'll get the best
-							price from serious buyers, dedicated support and a much better
-							deal than you'll find with any website broker. Sell your site
-							today I need a twitter bootstrap 3.0 theme for the full-calendar
-							plugin. it would be great if the theme includes the add event;
-							remove event, show event details. this must be RESPONSIVE and
-							works on mobile devices. Also, I've seen so many bootstrap themes
-							that comes up with the fullcalendar plugin. However these .</p>
-						<ul>
-							<li>Research</li>
-							<li>Design and Development</li>
-							<li>Porting and Optimization</li>
-							<li>System integration</li>
-							<li>Verification, Validation and Testing</li>
-							<li>Maintenance and Support</li>
-						</ul>
-					</div>
-					<div class="tab-content">
-						<p class="para">
-							<span>WELCOME </span> Contrary to popular belief, Lorem Ipsum is
-							not simply random text. It has roots in a piece of classical
-							Latin literature from 45 BC, making it over 2000 years old.
-							Richard McClintock, a Latin professor at Hampden-Sydney College
-							in Virginia, looked up one of the more obscure Latin words,
-							consectetur, from a Lorem Ipsum passage, and going through the
-							cites of the word in classical literature, discovered the
-							undoubtable source. Lorem Ipsum comes from sections
-						</p>
-						<ul class="qua_nav">
-							<li>Multimedia Systems</li>
-							<li>Digital media adapters</li>
-							<li>Set top boxes for HDTV and IPTV Player applications on
-								various Operating Systems and Hardware Platforms</li>
-						</ul>
-					</div>
-					<div class="tab-content">
-						<p class="para top">
-							<span>LOREM IPSUM</span> There are many variations of passages of
-							Lorem Ipsum available, but the majority have suffered alteration
-							in some form, by injected humour, or randomised words which don't
-							look even slightly believable. If you are going to use a passage
-							of Lorem Ipsum, you need to be sure there isn't anything
-							embarrassing hidden in the middle of text. All the Lorem Ipsum
-							generators on the Internet tend to repeat predefined chunks as
-							necessary, making this the first true generator on the Internet.
-							It uses a dictionary of over 200 Latin words, combined
-						</p>
-						<ul>
-							<li>Research</li>
-							<li>Design and Development</li>
-							<li>Porting and Optimization</li>
-							<li>System integration</li>
-							<li>Verification, Validation and Testing</li>
-							<li>Maintenance and Support</li>
-						</ul>
 					</div>
 				</div>
 			</div>
-
-			<!-- end tabs -->
+			<div class="clearfix"></div>
 		</div>
 
-		<div class="left_sidebar">
-			<div class="sellers">
-				<h4>Best Sellers</h4>
-				<div class="single-nav">
+		<!-- start tabs -->
+		<!--Horizontal Tab-->
+		<div id="horizontalTab">
+			<ul class="resp-tabs-list">
+				<li>More Information</li>
+				<li>Specifications</li>
+				<li>Reviews</li>
+			</ul>
+			<div class="resp-tabs-container">
+				<div class="tab-content">
+					<p>Maecenas mauris velit, consequat sit amet feugiat rit, elit
+						vitaeert scelerisque elementum, turpis nisl accumsan ipsum Lorem
+						Ipsum is simply dummy text of the printing and typesetting
+						industry. and scrambled it to make a type specimen book. It has
+						survived Auction your website on Flippa and you'll get the best
+						price from serious buyers, dedicated support and a much better
+						deal than you'll find with any website broker. Sell your site
+						today I need a twitter bootstrap 3.0 theme for the full-calendar
+						plugin. it would be great if the theme includes the add event;
+						remove event, show event details. this must be RESPONSIVE and
+						works on mobile devices. Also, I've seen so many bootstrap themes
+						that comes up with the fullcalendar plugin. However these .</p>
 					<ul>
-						<li><a href="#">Always free from repetition</a></li>
-						<li><a href="#">Always free from repetition</a></li>
-						<li><a href="#">The standard chunk of Lorem Ipsum</a></li>
-						<li><a href="#">The standard chunk of Lorem Ipsum</a></li>
-						<li><a href="#">Always free from repetition</a></li>
-						<li><a href="#">The standard chunk of Lorem Ipsum</a></li>
-						<li><a href="#">Always free from repetition</a></li>
-						<li><a href="#">Always free from repetition</a></li>
-						<li><a href="#">Always free from repetition</a></li>
-						<li><a href="#">The standard chunk of Lorem Ipsum</a></li>
-						<li><a href="#">Always free from repetition</a></li>
-						<li><a href="#">Always free from repetition</a></li>
-						<li><a href="#">Always free from repetition</a></li>
+						<li>Research</li>
+						<li>Design and Development</li>
+						<li>Porting and Optimization</li>
+						<li>System integration</li>
+						<li>Verification, Validation and Testing</li>
+						<li>Maintenance and Support</li>
 					</ul>
 				</div>
-				<div class="banner-wrap bottom_banner color_link">
-					<a href="#" class="main_link">
-						<figure>
-							<img src="images/delivery.png" alt="">
-						</figure>
-						<h5>
-							<span>Free Shipping</span><br> on orders over $99.
-						</h5>
-						<p>This offer is valid on all our store items.</p>
-					</a>
+				<div class="tab-content">
+					<p class="para">
+						<span>WELCOME </span> Contrary to popular belief, Lorem Ipsum is
+						not simply random text. It has roots in a piece of classical Latin
+						literature from 45 BC, making it over 2000 years old. Richard
+						McClintock, a Latin professor at Hampden-Sydney College in
+						Virginia, looked up one of the more obscure Latin words,
+						consectetur, from a Lorem Ipsum passage, and going through the
+						cites of the word in classical literature, discovered the
+						undoubtable source. Lorem Ipsum comes from sections
+					</p>
+					<ul class="qua_nav">
+						<li>Multimedia Systems</li>
+						<li>Digital media adapters</li>
+						<li>Set top boxes for HDTV and IPTV Player applications on
+							various Operating Systems and Hardware Platforms</li>
+					</ul>
 				</div>
-				<div class="brands">
-					<h1>Brands</h1>
-					<div class="field">
-						<select class="select1">
-							<option>Please Select</option>
-							<option>Lorem ipsum dolor sit amet</option>
-							<option>Lorem ipsum dolor sit amet</option>
-							<option>Lorem ipsum dolor sit amet</option>
-						</select>
-					</div>
+				<div class="tab-content">
+					<p class="para top">
+						<span>LOREM IPSUM</span> There are many variations of passages of
+						Lorem Ipsum available, but the majority have suffered alteration
+						in some form, by injected humour, or randomised words which don't
+						look even slightly believable. If you are going to use a passage
+						of Lorem Ipsum, you need to be sure there isn't anything
+						embarrassing hidden in the middle of text. All the Lorem Ipsum
+						generators on the Internet tend to repeat predefined chunks as
+						necessary, making this the first true generator on the Internet.
+						It uses a dictionary of over 200 Latin words, combined
+					</p>
+					<ul>
+						<li>Research</li>
+						<li>Design and Development</li>
+						<li>Porting and Optimization</li>
+						<li>System integration</li>
+						<li>Verification, Validation and Testing</li>
+						<li>Maintenance and Support</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-		<!-- end sidebar -->
-		<div class="clearfix"></div>
+
+		<!-- end tabs -->
+	</div>
+
+	<div class="left_sidebar">
+		<div class="sellers">
+			<h4>Best Sellers</h4>
+			<div class="single-nav">
+				<ul>
+					<li><a href="#">Always free from repetition</a></li>
+					<li><a href="#">Always free from repetition</a></li>
+					<li><a href="#">The standard chunk of Lorem Ipsum</a></li>
+					<li><a href="#">The standard chunk of Lorem Ipsum</a></li>
+					<li><a href="#">Always free from repetition</a></li>
+					<li><a href="#">The standard chunk of Lorem Ipsum</a></li>
+					<li><a href="#">Always free from repetition</a></li>
+					<li><a href="#">Always free from repetition</a></li>
+					<li><a href="#">Always free from repetition</a></li>
+					<li><a href="#">The standard chunk of Lorem Ipsum</a></li>
+					<li><a href="#">Always free from repetition</a></li>
+					<li><a href="#">Always free from repetition</a></li>
+					<li><a href="#">Always free from repetition</a></li>
+				</ul>
+			</div>
+			<div class="banner-wrap bottom_banner color_link">
+				<a href="#" class="main_link">
+					<figure>
+						<img src="images/delivery.png" alt="">
+					</figure>
+					<h5>
+						<span>Free Shipping</span><br> on orders over $99.
+					</h5>
+					<p>This offer is valid on all our store items.</p>
+				</a>
+			</div>
+			<div class="brands">
+				<h1>Brands</h1>
+				<div class="field">
+					<select class="select1">
+						<option>Please Select</option>
+						<option>Lorem ipsum dolor sit amet</option>
+						<option>Lorem ipsum dolor sit amet</option>
+						<option>Lorem ipsum dolor sit amet</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end sidebar -->
+	<div class="clearfix"></div>
 	</div>
 	</div>
 	<!-- end content -->
