@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import fashiontraditional.com.bean.RegisterBean;
+import fashiontraditional.com.model.enumType.TypeUser;
 import fashiontraditional.com.util.SystemUtil;
 
 @Entity
@@ -21,13 +22,21 @@ public class UserVO implements Serializable {
 	private String phoneNumber;
 	private String address;
 	private String imageThumbnail;
-
+	private TypeUser typeUser;
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public TypeUser getTypeUser() {
+		return typeUser;
+	}
+
+	public void setTypeUser(TypeUser typeUser) {
+		this.typeUser = typeUser;
 	}
 
 	public String getPassword() {

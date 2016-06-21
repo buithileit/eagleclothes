@@ -86,9 +86,10 @@ public class MainController {
 	@RequestMapping("admin/main")
 	public String getMainAdmin(Model model, HttpServletResponse response,
 			HttpSession session) {
-		systemInfo.addSession(session.getId());
-
-		return "admin/mainadmin";
+		String result = "admin/login";
+		if (session.getAttribute("admin") != null)
+			result = "admin/mainadmin";
+		return result;
 
 	}
 }

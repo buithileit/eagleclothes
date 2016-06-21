@@ -14,6 +14,7 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -26,6 +27,7 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fc_005fchoose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -34,6 +36,7 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fc_005fchoose.release();
     _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
+    _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -135,15 +138,16 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<div class=\"header-top\">\r\n");
       out.write("\t\t\t<div class=\"container\">\r\n");
       out.write("\t\t\t\t<div class=\"logo\">\r\n");
-      out.write("\t\t\t\t\t<a href=\"index.html\"><img src=\"images/logo.png\" alt=\"\" /></a>\r\n");
+      out.write("\t\t\t\t\t<a href=\"getMain\"><img src=\"images/logo.png\" alt=\"\" /></a>\r\n");
       out.write("\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t<div class=\"top-menu\">\r\n");
       out.write("\t\t\t\t\t<span class=\"menu\"> </span>\r\n");
       out.write("\t\t\t\t\t<ul class=\"cl-effect-15\">\r\n");
       out.write("\t\t\t\t\t\t<li><a href=\"index.html\" data-hover=\"HOME\">HOME</a></li>\r\n");
-      out.write("\t\t\t\t\t\t<li><a href=\"404.html\" data-hover=\"NEWS\">NEWS</a></li>\r\n");
-      out.write("\t\t\t\t\t\t<li><a href=\"products.html\" data-hover=\"PRODUCTS\">PRODUCTS</a></li>\r\n");
-      out.write("\t\t\t\t\t\t<li><a href=\"404.html\" data-hover=\"FEATURES\">FEATURES</a></li>\r\n");
+      out.write("\t\t\t\t\t\t");
+      if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write("\t\t\t\t\t\t<li><a href=\"contact.html\" data-hover=\"CONTACT\">CONTACT</a></li>\r\n");
       out.write("\t\t\t\t\t</ul>\r\n");
       out.write("\t\t\t\t</div>\r\n");
@@ -167,8 +171,7 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<h3>404 Error!</h3>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div class=\"gray\">\r\n");
-      out.write("\t\t\t<a href=\"index.html\" class=\"ag-3d_button orange\">Go to home page\r\n");
-      out.write("\t\t\t</a>\r\n");
+      out.write("\t\t\t<a href=\"getMain\" class=\"ag-3d_button orange\">Go to home page </a>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
       out.write("\t</div>\r\n");
@@ -309,6 +312,53 @@ public final class _404_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f0.setParent(null);
+    // /WEB-INF/view/404.jsp(88,6) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/view/404.jsp(88,6) '${catalogsRoot }'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${catalogsRoot }",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    // /WEB-INF/view/404.jsp(88,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f0.setVar("catalog");
+    int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("\t\t\t\t\t\t\t<li><a href=\"getProductByCatalog?catalogId=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ catalog.id}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("\"\r\n");
+          out.write("\t\t\t\t\t\t\t\tdata-hover=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ catalog.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ catalog.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</a></li>\r\n");
+          out.write("\t\t\t\t\t\t");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f0.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.reuse(_jspx_th_c_005fforEach_005f0);
+    }
     return false;
   }
 }

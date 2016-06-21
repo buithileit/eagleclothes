@@ -18,8 +18,9 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005fid_005faction;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fid;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fonkeyup_005fid_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fautocomplete_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -36,8 +37,9 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005fid_005faction = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fid = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fonkeyup_005fid_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fautocomplete_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -50,8 +52,9 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005fid_005faction.release();
     _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fnobody.release();
     _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.release();
-    _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fnobody.release();
-    _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fid.release();
+    _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fonkeyup_005fid_005fnobody.release();
+    _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fautocomplete_005fnobody.release();
+    _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -91,6 +94,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<link href=\"css/bootstrap.css\" rel='stylesheet' type='text/css' />\r\n");
       out.write("<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->\r\n");
       out.write("<script src=\"js/jquery.min.js\"></script>\r\n");
+      out.write("<script src=\"js/validateRegistry.js\"></script>\r\n");
       out.write("<!-- Custom Theme files -->\r\n");
       out.write("<link href=\"css/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" />\r\n");
       out.write("<link href=\"css/demo1.css\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" />\r\n");
@@ -159,7 +163,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t<div class=\"top-menu\">\r\n");
       out.write("\t\t\t\t\t<span class=\"menu\"> </span>\r\n");
       out.write("\t\t\t\t\t<ul class=\"cl-effect-15\">\r\n");
-      out.write("\t\t\t\t\t\t<li><a class=\"active\" href=\"getMain\">HOME</a></li>\r\n");
+      out.write("\t\t\t\t\t\t<li><a href=\"getMain\">HOME</a></li>\r\n");
       out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
@@ -258,17 +262,17 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t// \t\t\t\t\t\t\t$(\"#registration_form\").submit();\r\n");
       out.write("\t\t\t\t\t// \t\t\t\t\t\t});\r\n");
       out.write("\t\t\t\t\t// \t\t\t\t\t}\r\n");
-      out.write("\t\t\t\t\tvar send = document.getElementById('register-submit');\r\n");
-      out.write("\t\t\t\t\tvar email = document.getElementById('email');\r\n");
-      out.write("\t\t\t\t\tif (send) {\r\n");
-      out.write("\t\t\t\t\t\tsend.onclick = function() {\r\n");
-      out.write("\t\t\t\t\t\t\tvar sub = document\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t.getElementById('registration_form');\r\n");
-      out.write("\t\t\t\t\t\t\tconsole.info(\" Email: \" + email.value);\r\n");
-      out.write("\t\t\t\t\t\t\tsub.submit();\r\n");
-      out.write("\t\t\t\t\t\t\t// \t\t\t\t\t\t\tthis.innerHTML = '...Sending';\r\n");
-      out.write("\t\t\t\t\t\t}\r\n");
-      out.write("\t\t\t\t\t}\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\tvar send = document.getElementById('register-submit');\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\tvar email = document.getElementById('email');\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\tif (send) {\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\t\tsend.onclick = function() {\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\t\t\tvar sub = document\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\t\t\t\t\t.getElementById('registration_form');\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\t\t\tconsole.info(\" Email: \" + email.value);\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\t\t\tsub.submit();\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\t\t\t// \t\t\t\t\t\t\tthis.innerHTML = '...Sending';\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\t\t}\r\n");
+      out.write("\t\t\t\t\t// \t\t\t\t\t}\r\n");
       out.write("\t\t\t\t</script>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t\t<div class=\"registration_left\">\r\n");
@@ -278,21 +282,21 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t<!-- Form -->\r\n");
       out.write("\t\t\t\t\t<form id=\"login_form\" action=\"login\" method=\"post\">\r\n");
       out.write("\t\t\t\t\t\t<div>\r\n");
-      out.write("\t\t\t\t\t\t\t<label> <input name=\"username\"\r\n");
+      out.write("\t\t\t\t\t\t\t<label> <input name=\"username\" id=\"username\"\r\n");
       out.write("\t\t\t\t\t\t\t\tplaceholder=\"your email or phone number\" type=\"email\"\r\n");
       out.write("\t\t\t\t\t\t\t\ttabindex=\"3\" required>\r\n");
       out.write("\t\t\t\t\t\t\t</label>\r\n");
       out.write("\t\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t\t<div>\r\n");
-      out.write("\t\t\t\t\t\t\t<label> <input name=\"password\" placeholder=\"password\"\r\n");
+      out.write("\t\t\t\t\t\t\t<label> <input name=\"password\" placeholder=\"password\" id=\"password\"\r\n");
       out.write("\t\t\t\t\t\t\t\ttype=\"password\" tabindex=\"4\" required>\r\n");
       out.write("\t\t\t\t\t\t\t</label>\r\n");
       out.write("\t\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t\t<div>\r\n");
-      out.write("\t\t\t\t\t\t\t<input type=\"submit\" value=\"sign in\" id=\"login-submit\">\r\n");
+      out.write("\t\t\t\t\t\t\t<input type=\"button\" value=\"sign in\" id=\"login-submit\">\r\n");
       out.write("\t\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t\t<div class=\"forget\">\r\n");
-      out.write("\t\t\t\t\t\t\t<a href=\"#\">forgot your password</a>\r\n");
+      out.write("\t\t\t\t\t\t\t<!-- \t\t\t\t\t\t\t<a href=\"#\">forgot your password</a> -->\r\n");
       out.write("\t\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t</form>\r\n");
       out.write("\t\t\t\t\t<!-- /Form -->\r\n");
@@ -434,7 +438,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/view/account.jsp(62,5) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(63,5) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.user !=null }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -504,9 +508,9 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/view/account.jsp(89,6) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/view/account.jsp(89,6) '${catalogsRoot }'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${catalogsRoot }",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
-    // /WEB-INF/view/account.jsp(89,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(90,6) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/view/account.jsp(90,6) '${catalogsRoot }'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${catalogsRoot }",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    // /WEB-INF/view/account.jsp(90,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("catalog");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -551,13 +555,13 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.FormTag _jspx_th_form_005fform_005f0 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005fid_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
     _jspx_th_form_005fform_005f0.setPageContext(_jspx_page_context);
     _jspx_th_form_005fform_005f0.setParent(null);
-    // /WEB-INF/view/account.jsp(172,5) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(173,5) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fform_005f0.setModelAttribute("register");
-    // /WEB-INF/view/account.jsp(172,5) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(173,5) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fform_005f0.setId("registration_form");
-    // /WEB-INF/view/account.jsp(172,5) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(173,5) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fform_005f0.setAction("registry");
-    // /WEB-INF/view/account.jsp(172,5) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(173,5) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fform_005f0.setMethod("POST");
     int[] _jspx_push_body_count_form_005fform_005f0 = new int[] { 0 };
     try {
@@ -586,6 +590,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
             return true;
           out.write("\r\n");
           out.write("\t\t\t\t\t\t\t</label>\r\n");
+          out.write("\t\t\t\t\t\t\t<div id=\"emailMessage\"></div>\r\n");
           out.write("\t\t\t\t\t\t</div>\r\n");
           out.write("\t\t\t\t\t\t<div>\r\n");
           out.write("\t\t\t\t\t\t\t<label> ");
@@ -593,6 +598,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
             return true;
           out.write("\r\n");
           out.write("\t\t\t\t\t\t\t</label>\r\n");
+          out.write("\t\t\t\t\t\t\t\r\n");
           out.write("\t\t\t\t\t\t</div>\r\n");
           out.write("\t\t\t\t\t\t<!-- \t\t\t\t\t\t<div class=\"sky-form\"> -->\r\n");
           out.write("\t\t\t\t\t\t<!-- \t\t\t\t\t\t\t<div class=\"sky_form1\"> -->\r\n");
@@ -619,10 +625,8 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("</label>\r\n");
           out.write("\t\t\t\t\t\t</div>\r\n");
           out.write("\t\t\t\t\t\t<div>\r\n");
-          out.write("\t\t\t\t\t\t\t");
-          if (_jspx_meth_form_005fbutton_005f0(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
-            return true;
-          out.write("\r\n");
+          out.write("\t\t\t\t\t\t\t<input type=\"button\" value=\"create an account\"\r\n");
+          out.write("\t\t\t\t\t\t\t\tid=\"register-submit\">\r\n");
           out.write("\t\t\t\t\t\t</div>\r\n");
           out.write("\t\t\t\t\t\t<!-- \t\t\t\t\t\t<div class=\"sky-form\"> -->\r\n");
           out.write("\t\t\t\t\t\t<!-- \t\t\t\t\t\t\t<label class=\"checkbox\"><input type=\"checkbox\" -->\r\n");
@@ -657,9 +661,9 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f0 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_005finput_005f0.setPageContext(_jspx_page_context);
     _jspx_th_form_005finput_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/view/account.jsp(176,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(177,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005finput_005f0.setPath("name");
-    // /WEB-INF/view/account.jsp(176,15) null
+    // /WEB-INF/view/account.jsp(177,15) null
     _jspx_th_form_005finput_005f0.setDynamicAttribute(null, "placeholder", new String("Name:"));
     int[] _jspx_push_body_count_form_005finput_005f0 = new int[] { 0 };
     try {
@@ -686,11 +690,11 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f1 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_005finput_005f1.setPageContext(_jspx_page_context);
     _jspx_th_form_005finput_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/view/account.jsp(180,15) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(181,15) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005finput_005f1.setId("phone");
-    // /WEB-INF/view/account.jsp(180,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(181,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005finput_005f1.setPath("phoneNumber");
-    // /WEB-INF/view/account.jsp(180,15) null
+    // /WEB-INF/view/account.jsp(181,15) null
     _jspx_th_form_005finput_005f1.setDynamicAttribute(null, "placeholder", new String("Phone number:"));
     int[] _jspx_push_body_count_form_005finput_005f1 = new int[] { 0 };
     try {
@@ -714,14 +718,16 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:input
-    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f2 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f2 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fonkeyup_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_005finput_005f2.setPageContext(_jspx_page_context);
     _jspx_th_form_005finput_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/view/account.jsp(185,15) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(186,15) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005finput_005f2.setId("email");
-    // /WEB-INF/view/account.jsp(185,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(186,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005finput_005f2.setPath("email");
-    // /WEB-INF/view/account.jsp(185,15) null
+    // /WEB-INF/view/account.jsp(186,15) name = onkeyup type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005finput_005f2.setOnkeyup("validateEmail()");
+    // /WEB-INF/view/account.jsp(186,15) null
     _jspx_th_form_005finput_005f2.setDynamicAttribute(null, "placeholder", new String("Email:"));
     int[] _jspx_push_body_count_form_005finput_005f2 = new int[] { 0 };
     try {
@@ -735,7 +741,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_005finput_005f2.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_005finput_005f2.doFinally();
-      _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fid_005fnobody.reuse(_jspx_th_form_005finput_005f2);
+      _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fonkeyup_005fid_005fnobody.reuse(_jspx_th_form_005finput_005f2);
     }
     return false;
   }
@@ -745,13 +751,15 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:input
-    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f3 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f3 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fautocomplete_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_005finput_005f3.setPageContext(_jspx_page_context);
     _jspx_th_form_005finput_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/view/account.jsp(190,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(192,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005finput_005f3.setPath("address");
-    // /WEB-INF/view/account.jsp(190,15) null
+    // /WEB-INF/view/account.jsp(192,15) null
     _jspx_th_form_005finput_005f3.setDynamicAttribute(null, "placeholder", new String("Address:"));
+    // /WEB-INF/view/account.jsp(192,15) name = autocomplete type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005finput_005f3.setAutocomplete("");
     int[] _jspx_push_body_count_form_005finput_005f3 = new int[] { 0 };
     try {
       int _jspx_eval_form_005finput_005f3 = _jspx_th_form_005finput_005f3.doStartTag();
@@ -764,7 +772,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_005finput_005f3.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_005finput_005f3.doFinally();
-      _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fnobody.reuse(_jspx_th_form_005finput_005f3);
+      _005fjspx_005ftagPool_005fform_005finput_0026_005fplaceholder_005fpath_005fautocomplete_005fnobody.reuse(_jspx_th_form_005finput_005f3);
     }
     return false;
   }
@@ -774,12 +782,14 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:password
-    org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_form_005fpassword_005f0 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
+    org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_form_005fpassword_005f0 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
     _jspx_th_form_005fpassword_005f0.setPageContext(_jspx_page_context);
     _jspx_th_form_005fpassword_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/view/account.jsp(205,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(208,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fpassword_005f0.setPath("password");
-    // /WEB-INF/view/account.jsp(205,15) null
+    // /WEB-INF/view/account.jsp(208,15) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fpassword_005f0.setId("password");
+    // /WEB-INF/view/account.jsp(208,15) null
     _jspx_th_form_005fpassword_005f0.setDynamicAttribute(null, "placeholder", new String("password"));
     int[] _jspx_push_body_count_form_005fpassword_005f0 = new int[] { 0 };
     try {
@@ -793,7 +803,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_005fpassword_005f0.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_005fpassword_005f0.doFinally();
-      _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fnobody.reuse(_jspx_th_form_005fpassword_005f0);
+      _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.reuse(_jspx_th_form_005fpassword_005f0);
     }
     return false;
   }
@@ -803,12 +813,14 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:password
-    org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_form_005fpassword_005f1 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
+    org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_form_005fpassword_005f1 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
     _jspx_th_form_005fpassword_005f1.setPageContext(_jspx_page_context);
     _jspx_th_form_005fpassword_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/view/account.jsp(210,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/account.jsp(213,15) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fpassword_005f1.setPath("prePassword");
-    // /WEB-INF/view/account.jsp(210,15) null
+    // /WEB-INF/view/account.jsp(213,15) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fpassword_005f1.setId("pre_password");
+    // /WEB-INF/view/account.jsp(213,15) null
     _jspx_th_form_005fpassword_005f1.setDynamicAttribute(null, "placeholder", new String("retype password"));
     int[] _jspx_push_body_count_form_005fpassword_005f1 = new int[] { 0 };
     try {
@@ -822,44 +834,7 @@ public final class account_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_005fpassword_005f1.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_005fpassword_005f1.doFinally();
-      _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fnobody.reuse(_jspx_th_form_005fpassword_005f1);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_form_005fbutton_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  form:button
-    org.springframework.web.servlet.tags.form.ButtonTag _jspx_th_form_005fbutton_005f0 = (org.springframework.web.servlet.tags.form.ButtonTag) _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fid.get(org.springframework.web.servlet.tags.form.ButtonTag.class);
-    _jspx_th_form_005fbutton_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_form_005fbutton_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/view/account.jsp(214,7) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_form_005fbutton_005f0.setValue("create an account");
-    // /WEB-INF/view/account.jsp(214,7) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_form_005fbutton_005f0.setId("register-submit");
-    int[] _jspx_push_body_count_form_005fbutton_005f0 = new int[] { 0 };
-    try {
-      int _jspx_eval_form_005fbutton_005f0 = _jspx_th_form_005fbutton_005f0.doStartTag();
-      if (_jspx_eval_form_005fbutton_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("create an account");
-          int evalDoAfterBody = _jspx_th_form_005fbutton_005f0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_form_005fbutton_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_form_005fbutton_005f0[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_form_005fbutton_005f0.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_form_005fbutton_005f0.doFinally();
-      _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fid.reuse(_jspx_th_form_005fbutton_005f0);
+      _005fjspx_005ftagPool_005fform_005fpassword_0026_005fplaceholder_005fpath_005fid_005fnobody.reuse(_jspx_th_form_005fpassword_005f1);
     }
     return false;
   }

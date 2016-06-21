@@ -144,7 +144,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t<div class=\"top-menu\">\r\n");
       out.write("\t\t\t\t\t<span class=\"menu\"> </span>\r\n");
       out.write("\t\t\t\t\t<ul class=\"cl-effect-15\">\r\n");
-      out.write("\t\t\t\t\t\t<li><a class=\"active\" href=\"getMain\">HOME</a></li>\r\n");
+      out.write("\t\t\t\t\t\t<li><a  href=\"getMain\">HOME</a></li>\r\n");
       out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;

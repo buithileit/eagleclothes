@@ -34,4 +34,9 @@ public interface UserService {
 	 */
 	boolean delete(String username);
 
+	UserVO loginAdmin(String username, String password)
+			throws DataAccessException;
+
+	boolean checkEmail(String email)throws DataAccessException;
+
 }

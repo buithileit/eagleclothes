@@ -83,7 +83,7 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a class="active" href="getMain">HOME</a></li>
+						<li><a  href="getMain">HOME</a></li>
 						<c:forEach items="${catalogsRoot }" var="catalog">
 							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
 								data-hover="${ catalog.name}">${ catalog.name}</a></li>

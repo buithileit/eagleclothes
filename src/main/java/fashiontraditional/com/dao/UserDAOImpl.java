@@ -47,6 +47,7 @@ public class UserDAOImpl implements UserDAO {
 			sql.append(" user.image_thumbnail AS imageThumbnail, ");
 			sql.append(" user.password AS password, ");
 			sql.append(" user.phone_number AS phoneNumber, ");
+			sql.append(" user.type_user AS typeUser, ");
 			sql.append(" address.name AS address ");
 			sql.append(" FROM User AS user ");
 			sql.append(" INNER JOIN Address AS address ");
@@ -85,6 +86,7 @@ public class UserDAOImpl implements UserDAO {
 			sql.append(" user.image_thumbnail AS imageThumbnail, ");
 			sql.append(" user.password AS password, ");
 			sql.append(" user.phone_number AS phoneNumber, ");
+			sql.append(" user.type_user AS typeUser, ");
 			sql.append(" address.name AS address ");
 			sql.append(" FROM User AS user ");
 			sql.append(" INNER JOIN Address AS address ");
@@ -121,6 +123,7 @@ public class UserDAOImpl implements UserDAO {
 			sql.append(" user.image_thumbnail AS imageThumbnail, ");
 			sql.append(" user.password AS password, ");
 			sql.append(" user.phone_number AS phoneNumber, ");
+			sql.append(" user.type_user AS typeUser, ");
 			sql.append(" address.name AS address ");
 			sql.append(" FROM User AS user ");
 			sql.append(" INNER JOIN Address AS address ");

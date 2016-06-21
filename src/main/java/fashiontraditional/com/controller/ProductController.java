@@ -63,11 +63,13 @@ public class ProductController {
 			HttpServletResponse response, HttpSession session) {
 		try {
 			Product product = productService.findProductById(productId);
-
+			List<Catalog> catalogsRoot = catalogService
+					.getCatalogsByParent(null);
 			logger.info(product);
 			systemInfo.addSession(session.getId());
 			session.setAttribute("shopCart", shopCart);
-			//
+
+			model.addAttribute("catalogsRoot", catalogsRoot);
 			model.addAttribute("product", product);
 			model.addAttribute("sizeCart", shopCart.numberProduct());
 		} catch (DataAccessException e) {
@@ -97,14 +99,17 @@ public class ProductController {
 					.getCatalogsByParent(catalogId);
 			if (catalogs.isEmpty())
 				catalogs = catalogService.getCatalogsEqualsParent(catalogId);
-
+			List<Catalog> catalogsRoot = catalogService
+					.getCatalogsByParent(null);
 			logger.info(products);
 			logger.info(catalogs);
 			logger.info(paging.getNumberPages());
+			model.addAttribute("catalogsRoot", catalogsRoot);
 			model.addAttribute("catalogs", catalogs);
 			model.addAttribute("products", products);
 			model.addAttribute("numberPage", paging.getNumberPages());
 			model.addAttribute("page", page);
+			model.addAttribute("catalogId", catalogId);
 		} catch (DataAccessException e) {
 			logger.error("getProductByCatalog", e);
 		}

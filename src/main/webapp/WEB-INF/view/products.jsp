@@ -73,14 +73,26 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a class="active" href="getMain">HOME</a></li>
+						<li><a href="getMain">HOME</a></li>
 						<c:forEach items="${catalogsRoot }" var="catalog">
-							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
-								data-hover="${ catalog.name}">${ catalog.name}</a></li>
+							<li><c:choose>
+									<c:when test="${catalogId ==catalog.id }">
+										<a class="active"
+											href="getProductByCatalog?catalogId=${ catalog.id}"
+											data-hover="${ catalog.name}">${ catalog.name}</a>
+									</c:when>
+									<c:otherwise>
+										<a href="getProductByCatalog?catalogId=${ catalog.id}"
+											data-hover="${ catalog.name}">${ catalog.name}</a>
+									</c:otherwise>
+								</c:choose></li>
 						</c:forEach>
 						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
 					</ul>
 				</div>
+				<style>q
+				
+				</style>
 				<!--script-nav-->
 				<script>
 					$("span.menu").click(function() {
@@ -150,16 +162,17 @@
 					<!-- 					</p> -->
 					<div class="clearfix"></div>
 				</div>
-				
+
 				<div class="mens-toolbar">
 					<div class="sort">
 						<div class="sort-by">
-							<label>Sort By</label> <select>
-								<%-- 								<option value="">${ }</option> --%>
-								<option value="">Name</option>
-								<option value="">Price</option>
-							</select> <a href=""><img src="images/arrow2.gif" alt=""
-								class="v-middle"></a>
+
+							<!-- 							<label>Sort By</label> <select> -->
+							<%-- 																<option value="">${ }</option> --%>
+							<!-- 								<option value="">Name</option> -->
+							<!-- 								<option value="">Price</option> -->
+							<!-- 							</select> <a href=""><img src="images/arrow2.gif" alt="" -->
+							<!-- 								class="v-middle"></a> -->
 						</div>
 					</div>
 					<ul class="women_pagenation dc_paginationA dc_paginationA06">
@@ -186,15 +199,15 @@
 							href="#" class="cbp-vm-icon cbp-vm-list"
 							data-view="cbp-vm-view-list" title="list">List View</a>
 					</div>
-<!-- 					<div class="pages"> -->
-<!-- 						<div class="limiter visible-desktop"> -->
-<!-- 							<label>Show</label> <select> -->
-<!-- 								<option value="" selected="selected">9</option> -->
-<!-- 								<option value="">15</option> -->
-<!-- 								<option value="">30</option> -->
-<!-- 							</select> per page -->
-<!-- 						</div> -->
-<!-- 					</div> -->
+					<!-- 					<div class="pages"> -->
+					<!-- 						<div class="limiter visible-desktop"> -->
+					<!-- 							<label>Show</label> <select> -->
+					<!-- 								<option value="" selected="selected">9</option> -->
+					<!-- 								<option value="">15</option> -->
+					<!-- 								<option value="">30</option> -->
+					<!-- 							</select> per page -->
+					<!-- 						</div> -->
+					<!-- 					</div> -->
 					<div class="clearfix"></div>
 					<ul>
 						<c:forEach items="${products }" var="product">
@@ -224,7 +237,7 @@
 						</c:forEach>
 					</ul>
 				</div>
-				
+
 				<script src="js/cbpViewModeSwitch.js" type="text/javascript"></script>
 				<script src="js/classie.js" type="text/javascript"></script>
 			</div>

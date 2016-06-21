@@ -2,6 +2,7 @@ package fashiontraditional.com.controller;
 
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,8 +22,10 @@ import fashiontraditional.com.bean.OrderBean;
 import fashiontraditional.com.bean.RegisterBean;
 import fashiontraditional.com.exception.DataAccessException;
 import fashiontraditional.com.exception.ErrorCode;
+import fashiontraditional.com.model.Catalog;
 import fashiontraditional.com.model.Price;
 import fashiontraditional.com.model.Product;
+import fashiontraditional.com.services.CatalogService;
 import fashiontraditional.com.services.OrderDetailService;
 import fashiontraditional.com.services.OrderService;
 import fashiontraditional.com.services.PriceService;
@@ -36,7 +39,8 @@ import fashiontraditional.com.vo.UserVO;
 public class ShoppingCartController {
 	@Autowired
 	private ProductService productService;
-
+	@Autowired
+	private CatalogService catalogService;
 	@Autowired
 	private OrderService orderService;
 	@Autowired
@@ -49,11 +53,21 @@ public class ShoppingCartController {
 
 	@RequestMapping(value = "/loadCheckout")
 	public String loadPageCheckout(Model model) {
-		logger.info(shopCart);
-		Date curentDate = DateUtils.now("dd-mm-yyyy");
-		Date dateDeliver = DateUtils.addDate(curentDate, 3);
-		model.addAttribute("dateDeliverMin",
-				DateUtils.format(dateDeliver, "dd-mm-yyyy"));
+		String message = null;
+		try {
+			logger.info(shopCart);
+			Date curentDate = DateUtils.now("yyyy-mm-dd");
+			Date dateDeliver = DateUtils.addDate(curentDate, 3);
+			model.addAttribute("dateDeliverMin",
+					DateUtils.format(dateDeliver, "yyyy-mm-dd"));
+
+			List<Catalog> catalogsRoot = catalogService
+					.getCatalogsByParent(null);
+			model.addAttribute("catalogsRoot", catalogsRoot);
+		} catch (DataAccessException e) {
+			message = e.getMessage();
+			logger.error(e.getMessage());
+		}
 		return "checkout";
 	}
 

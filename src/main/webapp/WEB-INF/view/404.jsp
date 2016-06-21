@@ -79,7 +79,7 @@
 		<div class="header-top">
 			<div class="container">
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+					<a href="getMain"><img src="images/logo.png" alt="" /></a>
 				</div>
 				<div class="top-menu">
 					<span class="menu"> </span>
@@ -112,8 +112,7 @@
 			<h3>404 Error!</h3>
 		</div>
 		<div class="gray">
-			<a href="index.html" class="ag-3d_button orange">Go to home page
-			</a>
+			<a href="getMain" class="ag-3d_button orange">Go to home page </a>
 		</div>
 	</div>
 	</div>

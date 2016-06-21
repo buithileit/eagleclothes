@@ -117,6 +117,7 @@ public class ProductDAOImpl implements ProductDAO {
 			sql.append(" 				FROM Catalog c1 ");
 			sql.append(" 				WHERE c1.ID = c.catalog_id ");
 			sql.append(" 				AND c1.PARENT_ID= :catalogId ) ");
+			sql.append(" ORDER BY p.price ");
 			SQLQuery query = session.createSQLQuery(sql.toString());
 			query.addEntity(ProductVO.class);
 			query.setParameter("catalogId", catalogId);

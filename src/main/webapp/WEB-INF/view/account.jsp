@@ -12,6 +12,7 @@
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
+<script src="js/validateRegistry.js"></script>
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
@@ -85,7 +86,7 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a class="active" href="getMain">HOME</a></li>
+						<li><a href="getMain">HOME</a></li>
 						<c:forEach items="${catalogsRoot }" var="catalog">
 							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
 								data-hover="${ catalog.name}">${ catalog.name}</a></li>
@@ -182,13 +183,15 @@
 							</label>
 						</div>
 						<div>
-							<label> <form:input id="email" path="email"
+							<label> <form:input id="email" path="email" onkeyup="validateEmail()"
 									placeholder="Email:" />
 							</label>
+							<div id="emailMessage"></div>
 						</div>
 						<div>
-							<label> <form:input path="address" placeholder="Address:" />
+							<label> <form:input path="address" placeholder="Address:" autocomplete=""/>
 							</label>
+							
 						</div>
 						<!-- 						<div class="sky-form"> -->
 						<!-- 							<div class="sky_form1"> -->
@@ -202,16 +205,17 @@
 						<!-- 							</div> -->
 						<!-- 						</div> -->
 						<div>
-							<label> <form:password path="password"
+							<label> <form:password path="password" id="password"
 									placeholder="password" />
 							</label>
 						</div>
 						<div>
 							<label> <form:password path="prePassword"
-									placeholder="retype password" /></label>
+									id="pre_password" placeholder="retype password" /></label>
 						</div>
 						<div>
-							<form:button value="create an account" id="register-submit">create an account</form:button>
+							<input type="button" value="create an account"
+								id="register-submit">
 						</div>
 						<!-- 						<div class="sky-form"> -->
 						<!-- 							<label class="checkbox"><input type="checkbox" -->
@@ -230,17 +234,17 @@
 					// 							$("#registration_form").submit();
 					// 						});
 					// 					}
-					var send = document.getElementById('register-submit');
-					var email = document.getElementById('email');
-					if (send) {
-						send.onclick = function() {
-							var sub = document
-									.getElementById('registration_form');
-							console.info(" Email: " + email.value);
-							sub.submit();
-							// 							this.innerHTML = '...Sending';
-						}
-					}
+					// 					var send = document.getElementById('register-submit');
+					// 					var email = document.getElementById('email');
+					// 					if (send) {
+					// 						send.onclick = function() {
+					// 							var sub = document
+					// 									.getElementById('registration_form');
+					// 							console.info(" Email: " + email.value);
+					// 							sub.submit();
+					// 							// 							this.innerHTML = '...Sending';
+					// 						}
+					// 					}
 				</script>
 			</div>
 			<div class="registration_left">
@@ -250,21 +254,21 @@
 					<!-- Form -->
 					<form id="login_form" action="login" method="post">
 						<div>
-							<label> <input name="username"
+							<label> <input name="username" id="username"
 								placeholder="your email or phone number" type="email"
 								tabindex="3" required>
 							</label>
 						</div>
 						<div>
-							<label> <input name="password" placeholder="password"
+							<label> <input name="password" placeholder="password" id="password"
 								type="password" tabindex="4" required>
 							</label>
 						</div>
 						<div>
-							<input type="submit" value="sign in" id="login-submit">
+							<input type="button" value="sign in" id="login-submit">
 						</div>
 						<div class="forget">
-							<a href="#">forgot your password</a>
+							<!-- 							<a href="#">forgot your password</a> -->
 						</div>
 					</form>
 					<!-- /Form -->

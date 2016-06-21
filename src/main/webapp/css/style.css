@@ -591,12 +591,15 @@ i.smart-phone {
 .products_right:first-child {
 	margin-left: 0;
 }
+
 .products_right th :nth-child(n) {
 	padding: 0.5%;
 }
+
 .products_right td :nth-child(n) {
 	padding: 0.5%;
 }
+
 .sky_form1 {
 	margin-bottom: -30px;
 }
@@ -638,7 +641,7 @@ label {
 	font-weight: normal;
 }
 
-.registration_form input[type="submit"] {
+.registration_form input[type="button"] {
 	-webkit-appearance: none;
 	font-family: 'Open Sans', sans-serif;
 	color: #ffffff;
@@ -657,7 +660,7 @@ label {
 	margin-bottom: 5px;
 }
 
-.registration_form input[type="submit"]:hover {
+.registration_form input[type="button"]:hover {
 	color: #ffffff;
 	background: #327782;
 }

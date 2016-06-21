@@ -69,6 +69,32 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	public UserVO loginAdmin(String username, String password)
+			throws DataAccessException {
+		try {
+
+			UserVO user = userDAO.getUserByUsername(username);
+			String generedPassword = null;
+			Map<String, UserVO> map = new HashMap<String, UserVO>();
+			if (user != null && user.getTypeUser() == TypeUser.ADMIN) {
+				generedPassword = SystemUtil.generateHash(user.getEmail(),
+						password);
+
+				map.put(user.getPassword(), user);
+			}
+
+			return map.get(generedPassword);
+		} catch (DataAccessException e) {
+			throw e;
+		} catch (NoSuchAlgorithmException e) {
+			throw new DataAccessException(ErrorCode.MATCH_EXEPTION,
+					e.getMessage());
+		} catch (UnsupportedEncodingException e) {
+			throw new DataAccessException(ErrorCode.MATCH_EXEPTION,
+					e.getMessage());
+		}
+	}
+
 	@Override
 	@Transactional
 	public UserVO registry(RegisterBean register) throws DataAccessException {
@@ -134,4 +160,18 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
+	@Override
+	public boolean checkEmail(String email) throws DataAccessException {
+		boolean result = false;
+		try {
+
+			UserVO user = userDAO.getUserByUsername(email);
+			if (user != null)
+				result = true;
+
+			return result;
+		} catch (DataAccessException e) {
+			throw e;
+		}
+	}
 }
