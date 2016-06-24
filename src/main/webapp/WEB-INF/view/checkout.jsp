@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><spring:message code="title.main" />|<spring:message code="page.name.checkout" /></title>
+<title><spring:message code="title.main" />|<spring:message
+		code="page.name.checkout" /></title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -69,8 +70,8 @@
 						<li><a href="loadLogin">${appProperties["title.registry"] }</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><i class="cart"></i><a href="loadCheckout">Cart
-						(${sessionScope.size})</a></li>
+				<li><i class="cart"></i><a href="loadCheckout"><spring:message
+							code="link.cart" /> (${sessionScope.shopCart.size})</a></li>
 
 			</ul>
 		</div>
@@ -84,12 +85,15 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a  href="getMain">HOME</a></li>
+						<li><a href="getMain"><spring:message code="menu.home" /></a></li>
 						<c:forEach items="${catalogsRoot }" var="catalog">
 							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
 								data-hover="${ catalog.name}">${ catalog.name}</a></li>
 						</c:forEach>
-						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
+						<li><a href="contact.html"
+							data-hover="<spring:message
+									code="menu.contact" />"><spring:message
+									code="menu.contact" /></a></li>
 					</ul>
 				</div>
 				<!--script-nav-->
@@ -112,8 +116,10 @@
 				<div class="my-wish-content">
 					<div class="pag-nav">
 						<ul class="p-list">
-							<li><a href="getMain">Home</a></li> &nbsp;&nbsp;/&nbsp;
-							<li class="act">&nbsp;Bascket(${sessionScope.shopCart.size})</li>
+							<li><a href="getMain"><spring:message code="menu.home" /></a></li>
+							&nbsp;&nbsp;/&nbsp;
+							<li class="act">&nbsp;<spring:message code="label.basket" />(${sessionScope.shopCart.size})
+							</li>
 						</ul>
 					</div>
 					<br>
@@ -127,7 +133,9 @@
 							test="${sessionScope.shopCart !=null && sessionScope.shopCart.size > 0 }">
 							<form action="checkout" method="get">
 								<div class="deliver_info_left">
-									<h2 class="title-text">Deliver Information</h2>
+									<h2 class="title-text">
+										<spring:message code="label.deliverInfo" />
+									</h2>
 									<div class="registration_form">
 										<div class="form-group">
 											<label for="exampleInputPhone">Phone person receice</label> <input
@@ -216,6 +224,10 @@
 							<div class="products_right">
 								<div class="table-responsive" align="center"
 									style="padding-left: 5%">
+									<h2 class="title-text">
+										<spring:message code="label.basket.products" />
+									</h2>
+									<br>
 									<table class="table-heading ">
 										<tr class="product-section-head-text">
 
@@ -315,17 +327,24 @@
 	<div class="content-section">
 		<div class="container">
 			<div class="col-md-3 about-us">
-				<h4><spring:message code="label.introduteUs" /></h4>
-				<p><spring:message code="content.introduteUs" />
+				<h4>
+					<spring:message code="label.introduteUs" />
+				</h4>
+				<p>
+					<spring:message code="content.introduteUs" />
 				</p>
-				<h4><spring:message code="label.followUs" /></h4>
+				<h4>
+					<spring:message code="label.followUs" />
+				</h4>
 				<div class="social-icons">
 					<i class="facebook"></i> <i class="twitter"></i> <i class="rss"></i>
 					<i class="vimeo"></i> <i class="dribble"></i> <i class="msn"></i>
 				</div>
 			</div>
 			<div class="col-md-3 archives">
-				<h4><spring:message code="label.archives" /></h4>
+				<h4>
+					<spring:message code="label.archives" />
+				</h4>
 				<ul>
 					<li><a href="#">March 2012</a></li>
 					<li><a href="#">February 2012</a></li>
@@ -334,10 +353,13 @@
 				</ul>
 			</div>
 			<div class="col-md-3 contact-us">
-				<h4><spring:message code="label.contactUs" /></h4>
+				<h4>
+					<spring:message code="label.contactUs" />
+				</h4>
 				<ul>
 					<li><i class="message"></i></li>
-					<li><a href="mail-to:info@premiumcoding.com"><spring:message code="contact.mail" />/a></li>
+					<li><a href="mail-to:info@premiumcoding.com"><spring:message
+								code="contact.mail" />/a></li>
 				</ul>
 				<ul>
 					<li><i class="land-phone"></i></li>
@@ -348,15 +370,15 @@
 					<li><spring:message code="contact.homePhone" /></li>
 				</ul>
 			</div>
-<!-- 			<div class="col-md-3 about-us"> -->
-<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
-<!-- 				<input type="text" class="text" value="Name" -->
-<!-- 					onfocus="this.value = '';" -->
-<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
-<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
-<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
-<!-- 					type="submit" value="subscribe"> -->
-<!-- 			</div> -->
+			<!-- 			<div class="col-md-3 about-us"> -->
+			<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
+			<!-- 				<input type="text" class="text" value="Name" -->
+			<!-- 					onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
+			<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
+			<!-- 					type="submit" value="subscribe"> -->
+			<!-- 			</div> -->
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -365,16 +387,18 @@
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-6 bottom-menu">
-<!-- 				<ul> -->
-<!-- 					<li><a href="index.html">HOME</a></li> -->
-<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
-<!-- 					<li><a href="#">SITEMAP</a></li> -->
-<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
-<!-- 				</ul> -->
+				<!-- 				<ul> -->
+				<!-- 					<li><a href="index.html">HOME</a></li> -->
+				<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
+				<!-- 					<li><a href="#">SITEMAP</a></li> -->
+				<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
+				<!-- 				</ul> -->
 			</div>
 			<div class="col-md-6 copy-rights">
 				<p>
-					&copy;<spring:message code="label.author" /><a href="http://traditionalfashion-fontal.rhcloud.com/"
+					&copy;
+					<spring:message code="label.author" />
+					<a href="http://traditionalfashion-fontal.rhcloud.com/"
 						target="target_blank"><spring:message code="label.author.name" /></a>
 				</p>
 			</div>

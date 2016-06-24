@@ -67,7 +67,7 @@
 	<div class="user-desc">
 		<div class="container">
 			<%-- 			<div id="message">${message}</div> --%>
-			<span style="color: #000000"> <a href="getMain?lang=en"><img
+			<span> <a href="getMain?lang=en"><img
 					src="images/english.png" alt="" /></a> <a href="getMain?lang=vi"><img
 					src="images/vietnam.png" alt="" /></a>
 			</span>
@@ -87,8 +87,9 @@
 									code="title.registry" /></a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><i class="cart"></i><a href="loadCheckout">Cart
-						(${sizeCart})</a></li>
+				<li><i class="cart"></i><a href="loadCheckout"> <spring:message
+							code="link.cart" /> (${sizeCart})
+				</a></li>
 
 			</ul>
 		</div>
@@ -112,7 +113,7 @@
 						</c:forEach>
 						<li><a href="contact.html"
 							data-hover="<spring:message
-									code="menu.contact" />"><spring:message
+									code='menu.contact' />"><spring:message
 									code="menu.contact" /></a></li>
 					</ul>
 				</div>

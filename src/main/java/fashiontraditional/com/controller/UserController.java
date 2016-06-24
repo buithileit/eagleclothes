@@ -154,6 +154,15 @@ public class UserController {
 		return "login";
 	}
 
+	@RequestMapping(value = "/loadAccount")
+	public String loadPageAccount(HttpSession session, Model model) {
+		String result = "login";
+		if (session.getAttribute("user") != null) {
+			result = "account";
+		}
+		return result;
+	}
+
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

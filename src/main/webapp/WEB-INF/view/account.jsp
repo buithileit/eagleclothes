@@ -77,8 +77,8 @@
 									code="title.registry" /></a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><i class="cart"></i><a href="loadCheckout">Cart
-						(${sizeCart})</a></li>
+				<li><i class="cart"></i><a href="loadCheckout"><spring:message
+							code="link.cart" /> (${sizeCart})</a></li>
 
 			</ul>
 		</div>
@@ -98,7 +98,7 @@
 								data-hover="${ catalog.name}">${ catalog.name}</a></li>
 						</c:forEach>
 						<li><a href="contact.html"
-							data-hover="<spring:message code='menu.contact' />"><spring:message
+							data-hover="<spring:message code='menu.contact'/>"><spring:message
 									code="menu.contact" /></a></li>
 					</ul>
 				</div>
