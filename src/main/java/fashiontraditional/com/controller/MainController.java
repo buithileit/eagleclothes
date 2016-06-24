@@ -1,6 +1,7 @@
 package fashiontraditional.com.controller;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -46,8 +47,9 @@ public class MainController {
 	private static final Logger logger = Logger.getLogger(MainController.class);
 
 	@RequestMapping("/getMain")
-	public String getMain(Model model, HttpServletResponse response,
-			HttpSession session) {
+	public String getMain(Locale locale, Model model,
+			HttpServletResponse response, HttpSession session) {
+		logger.info(locale);
 		try {
 			List<Banner> banners = bannerService.getBanners();
 			int page = 1, numberRecord = 10, catalogID = CatalogName.FEATURED_PRODUCTS;

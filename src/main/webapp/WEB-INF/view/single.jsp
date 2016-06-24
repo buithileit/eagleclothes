@@ -6,8 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>EAGLECLOTHES Bootstarp responsive Website Template|
-	Single-page :: w3layouts</title>
+<title><spring:message code="title.main" />|<spring:message code="page.name.single" /></title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
@@ -91,6 +90,34 @@
 		});
 	});
 </script>
+<!--- start-rate---->
+<script src="js/jstarbox.js"></script>
+<link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" />
+<script type="text/javascript">
+			jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+					starbox.starbox({
+// 					average: starbox.attr('data-start-value'),
+					average: 0.6,
+// 					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+					changeable:true,
+// 					ghosting: starbox.hasClass('ghosting'),
+					ghosting:true,
+					autoUpdateAverage: starbox.hasClass('autoupdate'),
+					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+					stars: starbox.attr('data-star-count') || 5
+					}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+					var val = Math.random();
+					starbox.next().text(' '+val);
+					return val;
+					} 
+				})
+			});
+		});
+		</script>
+<!---//End-rate---->
 </head>
 <body>
 	<!-- header-section-starts -->
@@ -196,13 +223,9 @@
 										<!-- 										<option>M</option> -->
 								</select>
 								</li>
-								<!-- 								<li>Quality: <select> -->
-								<!-- 										<option>1</option> -->
-								<!-- 										<option>2</option> -->
-								<!-- 										<option>3</option> -->
-								<!-- 										<option>4</option> -->
-								<!-- 										<option>5</option> -->
-								<!-- 								</select> -->
+								<li><div class="block">
+									<div class="starbox small ghosting"> </div>
+								</div>
 								</li>
 							</ul>
 							<div class="btn_form">
@@ -367,31 +390,28 @@
 	</div>
 	<!-- end sidebar -->
 	<div class="clearfix"></div>
-	</div>
-	</div>
+	<!-- 	</div> -->
+	<!-- 	</div> -->
 	<!-- end content -->
-	</div>
-	</div>
-	</div>
+<!-- 	</div> -->
+<!-- 	</div> -->
+<!-- 	</div> -->
 	<!-- content-section-ends -->
 	<!-- contact-section-starts -->
 	<div class="content-section">
 		<div class="container">
 			<div class="col-md-3 about-us">
-				<h4>LITTLE ABOUT US</h4>
-				<p>
-					<span>Sed posuere</span> consectetur est at. Nulla vitae elit
-					libero, a pharetra. Lorem ipsum <span>dolor sit</span> amet,
-					consectetuer adipiscing elit.
+				<h4><spring:message code="label.introduteUs" /></h4>
+				<p><spring:message code="content.introduteUs" />
 				</p>
-				<h4>FOLLOW US</h4>
+				<h4><spring:message code="label.followUs" /></h4>
 				<div class="social-icons">
 					<i class="facebook"></i> <i class="twitter"></i> <i class="rss"></i>
 					<i class="vimeo"></i> <i class="dribble"></i> <i class="msn"></i>
 				</div>
 			</div>
 			<div class="col-md-3 archives">
-				<h4>ARCHIVES</h4>
+				<h4><spring:message code="label.archives" /></h4>
 				<ul>
 					<li><a href="#">March 2012</a></li>
 					<li><a href="#">February 2012</a></li>
@@ -400,29 +420,29 @@
 				</ul>
 			</div>
 			<div class="col-md-3 contact-us">
-				<h4>CONTACT US</h4>
+				<h4><spring:message code="label.contactUs" /></h4>
 				<ul>
 					<li><i class="message"></i></li>
-					<li><a href="mail-to:info@premiumcoding.com">info@premiumcoding.com</a></li>
+					<li><a href="mail-to:info@premiumcoding.com"><spring:message code="contact.mail" />/a></li>
 				</ul>
 				<ul>
 					<li><i class="land-phone"></i></li>
-					<li>800 756 156</li>
+					<li><spring:message code="contact.phone" /></li>
 				</ul>
 				<ul>
 					<li><i class="smart-phone"></i></li>
-					<li>+386408007561</li>
+					<li><spring:message code="contact.homePhone" /></li>
 				</ul>
 			</div>
-			<div class="col-md-3 about-us">
-				<h4>SIGN TO NEWSLETTER</h4>
-				<input type="text" class="text" value="Name"
-					onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Name';}"> <input
-					type="text" class="text" value="Email" onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Email';}"> <input
-					type="submit" value="subscribe">
-			</div>
+<!-- 			<div class="col-md-3 about-us"> -->
+<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
+<!-- 				<input type="text" class="text" value="Name" -->
+<!-- 					onfocus="this.value = '';" -->
+<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
+<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
+<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
+<!-- 					type="submit" value="subscribe"> -->
+<!-- 			</div> -->
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -431,17 +451,17 @@
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-6 bottom-menu">
-				<ul>
-					<li><a href="index.html">HOME</a></li>
-					<li><a href="#">PORTFOLIO</a></li>
-					<li><a href="#">SITEMAP</a></li>
-					<li><a href="contact.html"> CONTACT</a></li>
-				</ul>
+<!-- 				<ul> -->
+<!-- 					<li><a href="index.html">HOME</a></li> -->
+<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
+<!-- 					<li><a href="#">SITEMAP</a></li> -->
+<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
+<!-- 				</ul> -->
 			</div>
 			<div class="col-md-6 copy-rights">
 				<p>
-					&copy; 2015 Template by <a href="http://w3layouts.com"
-						target="target_blank">W3layouts</a>
+					&copy;<spring:message code="label.author" /><a href="http://traditionalfashion-fontal.rhcloud.com/"
+						target="target_blank"><spring:message code="label.author.name" /></a>
 				</p>
 			</div>
 			<div class="clearfix"></div>

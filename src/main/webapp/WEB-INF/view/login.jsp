@@ -7,8 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><spring:message code="title.main" />|<spring:message
-		code="page.name.404" /></title>
+<title><spring:message code="title.main" />|<spring:message code="page.name.login" /></title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -58,23 +57,17 @@
 	<div class="user-desc">
 		<div class="container">
 			<%-- 			<div id="message">${message}</div> --%>
-			<span style="float: right"> <a href="getMain?lang=en">en</a> |
-				<a href="getMain?lang=vi">vi</a>
-			</span>
 			<ul>
 				<c:choose>
 					<c:when test="${sessionScope.user !=null }">
 						<li><i class="user"
 							style="background:${sessionScope.user.imageThumbnail};"></i> <a
 							href="404.html">${sessionScope.user.name}</a></li>
-						<li><a href="logout.html"><spring:message
-									code="title.logout" /></a></li>
+						<li><a href="logout.html">${appProperties["title.logout"] }</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="loadLogin"><spring:message
-									code="title.login" /></a></li>
-						<li><a href="loadLogin"><spring:message
-									code="title.registry" /></a></li>
+						<li><a href="loadLogin">${appProperties["title.login"] }</a></li>
+						<li><a href="loadLogin">${appProperties["title.registry"] }</a></li>
 					</c:otherwise>
 				</c:choose>
 				<li><i class="cart"></i><a href="loadCheckout">Cart
@@ -87,19 +80,17 @@
 		<div class="header-top">
 			<div class="container">
 				<div class="logo">
-					<a href="getMain"><img src="images/logo.png" alt="" /></a>
+					<a href="index.html"><img src="images/logo.png" alt="" /></a>
 				</div>
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a href="getMain"><spring:message code="menu.home" /></a></li>
+						<li><a href="getMain">HOME</a></li>
 						<c:forEach items="${catalogsRoot }" var="catalog">
 							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
 								data-hover="${ catalog.name}">${ catalog.name}</a></li>
 						</c:forEach>
-						<li><a href="contact.html"
-							data-hover="<spring:message code='menu.contact' />"><spring:message
-									code="menu.contact" /></a></li>
+						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
 					</ul>
 				</div>
 				<!--script-nav-->
@@ -121,7 +112,7 @@
 		<div class="registration">
 			<div class="registration_left">
 				<h2>
-					<span> create An account </span>
+					new user? <span> create An account </span>
 				</h2>
 				<!-- 				<a href="#"><div class="reg_fb"> -->
 				<!-- 						<img src="images/facebook.png" alt=""><i>register using -->
@@ -191,16 +182,15 @@
 							</label>
 						</div>
 						<div>
-							<label> <form:input id="email" path="email"
-									onkeyup="validateEmail()" placeholder="Email:" />
+							<label> <form:input id="email" path="email" onkeyup="validateEmail()"
+									placeholder="Email:" />
 							</label>
 							<div id="emailMessage"></div>
 						</div>
 						<div>
-							<label> <form:input path="address" placeholder="Address:"
-									autocomplete="" />
+							<label> <form:input path="address" placeholder="Address:" autocomplete=""/>
 							</label>
-
+							
 						</div>
 						<!-- 						<div class="sky-form"> -->
 						<!-- 							<div class="sky_form1"> -->
@@ -234,8 +224,55 @@
 					</form:form>
 					<!-- /Form -->
 				</div>
+				<script>
+					// 					$(document).re
+					// 					ady(function() {
+					// 						$("#register-submit").click(function() {
+					// 							alert($("[name='email']").val());
+					// 							console.info(" Email: " + $("[name='email']").val());
+					// 							$("#registration_form").submit();
+					// 						});
+					// 					}
+					// 					var send = document.getElementById('register-submit');
+					// 					var email = document.getElementById('email');
+					// 					if (send) {
+					// 						send.onclick = function() {
+					// 							var sub = document
+					// 									.getElementById('registration_form');
+					// 							console.info(" Email: " + email.value);
+					// 							sub.submit();
+					// 							// 							this.innerHTML = '...Sending';
+					// 						}
+					// 					}
+				</script>
 			</div>
-
+			<div class="registration_left">
+				<h2>LOGIN</h2>
+				<!-- 		<a href="#"><div class="reg_fb"><img src="images/facebook.png" alt=""><i>sign in using Facebook</i><div class="clear"></div></div></a> -->
+				<div class="registration_form">
+					<!-- Form -->
+					<form id="login_form" action="login" method="post">
+						<div>
+							<label> <input name="username" id="username"
+								placeholder="your email or phone number" type="email"
+								tabindex="3" required>
+							</label>
+						</div>
+						<div>
+							<label> <input name="password" placeholder="password" id="password"
+								type="password" tabindex="4" required>
+							</label>
+						</div>
+						<div>
+							<input type="button" value="sign in" id="login-submit">
+						</div>
+						<div class="forget">
+							<!-- 							<a href="#">forgot your password</a> -->
+						</div>
+					</form>
+					<!-- /Form -->
+				</div>
+			</div>
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -246,24 +283,17 @@
 	<div class="content-section">
 		<div class="container">
 			<div class="col-md-3 about-us">
-				<h4>
-					<spring:message code="label.introduteUs" />
-				</h4>
-				<p>
-					<spring:message code="content.introduteUs" />
+				<h4><spring:message code="label.introduteUs" /></h4>
+				<p><spring:message code="content.introduteUs" />
 				</p>
-				<h4>
-					<spring:message code="label.followUs" />
-				</h4>
+				<h4><spring:message code="label.followUs" /></h4>
 				<div class="social-icons">
 					<i class="facebook"></i> <i class="twitter"></i> <i class="rss"></i>
 					<i class="vimeo"></i> <i class="dribble"></i> <i class="msn"></i>
 				</div>
 			</div>
 			<div class="col-md-3 archives">
-				<h4>
-					<spring:message code="label.archives" />
-				</h4>
+				<h4><spring:message code="label.archives" /></h4>
 				<ul>
 					<li><a href="#">March 2012</a></li>
 					<li><a href="#">February 2012</a></li>
@@ -272,13 +302,10 @@
 				</ul>
 			</div>
 			<div class="col-md-3 contact-us">
-				<h4>
-					<spring:message code="label.contactUs" />
-				</h4>
+				<h4><spring:message code="label.contactUs" /></h4>
 				<ul>
 					<li><i class="message"></i></li>
-					<li><a href="mail-to:info@premiumcoding.com"><spring:message
-								code="contact.mail" />/a></li>
+					<li><a href="mail-to:info@premiumcoding.com"><spring:message code="contact.mail" />/a></li>
 				</ul>
 				<ul>
 					<li><i class="land-phone"></i></li>
@@ -289,15 +316,15 @@
 					<li><spring:message code="contact.homePhone" /></li>
 				</ul>
 			</div>
-			<!-- 			<div class="col-md-3 about-us"> -->
-			<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
-			<!-- 				<input type="text" class="text" value="Name" -->
-			<!-- 					onfocus="this.value = '';" -->
-			<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
-			<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
-			<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
-			<!-- 					type="submit" value="subscribe"> -->
-			<!-- 			</div> -->
+<!-- 			<div class="col-md-3 about-us"> -->
+<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
+<!-- 				<input type="text" class="text" value="Name" -->
+<!-- 					onfocus="this.value = '';" -->
+<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
+<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
+<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
+<!-- 					type="submit" value="subscribe"> -->
+<!-- 			</div> -->
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -306,18 +333,16 @@
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-6 bottom-menu">
-				<!-- 				<ul> -->
-				<!-- 					<li><a href="index.html">HOME</a></li> -->
-				<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
-				<!-- 					<li><a href="#">SITEMAP</a></li> -->
-				<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
-				<!-- 				</ul> -->
+<!-- 				<ul> -->
+<!-- 					<li><a href="index.html">HOME</a></li> -->
+<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
+<!-- 					<li><a href="#">SITEMAP</a></li> -->
+<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
+<!-- 				</ul> -->
 			</div>
 			<div class="col-md-6 copy-rights">
 				<p>
-					&copy;
-					<spring:message code="label.author" />
-					<a href="http://traditionalfashion-fontal.rhcloud.com/"
+					&copy;<spring:message code="label.author" /><a href="http://traditionalfashion-fontal.rhcloud.com/"
 						target="target_blank"><spring:message code="label.author.name" /></a>
 				</p>
 			</div>

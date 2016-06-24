@@ -151,7 +151,7 @@ public class UserController {
 		} catch (DataAccessException e) {
 			logger.error(e.getErrorCode(), e);
 		}
-		return "account";
+		return "login";
 	}
 
 	@RequestMapping(value = "/logout")
@@ -168,13 +168,12 @@ public class UserController {
 		String result = null;
 		String message = null;
 
+		result = "redirect:loadLogin";
 		if (register == null || SystemUtil.isNullOrEmpty(register.getEmail())
 				|| SystemUtil.isNullOrEmpty(register.getPassword())
 				|| SystemUtil.isNullOrEmpty(register.getPrePassword())) {
 			message = "you have not data";
-			result = "redirect:loadLogin";
 		} else {
-			result = "redirect:account";
 
 			try {
 				boolean check = register.checkValues();

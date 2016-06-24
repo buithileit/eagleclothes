@@ -11,14 +11,7 @@
 
 
 
-	<bean id="appProperties"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="locations">
-			<list>
-				<value>classpath:messages_en.properties</value>
-			</list>
-		</property>
-	</bean>
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
@@ -26,7 +19,51 @@
 		<property name="suffix" value=".jsp" />
 		<property name="exposedContextBeanNames" value="appProperties" />
 	</bean>
+	<!-- start multi language -->
 
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en" />
+		<property name="cookiePath" value="lang"></property>
+		<property name="cookieMaxAge" value="3600"></property>
+	</bean>
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang" />
+		</bean>
+	</mvc:interceptors>
+
+	<!-- <bean id="messageSource" -->
+	<!-- class="org.springframework.context.support.ResourceBundleMessageSource"> -->
+	<!-- <property name="basename" value="messages" /> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="localeResolver" -->
+	<!-- class="org.springframework.web.servlet.i18n.SessionLocaleResolver"> -->
+	<!-- <property name="defaultLocale" value="en" /> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="localeChangeInterceptor" -->
+	<!-- class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"> -->
+	<!-- <property name="paramName" value="lang" /> -->
+
+	<!-- </bean> -->
+
+	<!-- <bean -->
+	<!-- class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"> -->
+	<!-- <property name="interceptors"> -->
+	<!-- <list> -->
+	<!-- <ref bean="localeChangeInterceptor" /> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+	<!-- end multi language -->
 	<context:component-scan base-package="fashiontraditional.com" />
 	<!-- <context:component-scan base-package="fashiontraditional.com.dao" /> -->
 	<!-- <context:component-scan base-package="fashiontraditional.com.services" 

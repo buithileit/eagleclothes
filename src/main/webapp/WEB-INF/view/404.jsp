@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>EAGLECLOTHES Bootstarp responsive Website Template| 404
-	:: w3layouts</title>
+<title><spring:message code="title.main" />|<spring:message
+		code="page.name.404" /></title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -69,8 +69,8 @@
 						<li><a href="loadLogin">${appProperties["title.registry"] }</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><i class="cart"></i><a href="loadCheckout">Cart
-						(${sizeCart})</a></li>
+				<li><i class="cart"></i><a href="loadCheckout"><spring:message
+							code="link.cart" /> (0)</a></li>
 
 			</ul>
 		</div>
@@ -84,12 +84,18 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a href="index.html" data-hover="HOME">HOME</a></li>
+						<li><a href="index.html"
+							data-hover="<spring:message
+									code="menu.home" />"><spring:message
+									code="menu.home" /></a></li>
 						<c:forEach items="${catalogsRoot }" var="catalog">
 							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
 								data-hover="${ catalog.name}">${ catalog.name}</a></li>
 						</c:forEach>
-						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
+						<li><a href="contact.html"
+							data-hover="<spring:message
+									code="menu.contact" />"><spring:message
+									code="menu.contact" /></a></li>
 					</ul>
 				</div>
 				<!--script-nav-->
@@ -108,30 +114,36 @@
 	<!-- content-section-starts -->
 	<div class="container">
 		<div class="title">
-			<h2>You've Failed</h2>
-			<h3>404 Error!</h3>
+			<h2>
+				<spring:message code="message.404.fail" />
+			</h2>
+			<h3>
+				<spring:message code="message.404.error" />
+			</h3>
 		</div>
 		<div class="gray">
-			<a href="getMain" class="ag-3d_button orange">Go to home page </a>
+			<a href="getMain" class="ag-3d_button orange"><spring:message
+					code="message.404.linkHome" /></a>
 		</div>
-	</div>
 	</div>
 	<!-- content-section-ends -->
 	<!-- footer-section-starts -->
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-6 bottom-menu">
-				<ul>
-					<li><a href="index.html">HOME</a></li>
-					<li><a href="#">PORTFOLIO</a></li>
-					<li><a href="#">SITEMAP</a></li>
-					<li><a href="contact.html"> CONTACT</a></li>
-				</ul>
+				<!-- 				<ul> -->
+				<!-- 					<li><a href="index.html">HOME</a></li> -->
+				<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
+				<!-- 					<li><a href="#">SITEMAP</a></li> -->
+				<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
+				<!-- 				</ul> -->
 			</div>
 			<div class="col-md-6 copy-rights">
 				<p>
-					&copy; 2015 Template by <a href="http://w3layouts.com"
-						target="target_blank">W3layouts</a>
+					&copy;
+					<spring:message code="label.author" />
+					<a href="http://traditionalfashion-fontal.rhcloud.com/"
+						target="target_blank"><spring:message code="label.author.name" /></a>
 				</p>
 			</div>
 			<div class="clearfix"></div>
