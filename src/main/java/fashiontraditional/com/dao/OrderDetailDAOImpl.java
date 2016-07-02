@@ -31,13 +31,14 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
 	@Override
 	public OrderDetail findOrderDetailById(Long orderDetailId) throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+//		Transaction transaction = session.beginTransaction();
 		try {
 			OrderDetail orderDetail = (OrderDetail) session.get(OrderDetail.class, orderDetailId);
-			transaction.commit();
+//			transaction.commit();
+			session.flush();
 			return orderDetail;
 		} catch (HibernateException e) {
-			transaction.rollback();
+//			transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data");
 		}
@@ -51,9 +52,10 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
 		long result = 0;
 		try {
 			result = (Long) session.save(orderDetail);
-			transaction.commit();
+			session.flush();
+//			transaction.commit();
 		} catch (HibernateException e) {
-			transaction.rollback();
+//			transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}
@@ -68,10 +70,10 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
 		boolean result = false;
 		try {
 			session.update(OrderDetail);
-			transaction.commit();
+			session.flush();//			transaction.commit();
 			result = true;
 		} catch (HibernateException e) {
-			transaction.rollback();
+//			transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}
@@ -87,10 +89,10 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
 		boolean result = false;
 		try {
 			session.delete(orderDetail);
-			transaction.commit();
+			session.flush();//			transaction.commit();
 			result = true;
 		} catch (HibernateException e) {
-			transaction.rollback();
+//			transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}

@@ -41,6 +41,7 @@ public class CatalogServiceImpl implements CatalogService {
 	}
 
 	@Override
+	@Transactional
 	public List<Catalog> getCatalogsByParent(Integer parent)
 			throws DataAccessException {
 
@@ -48,6 +49,7 @@ public class CatalogServiceImpl implements CatalogService {
 	}
 
 	@Override
+	@Transactional
 	public List<Catalog> getCatalogsEqualsParent(Integer catalogId)
 			throws DataAccessException {
 		// TODO Auto-generated method stub

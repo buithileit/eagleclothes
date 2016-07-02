@@ -116,29 +116,12 @@ public class Product {
 	public void setRate(short rate) {
 		this.rate = rate;
 	}
-	//
-	// public Set<String> getColors() {
-	// return colors;
-	// }
-	//
-	// public void setColors(Set<String> colors) {
-	// this.colors = colors;
-	// }
-	//
-	// public Set<String> getSizes() {
-	// return sizes;
-	// }
-	//
-	// public void setSizes(Set<String> sizes) {
-	// this.sizes = sizes;
-	// }
-	//
-	// public void addColor(String color) {
-	// colors.add(color);
-	// }
-	//
-	// public void addSize(String size) {
-	// sizes.add(size);
-	// }
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price
+				+ ", color=" + color + ", size=" + size + "]";
+	}
+	
 
 }

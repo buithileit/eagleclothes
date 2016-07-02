@@ -29,29 +29,32 @@ public class AddressDAOImpl implements AddressDAO {
 	@Override
 	public Address findAddressById(Long addressId) throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		// Transaction transaction = session.beginTransaction();
 		try {
 			Address address = (Address) session.get(Address.class, addressId);
-			transaction.commit();
+			// transaction.commit();
+			session.flush();
 			return address;
 		} catch (HibernateException e) {
-			transaction.rollback();
+			// transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data");
 		}
+
 	}
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public Long createAddress(Address address) throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		// Transaction transaction = session.beginTransaction();
 		long result = 0;
 		try {
 			result = (Long) session.save(address);
-			transaction.commit();
+			session.flush();
+			// transaction.commit();
 		} catch (HibernateException e) {
-			transaction.rollback();
+			// transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}
@@ -62,14 +65,15 @@ public class AddressDAOImpl implements AddressDAO {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public boolean updateAddress(Address Address) throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		// Transaction transaction = session.beginTransaction();
 		boolean result = false;
 		try {
 			session.update(Address);
-			transaction.commit();
+			session.flush();
+			// transaction.commit();
 			result = true;
 		} catch (HibernateException e) {
-			transaction.rollback();
+			// transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}
@@ -81,14 +85,15 @@ public class AddressDAOImpl implements AddressDAO {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public boolean deleteAddress(Address address) throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		// Transaction transaction = session.beginTransaction();
 		boolean result = false;
 		try {
 			session.delete(address);
-			transaction.commit();
+			// transaction.commit();
+			session.flush();
 			result = true;
 		} catch (HibernateException e) {
-			transaction.rollback();
+			// transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}
@@ -104,15 +109,15 @@ public class AddressDAOImpl implements AddressDAO {
 		List<Address> results = null;
 		try {
 			Query query = session
-					.createQuery("FROM ADDRESS a WHERE a.name = :pname");
-			query.setString("pname", addressName);
+					.createQuery("FROM ADDRESS a WHERE a.name LIKE :pname");
+			query.setString("pname", "%" + addressName + "%");
 
 			results = query.list();
+			session.flush();
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data " + e.getMessage());
 		}
-		session.close();
 		return results;
 	}
 

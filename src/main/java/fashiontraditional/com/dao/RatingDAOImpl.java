@@ -26,11 +26,11 @@ public class RatingDAOImpl implements RatingDAO {
 	public List<Banner> getBanners() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		session.beginTransaction();
+//		session.beginTransaction();
 		Query query = session.createQuery("FROM BANNER");
 
 		List<Banner> results = query.list();
-		session.close();
+		session.flush();
 		return results;
 
 		// List<Banner> banners = new LinkedList<Banner>();

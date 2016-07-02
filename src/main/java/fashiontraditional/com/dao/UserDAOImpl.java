@@ -38,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
 		UserVO result = null;
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.beginTransaction();
+			// session.beginTransaction();
 
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT user.id AS id, ");
@@ -49,8 +49,8 @@ public class UserDAOImpl implements UserDAO {
 			sql.append(" user.phone_number AS phoneNumber, ");
 			sql.append(" user.type_user AS typeUser, ");
 			sql.append(" address.name AS address ");
-			sql.append(" FROM User AS user ");
-			sql.append(" INNER JOIN Address AS address ");
+			sql.append(" FROM USER AS user ");
+			sql.append(" INNER JOIN ADDRESS AS address ");
 			sql.append(" ON user.address_id = address.id ");
 			sql.append(" WHERE user.email = :pEmail OR user.phone_number = :pPhone");
 			SQLQuery query = session.createSQLQuery(sql.toString());
@@ -63,7 +63,7 @@ public class UserDAOImpl implements UserDAO {
 
 			// Page<UserVO> paging = new Page<UserVO>(numberRecord, result);
 			// result = paging.getList(page);
-			session.close();
+			session.flush();
 		} catch (Exception e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data: " + e.getMessage());
@@ -77,7 +77,7 @@ public class UserDAOImpl implements UserDAO {
 		UserVO result = null;
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.beginTransaction();
+			// session.beginTransaction();
 
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT user.id AS id, ");
@@ -88,8 +88,8 @@ public class UserDAOImpl implements UserDAO {
 			sql.append(" user.phone_number AS phoneNumber, ");
 			sql.append(" user.type_user AS typeUser, ");
 			sql.append(" address.name AS address ");
-			sql.append(" FROM User AS user ");
-			sql.append(" INNER JOIN Address AS address ");
+			sql.append(" FROM USER AS user ");
+			sql.append(" INNER JOIN ADDRESS AS address ");
 			sql.append(" ON user.address_id = address.id ");
 			sql.append(" WHERE user.email = :email OR user.phone_number = :phone");
 			SQLQuery query = session.createSQLQuery(sql.toString());
@@ -102,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
 
 			// Page<UserVO> paging = new Page<UserVO>(numberRecord, result);
 			// result = paging.getList(page);
-			session.close();
+			session.flush();
 		} catch (Exception e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data: " + e.getMessage());
@@ -115,7 +115,7 @@ public class UserDAOImpl implements UserDAO {
 		UserVO result = null;
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.beginTransaction();
+			// session.beginTransaction();
 
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT user.name AS name, ");
@@ -125,8 +125,8 @@ public class UserDAOImpl implements UserDAO {
 			sql.append(" user.phone_number AS phoneNumber, ");
 			sql.append(" user.type_user AS typeUser, ");
 			sql.append(" address.name AS address ");
-			sql.append(" FROM User AS user ");
-			sql.append(" INNER JOIN Address AS address ");
+			sql.append(" FROM USER AS user ");
+			sql.append(" INNER JOIN ADDRESS AS address ");
 			sql.append(" ON user.address_id = address.id ");
 			sql.append(" WHERE user.phone_number = :phone");
 			SQLQuery query = session.createSQLQuery(sql.toString());
@@ -147,14 +147,14 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Long createUser(User currentUser) throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		// Transaction transaction = session.beginTransaction();
 		try {
 			Long user_id = (Long) session.save(currentUser);
-
-			transaction.commit();
+			session.close();
+			// transaction.commit();
 			return user_id;
 		} catch (HibernateException e) {
-			transaction.rollback();
+			// transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data [ " + e.getMessage() + " ]");
 		}

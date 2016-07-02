@@ -30,7 +30,7 @@ public class CatalogDetailDAOImpl implements CatalogDetailDAO {
 		Query query = session.createQuery("FROM BANNER");
 
 		List<Banner> results = query.list();
-		session.close();
+		session.flush();
 		return results;
 
 		// List<Banner> banners = new LinkedList<Banner>();

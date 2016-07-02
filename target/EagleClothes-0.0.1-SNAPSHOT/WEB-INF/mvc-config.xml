@@ -10,7 +10,6 @@
 	<!-- Uncomment and your base-package here: <context:component-scan base-package="org.springframework.samples.web"/> -->
 
 
-
 	<bean id="appProperties"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="locations">
@@ -19,6 +18,7 @@
 			</list>
 		</property>
 	</bean>
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
@@ -26,39 +26,32 @@
 		<property name="suffix" value=".jsp" />
 		<property name="exposedContextBeanNames" value="appProperties" />
 	</bean>
+	<!-- start multi language -->
 
-	<mvc:view-controller path="/main.html" view-name="main" />
-	<mvc:view-controller path="/404.html" view-name="404" />
-	<mvc:view-controller path="/account.html"
-		view-name="account" />
-	<mvc:view-controller path="/checkout.html"
-		view-name="checkout" />
-	<mvc:view-controller path="/contact.html"
-		view-name="contact" />
-	<mvc:view-controller path="/products.html"
-		view-name="products" />
-	<mvc:view-controller path="/single.html" view-name="single" />
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
 
-	<!-- <mvc:view-controller path="/admin/mainAdmin.html" -->
-	<!-- view-name="mainadmin" /> -->
-	<mvc:view-controller path="/admin/blank-page.html"
-		view-name="admin/blank-page" />
-	<mvc:view-controller path="/admin/bootstrap-elements.html"
-		view-name="admin/bootstrap-elements" />
-	<mvc:view-controller path="/admin/bootstrap-grid.html"
-		view-name="admin/bootstrap-grid" />
-	<mvc:view-controller path="/admin/charts.html"
-		view-name="admin/charts" />
-	<mvc:view-controller path="/admin/forms.html"
-		view-name="admin/forms" />
-	<mvc:view-controller path="/admin/index-rtl.html"
-		view-name="admin/index-rtl" />
-	<mvc:view-controller path="/admin/tables.html"
-		view-name="admin/tables" />
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en" />
+		<property name="cookiePath" value="lang"></property>
+		<property name="cookieMaxAge" value="3600"></property>
+	</bean>
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang" />
+		</bean>
+	</mvc:interceptors>
+	<!-- end multi language -->
 	<context:component-scan base-package="fashiontraditional.com" />
 	<!-- <context:component-scan base-package="fashiontraditional.com.dao" /> -->
 	<!-- <context:component-scan base-package="fashiontraditional.com.services" 
 		/> -->
+	<bean id="shopCart" class="fashiontraditional.com.session.ShoppingCart"
+		scope="prototype"></bean>
 	<!-- services -->
 	<bean id="addressService" class="fashiontraditional.com.services.AddressServiceImpl"
 		scope="prototype"></bean>
@@ -107,17 +100,19 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://127.4.30.2:3306/fashiontraditional?userUnicode=true&amp;characterEncoding=UTF-8" />
-		<property name="username" value="adminQL8IWsn" />
-		<property name="password" value="_9tF_utxmyfa" />
-
+			value="jdbc:mysql://localhost:3306/fashion?userUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="username" value="le" />
+		<property name="password" value="125501532" />
+		<!-- <property name="url" -->
+		<!-- value="jdbc:mysql://127.10.104.130:3306/traditionalfashion?userUnicode=true&amp;characterEncoding=UTF-8" 
+			/> -->
+		<!-- <property name="username" value="adminyDTrtQQ" /> -->
+		<!-- <property name="password" value="C-i4Tzn2KHpT" /> -->
 
 	</bean>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-
-
 		<property name="annotatedClasses">
 			<list>
 				<value>fashiontraditional.com.model.Banner</value>
@@ -132,13 +127,16 @@
 				<value>fashiontraditional.com.model.Order</value>
 				<value>fashiontraditional.com.model.OrderDetail</value>
 				<value>fashiontraditional.com.vo.ProductVO</value>
+				<value>fashiontraditional.com.vo.UserVO</value>
+				<!-- <value>fashiontraditional.com.bean.LoginBean</value> -->
+				<!-- <value>fashiontraditional.com.bean.RegisterBean</value> -->
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-				<prop key="hibernate.current_session_context_class">thread</prop>
-				<prop key="hbm2ddl.auto">create</prop>
+				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
+				<!-- <prop key="hbm2ddl.auto">create</prop> -->
 
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
@@ -166,12 +164,15 @@
 		</property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	<!-- <mvc:annotation-driven -->
+	<!-- content-negotiation-manager="transactionManager"></mvc:annotation-driven> -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator" />
-	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
+	<!-- <bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator" 
+		/> -->
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

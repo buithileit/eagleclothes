@@ -11,6 +11,7 @@
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
+<script src="js/validateRegistry.js"></script>
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
@@ -131,31 +132,32 @@
 					<c:choose>
 						<c:when
 							test="${sessionScope.shopCart !=null && sessionScope.shopCart.size > 0 }">
-							<form action="checkout" method="get">
+							<form action="checkout" method="get" id="checkout_form">
 								<div class="deliver_info_left">
 									<h2 class="title-text">
 										<spring:message code="label.deliverInfo" />
 									</h2>
 									<div class="registration_form">
 										<div class="form-group">
-											<label for="exampleInputPhone">Phone person receice</label> <input
-												name="phoneReceice" type="text" required
+											<label for="exampleInputPhone">Phone person
+												receice(*)</label> <input id="phoneReceice" name="phoneReceice"
+												type="text" required
 												placeholder="Phone number of person receice">
 										</div>
 										<div class="form-group">
-											<label for="exampleInputName">Name person receice</label> <input
-												name="nameReceice" type="text" required
-												placeholder="Name person receice">
+											<label for="exampleInputName">Name person receice(*)</label>
+											<input id="nameReceice" name="nameReceice" type="text"
+												required placeholder="Name person receice">
 										</div>
 										<div class="form-group">
 											<label for="exampleInputAddress">Address person
-												receice</label> <input name="addressReceice" type="text" required
-												placeholder="Address person receice">
+												receice(*)</label> <input id="addressReceice" name="addressReceice"
+												type="text" required placeholder="Address person receice">
 										</div>
 										<div class="form-group">
 											${dateDeliverMin} <label for="exampleInputDate">Date
-												receice</label> <input name="dateReceice" type="date"
-												value="${dateDeliverMin}">
+												receice</label> <input id="dateReceice" name="dateReceice"
+												type="date" value="${dateDeliverMin}">
 										</div>
 										<button type="submit" class="btn btn-default"
 											id="checkout_btn">Checkout</button>
@@ -163,64 +165,6 @@
 								</div>
 							</form>
 
-							<script type="text/javascript">
-								$(document)
-										.ready(
-												function() {
-													$("#checkout_btn")
-															.click(
-																	function() {
-																		console
-																				.info("run");
-																		var today = new Date();
-																		var dd = today
-																				.getDate();
-																		var mm = today
-																				.getMonth() + 1; //January is 0!
-																		var yyyy = today
-																				.getFullYear();
-																		if (dd < 10) {
-																			dd = '0'
-																					+ dd
-																		}
-																		if (mm < 10) {
-																			mm = '0'
-																					+ mm
-																		}
-																		today = mm
-																				+ '/'
-																				+ dd
-																				+ '/'
-																				+ yyyy;
-																		var dateDeliver = new Date();
-																		deliver
-																		var dateDeliver = end_date
-																				.setDate(date
-																						.getDate()
-																						+ days);
-
-																		if ($(
-																				"[name='dateReceice']")
-																				.val() == ""
-																				|| new Date(
-																						$(
-																								"[name='dateReceice']")
-																								.val())
-																						.getTime() < dateDeliver
-																						.getTime()) {
-																			$(
-																					"[name='dateReceice']")
-																					.val(
-																							dateDeliver
-																									.val());
-																		}
-																		$(
-																				"#checkout_btn")
-																				.submit();
-
-																	});
-												});
-							</script>
 							<div class="products_right">
 								<div class="table-responsive" align="center"
 									style="padding-left: 5%">

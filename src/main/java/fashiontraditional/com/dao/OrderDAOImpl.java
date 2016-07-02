@@ -36,7 +36,7 @@ public class OrderDAOImpl implements OrderDAO {
 		try {
 			Order order = (Order) session.get(Order.class, orderId);
 			// transaction.commit();
-			session.close();
+			session.flush();
 			return order;
 		} catch (HibernateException e) {
 			// transaction.rollback();
@@ -53,9 +53,10 @@ public class OrderDAOImpl implements OrderDAO {
 		long result = 0;
 		try {
 			result = (Long) session.save(order);
-			transaction.commit();
+//			transaction.commit();
+			session.flush();
 		} catch (HibernateException e) {
-			transaction.rollback();
+//			transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}
@@ -70,10 +71,11 @@ public class OrderDAOImpl implements OrderDAO {
 		boolean result = false;
 		try {
 			session.update(Order);
-			transaction.commit();
+//			transaction.commit();
+			session.flush();
 			result = true;
 		} catch (HibernateException e) {
-			transaction.rollback();
+//			transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}
@@ -89,10 +91,11 @@ public class OrderDAOImpl implements OrderDAO {
 		boolean result = false;
 		try {
 			session.delete(order);
-			transaction.commit();
+			session.flush();
+//			transaction.commit();
 			result = true;
 		} catch (HibernateException e) {
-			transaction.rollback();
+//			transaction.rollback();
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data [ " + e.getMessage() + " ]");
 		}
@@ -108,15 +111,15 @@ public class OrderDAOImpl implements OrderDAO {
 		List<Order> results = null;
 		try {
 			Query query = session
-					.createQuery("FROM Order a WHERE a.namePersonReceice = :pname");
+					.createQuery("FROM ORDER_USER a WHERE a.namePersonReceice = :pname");
 			query.setString("pname", nameReceice);
 
 			results = query.list();
+			session.flush();
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data " + e.getMessage());
 		}
-		session.close();
 		return results;
 	}
 }

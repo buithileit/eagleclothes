@@ -6,17 +6,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>EAGLECLOTHES Bootstarp responsive Website Template|
-	Single-page :: w3layouts</title>
+<title><spring:message code="title.main" />|<spring:message
+		code="page.name.single" /></title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-</script>
+
 <!--webfont-->
 <link
 	href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300,700'
@@ -93,15 +91,70 @@
 		});
 	});
 </script>
+<!--- start-rate---->
+<script src="js/jstarbox.js"></script>
+<link rel="stylesheet" href="css/jstarbox.css" type="text/css"
+	media="screen" />
+<script type="text/javascript">
+	jQuery(function() {
+		jQuery('.starbox')
+				.each(
+						function() {
+							var starbox = jQuery(this);
+							starbox
+									.starbox(
+											{
+												// 					average: starbox.attr('data-start-value'),
+												average : 0.6,
+												// 					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+												changeable : true,
+												// 					ghosting: starbox.hasClass('ghosting'),
+												ghosting : true,
+												autoUpdateAverage : starbox
+														.hasClass('autoupdate'),
+												buttons : starbox
+														.hasClass('smooth') ? false
+														: starbox
+																.attr('data-button-count') || 5,
+												stars : starbox
+														.attr('data-star-count') || 5
+											})
+									.bind(
+											'starbox-value-changed',
+											function(event, value) {
+												if (starbox.hasClass('random')) {
+													var val = Math.random();
+													starbox.next().text(
+															' ' + val);
+													return val;
+												}
+											})
+						});
+	});
+</script>
+<!---//End-rate---->
 </head>
 <body>
 	<!-- header-section-starts -->
 	<div class="user-desc">
 		<div class="container">
+			<%-- 			<div id="message">${message}</div> --%>
 			<ul>
-				<li><a href="checkout.html">Checkout</a></li>
-				<li><i class="user"></i><a href="account.html">My Account</a></li>
-				<li><i class="cart"></i><a href="#">Cart (0)</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.user !=null }">
+						<li><i class="user"
+							style="background:${sessionScope.user.imageThumbnail};"></i> <a
+							href="loadAccount">${sessionScope.user.name}</a></li>
+						<li><a href="logout.html">${appProperties["title.logout"] }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="loadLogin">${appProperties["title.login"] }</a></li>
+						<li><a href="loadLogin">${appProperties["title.registry"] }</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><i class="cart"></i><a href="loadCheckout">Cart
+						(${sizeCart})</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -114,10 +167,11 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a href="index.html" data-hover="HOME">HOME</a></li>
-						<li><a href="404.html" data-hover="NEWS">NEWS</a></li>
-						<li><a class="active" href="products.html">PRODUCTS</a></li>
-						<li><a href="404.html" data-hover="FEATURES">FEATURES</a></li>
+						<li><a href="getMain">HOME</a></li>
+						<c:forEach items="${catalogsRoot }" var="catalog">
+							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
+								data-hover="${ catalog.name}">${ catalog.name}</a></li>
+						</c:forEach>
 						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
 					</ul>
 				</div>
@@ -143,100 +197,93 @@
 				<div class="grid images_3_of_2">
 					<ul id="etalage">
 						<li><a href="optionallink.html"> <img
-								class="etalage_thumb_image" src="images/d2.jpg"
+								class="etalage_thumb_image" src="${product.image }"
 								class="img-responsive" /> <img class="etalage_source_image"
-								src="images/d2.jpg" class="img-responsive" title="" />
+								src="${product.image }" class="img-responsive" title="" />
 						</a></li>
-						<li><img class="etalage_thumb_image" src="images/d1.jpg"
+						<li><img class="etalage_thumb_image" src="${product.image }"
 							class="img-responsive" /> <img class="etalage_source_image"
-							src="images/d1.jpg" class="img-responsive" title="" /></li>
-						<li><img class="etalage_thumb_image" src="images/d2.jpg"
+							src="${product.image }" class="img-responsive" title="" /></li>
+						<li><img class="etalage_thumb_image" src="${product.image }"
 							class="img-responsive" /> <img class="etalage_source_image"
-							src="images/d2.jpg" class="img-responsive" /></li>
-						<li><img class="etalage_thumb_image" src="images/d3.jpg"
+							src="${product.image }" class="img-responsive" /></li>
+						<li><img class="etalage_thumb_image" src="${product.image }"
 							class="img-responsive" /> <img class="etalage_source_image"
-							src="images/d3.jpg" class="img-responsive" /></li>
+							src="${product.image }" class="img-responsive" /></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
 
 				<!-- start span1_of_1 -->
-				<div class="span1_of_1_des">
-					<div class="desc1">
-						<h3>Lorem Ipsum is simply dummy text</h3>
-						<p>It is a long established fact that a reader will be
-							distracted by the readable content of a page when looking at its
-							layout.</p>
-						<h5>
-							<!-- 							Rs. 399 <a href="#">click for offer</a> -->
-						</h5>
-						<div class="available">
-							<h4>Available Options :</h4>
-							<ul>
-								<li>Color: <select>
-										<option>Silver</option>
-										<option>Black</option>
-										<option>Dark Black</option>
-										<option>Red</option>
-								</select></li>
-								<li>Size: <select>
-										<option>L</option>
-										<option>XL</option>
-										<option>S</option>
-										<option>M</option>
-								</select>
-								</li>
-								<!-- 								<li>Quality: <select> -->
-								<!-- 										<option>1</option> -->
-								<!-- 										<option>2</option> -->
-								<!-- 										<option>3</option> -->
-								<!-- 										<option>4</option> -->
-								<!-- 										<option>5</option> -->
-								<!-- 								</select> -->
-								</li>
-							</ul>
-							<div class="btn_form">
-								<form>
+				<form action="shop" method="get">
+					<div class="span1_of_1_des">
+						<div class="desc1">
+							<h3>${product.name }</h3>
+							<p>${product.description }</p>
+							<h5>
+								<!-- 							Rs. 399 <a href="#">click for offer</a> -->
+							</h5>
+							<div class="available">
+								<h4>Available Options :</h4>
+								<ul><li><input name="productId"type="hidden" value="${product.id}"></li>
+									<li>Color: <!-- 								<select> --> <%-- 								<c:forEach items="${product.color }"></c:forEach> --%>
+										<input name="color" type="color" value="#${product.color  }"> <%-- 										<option style="background:${product.color }" --%>
+										<!-- 											selected="selected"></option> --> <!-- 																				<option>Black</option> -->
+										<!-- 																				<option>Dark Black</option> --> <!-- 																				<option>Red</option> -->
+										<!-- 								</select> -->
+									</li>
+									<li>Size: <select name = size>
+											<option>${product.size }</option>
+											<!-- 										<option>29</option> -->
+											<!-- 										<option>28</option> -->
+											<!-- 										<option>27</option> -->
+									</select>
+									</li>
+									<li><div class="block">
+											<div class="starbox small ghosting"></div>
+										</div></li>
+								</ul>
+								<div class="btn_form">
 									<input type="submit" value="add to cart" title="" />
-								</form>
+								</div>
+								<!-- 							<span class="span_right"><a href="#">login to save in -->
+								<!-- 									wishlist </a></span> -->
+								<div class="clearfix"></div>
 							</div>
-							<span class="span_right"><a href="#">login to save in
-									wishlist </a></span>
-							<div class="clearfix"></div>
-						</div>
-						<!-- 						<div class="filter-by-color"> -->
-						<!-- 							<h3>Filter by Color</h3> -->
-						<!-- 							<ul class="w_nav2"> -->
-						<!-- 								<li><a class="color1" href="#"></a></li> -->
-						<!-- 								<li><a class="color2" href="#"></a></li> -->
-						<!-- 								<li><a class="color3" href="#"></a></li> -->
-						<!-- 								<li><a class="color4" href="#"></a></li> -->
-						<!-- 								<li><a class="color5" href="#"></a></li> -->
-						<!-- 								<li><a class="color10" href="#"></a></li> -->
-						<!-- 								<li><a class="color7" href="#"></a></li> -->
-						<!-- 								<li><a class="color8" href="#"></a></li> -->
-						<!-- 								<li><a class="color9" href="#"></a></li> -->
-						<!-- 								<li><a class="color10" href="#"></a></li> -->
-						<!-- 								<li><a class="color6" href="#"></a></li> -->
-						<!-- 								<li><a class="color13" href="#"></a></li> -->
-						<!-- 								<li><a class="color14" href="#"></a></li> -->
-						<!-- 								<li><a class="color15" href="#"></a></li> -->
-						<!-- 								<li><a class="color16" href="#"></a></li> -->
-						<!-- 								<li><a class="color17" href="#"></a></li> -->
-						<!-- 								<li><a class="color1" href="#"></a></li> -->
-						<!-- 								<li><a class="color3" href="#"></a></li> -->
-						<!-- 								<li><a class="color2" href="#"></a></li> -->
-						<!-- 							</ul> -->
+							<!-- 						<div class="filter-by-color"> -->
+							<!-- 							<h3>Filter by Color</h3> -->
+							<!-- 							<ul class="w_nav2"> -->
+							<!-- 								<li><a class="color1" href="#"></a></li> -->
+							<!-- 								<li><a class="color2" href="#"></a></li> -->
+							<!-- 								<li><a class="color3" href="#"></a></li> -->
+							<!-- 								<li><a class="color4" href="#"></a></li> -->
+							<!-- 								<li><a class="color5" href="#"></a></li> -->
+							<!-- 								<li><a class="color10" href="#"></a></li> -->
+							<!-- 								<li><a class="color7" href="#"></a></li> -->
+							<!-- 								<li><a class="color8" href="#"></a></li> -->
+							<!-- 								<li><a class="color9" href="#"></a></li> -->
+							<!-- 								<li><a class="color10" href="#"></a></li> -->
+							<!-- 								<li><a class="color6" href="#"></a></li> -->
+							<!-- 								<li><a class="color13" href="#"></a></li> -->
+							<!-- 								<li><a class="color14" href="#"></a></li> -->
+							<!-- 								<li><a class="color15" href="#"></a></li> -->
+							<!-- 								<li><a class="color16" href="#"></a></li> -->
+							<!-- 								<li><a class="color17" href="#"></a></li> -->
+							<!-- 								<li><a class="color1" href="#"></a></li> -->
+							<!-- 								<li><a class="color3" href="#"></a></li> -->
+							<!-- 								<li><a class="color2" href="#"></a></li> -->
+							<!-- 							</ul> -->
 
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 			<div class="clearfix"></div>
 		</div>
-
-		<!-- start tabs -->
-		<!--Horizontal Tab-->
-		<div id="horizontalTab">
+	</div>
+	<!-- start tabs -->
+	<!--Horizontal Tab-->
+	<!-- <div id="horizontalTab">
 			<ul class="resp-tabs-list">
 				<li>More Information</li>
 				<li>Specifications</li>
@@ -308,11 +355,11 @@
 		</div>
 
 		<!-- end tabs -->
-	</div>
 
-	<div class="left_sidebar">
+
+	<!-- <div class="left_sidebar">
 		<div class="sellers">
-			<h4>Best Sellers</h4>
+			 <h4>Best Sellers</h4>
 			<div class="single-nav">
 				<ul>
 					<li><a href="#">Always free from repetition</a></li>
@@ -329,7 +376,7 @@
 					<li><a href="#">Always free from repetition</a></li>
 					<li><a href="#">Always free from repetition</a></li>
 				</ul>
-			</div>
+			</div>  
 			<div class="banner-wrap bottom_banner color_link">
 				<a href="#" class="main_link">
 					<figure>
@@ -353,34 +400,38 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!-- end sidebar -->
 	<div class="clearfix"></div>
-	</div>
-	</div>
+	<!-- 	</div> -->
+	<!-- 	</div> -->
 	<!-- end content -->
-	</div>
-	</div>
-	</div>
+	<!-- 	</div> -->
+	<!-- 	</div> -->
+	<!-- 	</div> -->
 	<!-- content-section-ends -->
 	<!-- contact-section-starts -->
 	<div class="content-section">
 		<div class="container">
 			<div class="col-md-3 about-us">
-				<h4>LITTLE ABOUT US</h4>
+				<h4>
+					<spring:message code="label.introduteUs" />
+				</h4>
 				<p>
-					<span>Sed posuere</span> consectetur est at. Nulla vitae elit
-					libero, a pharetra. Lorem ipsum <span>dolor sit</span> amet,
-					consectetuer adipiscing elit.
+					<spring:message code="content.introduteUs" />
 				</p>
-				<h4>FOLLOW US</h4>
+				<h4>
+					<spring:message code="label.followUs" />
+				</h4>
 				<div class="social-icons">
 					<i class="facebook"></i> <i class="twitter"></i> <i class="rss"></i>
 					<i class="vimeo"></i> <i class="dribble"></i> <i class="msn"></i>
 				</div>
 			</div>
 			<div class="col-md-3 archives">
-				<h4>ARCHIVES</h4>
+				<h4>
+					<spring:message code="label.archives" />
+				</h4>
 				<ul>
 					<li><a href="#">March 2012</a></li>
 					<li><a href="#">February 2012</a></li>
@@ -389,29 +440,32 @@
 				</ul>
 			</div>
 			<div class="col-md-3 contact-us">
-				<h4>CONTACT US</h4>
+				<h4>
+					<spring:message code="label.contactUs" />
+				</h4>
 				<ul>
 					<li><i class="message"></i></li>
-					<li><a href="mail-to:info@premiumcoding.com">info@premiumcoding.com</a></li>
+					<li><a href="mail-to:info@premiumcoding.com"><spring:message
+								code="contact.mail" />/a></li>
 				</ul>
 				<ul>
 					<li><i class="land-phone"></i></li>
-					<li>800 756 156</li>
+					<li><spring:message code="contact.phone" /></li>
 				</ul>
 				<ul>
 					<li><i class="smart-phone"></i></li>
-					<li>+386408007561</li>
+					<li><spring:message code="contact.homePhone" /></li>
 				</ul>
 			</div>
-			<div class="col-md-3 about-us">
-				<h4>SIGN TO NEWSLETTER</h4>
-				<input type="text" class="text" value="Name"
-					onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Name';}"> <input
-					type="text" class="text" value="Email" onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Email';}"> <input
-					type="submit" value="subscribe">
-			</div>
+			<!-- 			<div class="col-md-3 about-us"> -->
+			<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
+			<!-- 				<input type="text" class="text" value="Name" -->
+			<!-- 					onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
+			<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
+			<!-- 					type="submit" value="subscribe"> -->
+			<!-- 			</div> -->
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -420,17 +474,19 @@
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-6 bottom-menu">
-				<ul>
-					<li><a href="index.html">HOME</a></li>
-					<li><a href="#">PORTFOLIO</a></li>
-					<li><a href="#">SITEMAP</a></li>
-					<li><a href="contact.html"> CONTACT</a></li>
-				</ul>
+				<!-- 				<ul> -->
+				<!-- 					<li><a href="index.html">HOME</a></li> -->
+				<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
+				<!-- 					<li><a href="#">SITEMAP</a></li> -->
+				<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
+				<!-- 				</ul> -->
 			</div>
 			<div class="col-md-6 copy-rights">
 				<p>
-					&copy; 2015 Template by <a href="http://w3layouts.com"
-						target="target_blank">W3layouts</a>
+					&copy;
+					<spring:message code="label.author" />
+					<a href="http://traditionalfashion-fontal.rhcloud.com/"
+						target="target_blank"><spring:message code="label.author.name" /></a>
 				</p>
 			</div>
 			<div class="clearfix"></div>

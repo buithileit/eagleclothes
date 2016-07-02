@@ -13,7 +13,7 @@ import fashiontraditional.com.bean.OrderBean;
 import fashiontraditional.com.model.Product;
 import fashiontraditional.com.vo.ProductVO;
 
-@Component("shopCart")
+@Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ShoppingCart implements Serializable {
 

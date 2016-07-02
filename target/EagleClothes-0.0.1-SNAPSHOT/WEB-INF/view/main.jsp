@@ -16,48 +16,7 @@
 
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript">
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-	 function hideURLbar(){ window.scrollTo(0,1); } 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 <!--webfont-->
 <link
 	href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300,700'

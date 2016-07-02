@@ -27,6 +27,7 @@ import fashiontraditional.com.exception.ErrorCode;
 import fashiontraditional.com.model.Catalog;
 import fashiontraditional.com.model.SystemInfo;
 import fashiontraditional.com.model.User;
+import fashiontraditional.com.services.AddressService;
 import fashiontraditional.com.services.CatalogService;
 import fashiontraditional.com.services.UserService;
 import fashiontraditional.com.util.SystemUtil;
@@ -42,6 +43,8 @@ public class UserController {
 	private SystemInfo systemInfo;
 	@Autowired
 	private CatalogService catalogService;
+	@Autowired
+	private AddressService addressService;
 
 	private static final Logger logger = Logger.getLogger(UserController.class);
 
@@ -86,8 +89,10 @@ public class UserController {
 			HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		try {
-			if ((email != null) && !SystemUtil.checkEmail(email)
-					&& userService.checkEmail(email)) {
+			boolean checkEmail = SystemUtil.checkEmail(email);
+			boolean check = userService.checkEmail(email);
+			logger.info(email + " " + check + " "+ checkEmail);
+			if ((email != null) && checkEmail && !check) {
 				response.setContentType("text/xml");
 				response.setHeader("Cache-Control", "no-cache");
 				response.getWriter().write("<valid>true</valid>");
@@ -201,6 +206,24 @@ public class UserController {
 			}
 		}
 		model.addAttribute("message", message);
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/addressComplete")
+	public String addressComplete(Model model, HttpServletRequest request,
+			HttpSession session, @RequestParam String address) {
+		String result = null;
+		String message = null;
+
+		try {
+			addressService.findAddressByName(address);
+			result = "redirect:/getMain";
+		} catch (DataAccessException e) {
+			message = e.getMessage();
+			logger.error(e.getErrorCode(), e);
+		}
 
 		return result;
 

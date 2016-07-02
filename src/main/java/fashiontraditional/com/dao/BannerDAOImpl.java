@@ -29,7 +29,7 @@ public class BannerDAOImpl implements BannerDAO {
 	public List<Banner> getBanners() throws DataAccessException {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+//		Transaction transaction = session.beginTransaction();
 		List<Banner> results = null;
 		try {
 			Query query = session.createQuery("FROM BANNER");
@@ -40,7 +40,7 @@ public class BannerDAOImpl implements BannerDAO {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data");
 		}
-		session.close();
+		session.flush();
 		return results;
 	}
 

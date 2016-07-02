@@ -41,15 +41,15 @@ public class CatalogDAOImpl implements CatalogDAO {
 		List<Catalog> results = null;
 		try {
 			Query query = session
-					.createQuery("FROM Catalog a WHERE a.catalog = null");
+					.createQuery("FROM CATALOG a WHERE a.catalog = null");
 			// query.setString("pname", addressName);
 
 			results = query.list();
+			session.flush();
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data " + e.getMessage());
 		}
-		session.close();
 		return results;
 		// return null;
 	}
@@ -58,12 +58,12 @@ public class CatalogDAOImpl implements CatalogDAO {
 	public List<Catalog> getCatalogsByParent(Integer parent)
 			throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+//		Transaction transaction = session.beginTransaction();
 		List<Catalog> results = null;
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT * ");
-			sql.append(" FROM Catalog a ");
+			sql.append(" FROM CATALOG a ");
 
 			if (parent == null)
 				sql.append(" WHERE a.parent_id IS NULL");
@@ -75,11 +75,11 @@ public class CatalogDAOImpl implements CatalogDAO {
 			if (parent != null)
 				query.setParameter("parent", parent);
 			results = query.list();
+			session.flush();
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data " + e.getMessage());
 		}
-		session.close();
 		return results;
 
 	}
@@ -88,25 +88,25 @@ public class CatalogDAOImpl implements CatalogDAO {
 	public List<Catalog> getCatalogsEqualsParent(Integer catalogId)
 			throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		// Transaction transaction = session.beginTransaction();
 		List<Catalog> results = null;
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT * ");
-			sql.append(" FROM Catalog a ");
+			sql.append(" FROM CATALOG a ");
 			sql.append(" WHERE a.parent_id = ");
 			sql.append(" 				(SELECT c.parent_id ");
-			sql.append(" 				FROM Catalog c ");
+			sql.append(" 				FROM CATALOG c ");
 			sql.append(" 				WHERE c.id = :pCatalogId )");
 			SQLQuery query = session.createSQLQuery(sql.toString());
 			query.addEntity(Catalog.class);
 			query.setParameter("pCatalogId", catalogId);
 			results = query.list();
+			session.flush();
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data " + e.getMessage());
 		}
-		session.close();
 		return results;
 
 	}

@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><spring:message code="title.main" />|<spring:message code="page.name.single" /></title>
+<title><spring:message code="title.main" />|<spring:message
+		code="page.name.single" /></title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
@@ -92,31 +93,45 @@
 </script>
 <!--- start-rate---->
 <script src="js/jstarbox.js"></script>
-<link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/jstarbox.css" type="text/css"
+	media="screen" />
 <script type="text/javascript">
-			jQuery(function() {
-			jQuery('.starbox').each(function() {
-				var starbox = jQuery(this);
-					starbox.starbox({
-// 					average: starbox.attr('data-start-value'),
-					average: 0.6,
-// 					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
-					changeable:true,
-// 					ghosting: starbox.hasClass('ghosting'),
-					ghosting:true,
-					autoUpdateAverage: starbox.hasClass('autoupdate'),
-					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
-					stars: starbox.attr('data-star-count') || 5
-					}).bind('starbox-value-changed', function(event, value) {
-					if(starbox.hasClass('random')) {
-					var val = Math.random();
-					starbox.next().text(' '+val);
-					return val;
-					} 
-				})
-			});
-		});
-		</script>
+	jQuery(function() {
+		jQuery('.starbox')
+				.each(
+						function() {
+							var starbox = jQuery(this);
+							starbox
+									.starbox(
+											{
+												// 					average: starbox.attr('data-start-value'),
+												average : 0.6,
+												// 					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+												changeable : true,
+												// 					ghosting: starbox.hasClass('ghosting'),
+												ghosting : true,
+												autoUpdateAverage : starbox
+														.hasClass('autoupdate'),
+												buttons : starbox
+														.hasClass('smooth') ? false
+														: starbox
+																.attr('data-button-count') || 5,
+												stars : starbox
+														.attr('data-star-count') || 5
+											})
+									.bind(
+											'starbox-value-changed',
+											function(event, value) {
+												if (starbox.hasClass('random')) {
+													var val = Math.random();
+													starbox.next().text(
+															' ' + val);
+													return val;
+												}
+											})
+						});
+	});
+</script>
 <!---//End-rate---->
 </head>
 <body>
@@ -129,12 +144,12 @@
 					<c:when test="${sessionScope.user !=null }">
 						<li><i class="user"
 							style="background:${sessionScope.user.imageThumbnail};"></i> <a
-							href="account.html">${sessionScope.user.name}</a></li>
+							href="loadAccount">${sessionScope.user.name}</a></li>
 						<li><a href="logout.html">${appProperties["title.logout"] }</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="account.html">${appProperties["title.login"] }</a></li>
-						<li><a href="account.html">${appProperties["title.registry"] }</a></li>
+						<li><a href="loadLogin">${appProperties["title.login"] }</a></li>
+						<li><a href="loadLogin">${appProperties["title.registry"] }</a></li>
 					</c:otherwise>
 				</c:choose>
 				<li><i class="cart"></i><a href="loadCheckout">Cart
@@ -152,7 +167,7 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a  href="getMain">HOME</a></li>
+						<li><a href="getMain">HOME</a></li>
 						<c:forEach items="${catalogsRoot }" var="catalog">
 							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
 								data-hover="${ catalog.name}">${ catalog.name}</a></li>
@@ -200,82 +215,80 @@
 				</div>
 
 				<!-- start span1_of_1 -->
-				<div class="span1_of_1_des">
-					<div class="desc1">
-						<h3>${product.name }</h3>
-						<p>${product.description }</p>
-						<h5>
-							<!-- 							Rs. 399 <a href="#">click for offer</a> -->
-						</h5>
-						<div class="available">
-							<h4>Available Options :</h4>
-							<ul>
-								<li>Color: <!-- 								<select> --> <%-- 								<c:forEach items="${product.color }"></c:forEach> --%>
-									<input type="color" value="#${product.color  }"> <%-- 										<option style="background:${product.color }" --%>
-									<!-- 											selected="selected"></option> --> <!-- 																				<option>Black</option> -->
-									<!-- 																				<option>Dark Black</option> --> <!-- 																				<option>Red</option> -->
-									<!-- 								</select> -->
-								</li>
-								<li>Size: <select>
-										<option>${product.size }</option>
-										<!-- 										<option>XL</option> -->
-										<!-- 										<option>S</option> -->
-										<!-- 										<option>M</option> -->
-								</select>
-								</li>
-								<li><div class="block">
-									<div class="starbox small ghosting"> </div>
-								</div>
-								</li>
-							</ul>
-							<div class="btn_form">
-								<form
-									action="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">
+				<form action="shop" method="get">
+					<div class="span1_of_1_des">
+						<div class="desc1">
+							<h3>${product.name }</h3>
+							<p>${product.description }</p>
+							<h5>
+								<!-- 							Rs. 399 <a href="#">click for offer</a> -->
+							</h5>
+							<div class="available">
+								<h4>Available Options :</h4>
+								<ul><li><input name="productId"type="hidden" value="${product.id}"></li>
+									<li>Color: <!-- 								<select> --> <%-- 								<c:forEach items="${product.color }"></c:forEach> --%>
+										<input name="color" type="color" value="#${product.color  }"> <%-- 										<option style="background:${product.color }" --%>
+										<!-- 											selected="selected"></option> --> <!-- 																				<option>Black</option> -->
+										<!-- 																				<option>Dark Black</option> --> <!-- 																				<option>Red</option> -->
+										<!-- 								</select> -->
+									</li>
+									<li>Size: <select name = size>
+											<option>${product.size }</option>
+											<!-- 										<option>29</option> -->
+											<!-- 										<option>28</option> -->
+											<!-- 										<option>27</option> -->
+									</select>
+									</li>
+									<li><div class="block">
+											<div class="starbox small ghosting"></div>
+										</div></li>
+								</ul>
+								<div class="btn_form">
 									<input type="submit" value="add to cart" title="" />
-								</form>
+								</div>
+								<!-- 							<span class="span_right"><a href="#">login to save in -->
+								<!-- 									wishlist </a></span> -->
+								<div class="clearfix"></div>
 							</div>
-							<!-- 							<span class="span_right"><a href="#">login to save in -->
-							<!-- 									wishlist </a></span> -->
-							<div class="clearfix"></div>
-						</div>
-						<!-- 						<div class="filter-by-color"> -->
-						<!-- 							<h3>Filter by Color</h3> -->
-						<!-- 							<ul class="w_nav2"> -->
-						<!-- 								<li><a class="color1" href="#"></a></li> -->
-						<!-- 								<li><a class="color2" href="#"></a></li> -->
-						<!-- 								<li><a class="color3" href="#"></a></li> -->
-						<!-- 								<li><a class="color4" href="#"></a></li> -->
-						<!-- 								<li><a class="color5" href="#"></a></li> -->
-						<!-- 								<li><a class="color10" href="#"></a></li> -->
-						<!-- 								<li><a class="color7" href="#"></a></li> -->
-						<!-- 								<li><a class="color8" href="#"></a></li> -->
-						<!-- 								<li><a class="color9" href="#"></a></li> -->
-						<!-- 								<li><a class="color10" href="#"></a></li> -->
-						<!-- 								<li><a class="color6" href="#"></a></li> -->
-						<!-- 								<li><a class="color13" href="#"></a></li> -->
-						<!-- 								<li><a class="color14" href="#"></a></li> -->
-						<!-- 								<li><a class="color15" href="#"></a></li> -->
-						<!-- 								<li><a class="color16" href="#"></a></li> -->
-						<!-- 								<li><a class="color17" href="#"></a></li> -->
-						<!-- 								<li><a class="color1" href="#"></a></li> -->
-						<!-- 								<li><a class="color3" href="#"></a></li> -->
-						<!-- 								<li><a class="color2" href="#"></a></li> -->
-						<!-- 							</ul> -->
+							<!-- 						<div class="filter-by-color"> -->
+							<!-- 							<h3>Filter by Color</h3> -->
+							<!-- 							<ul class="w_nav2"> -->
+							<!-- 								<li><a class="color1" href="#"></a></li> -->
+							<!-- 								<li><a class="color2" href="#"></a></li> -->
+							<!-- 								<li><a class="color3" href="#"></a></li> -->
+							<!-- 								<li><a class="color4" href="#"></a></li> -->
+							<!-- 								<li><a class="color5" href="#"></a></li> -->
+							<!-- 								<li><a class="color10" href="#"></a></li> -->
+							<!-- 								<li><a class="color7" href="#"></a></li> -->
+							<!-- 								<li><a class="color8" href="#"></a></li> -->
+							<!-- 								<li><a class="color9" href="#"></a></li> -->
+							<!-- 								<li><a class="color10" href="#"></a></li> -->
+							<!-- 								<li><a class="color6" href="#"></a></li> -->
+							<!-- 								<li><a class="color13" href="#"></a></li> -->
+							<!-- 								<li><a class="color14" href="#"></a></li> -->
+							<!-- 								<li><a class="color15" href="#"></a></li> -->
+							<!-- 								<li><a class="color16" href="#"></a></li> -->
+							<!-- 								<li><a class="color17" href="#"></a></li> -->
+							<!-- 								<li><a class="color1" href="#"></a></li> -->
+							<!-- 								<li><a class="color3" href="#"></a></li> -->
+							<!-- 								<li><a class="color2" href="#"></a></li> -->
+							<!-- 							</ul> -->
 
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 			<div class="clearfix"></div>
 		</div>
-
-		<!-- start tabs -->
-		<!--Horizontal Tab-->
-		<div id="horizontalTab">
-			<!-- 			<ul class="resp-tabs-list"> -->
-			<!-- 				<li>More Information</li> -->
-			<!-- 				<li>Specifications</li> -->
-			<!-- 				<li>Reviews</li> -->
-			<!-- 			</ul> -->
+	</div>
+	<!-- start tabs -->
+	<!--Horizontal Tab-->
+	<!-- <div id="horizontalTab">
+			<ul class="resp-tabs-list">
+				<li>More Information</li>
+				<li>Specifications</li>
+				<li>Reviews</li>
+			</ul>
 			<div class="resp-tabs-container">
 				<div class="tab-content">
 					<p>Maecenas mauris velit, consequat sit amet feugiat rit, elit
@@ -342,11 +355,11 @@
 		</div>
 
 		<!-- end tabs -->
-	</div>
 
-	<div class="left_sidebar">
+
+	<!-- <div class="left_sidebar">
 		<div class="sellers">
-			<h4>Best Sellers</h4>
+			 <h4>Best Sellers</h4>
 			<div class="single-nav">
 				<ul>
 					<li><a href="#">Always free from repetition</a></li>
@@ -363,7 +376,7 @@
 					<li><a href="#">Always free from repetition</a></li>
 					<li><a href="#">Always free from repetition</a></li>
 				</ul>
-			</div>
+			</div>  
 			<div class="banner-wrap bottom_banner color_link">
 				<a href="#" class="main_link">
 					<figure>
@@ -387,31 +400,38 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!-- end sidebar -->
 	<div class="clearfix"></div>
 	<!-- 	</div> -->
 	<!-- 	</div> -->
 	<!-- end content -->
-<!-- 	</div> -->
-<!-- 	</div> -->
-<!-- 	</div> -->
+	<!-- 	</div> -->
+	<!-- 	</div> -->
+	<!-- 	</div> -->
 	<!-- content-section-ends -->
 	<!-- contact-section-starts -->
 	<div class="content-section">
 		<div class="container">
 			<div class="col-md-3 about-us">
-				<h4><spring:message code="label.introduteUs" /></h4>
-				<p><spring:message code="content.introduteUs" />
+				<h4>
+					<spring:message code="label.introduteUs" />
+				</h4>
+				<p>
+					<spring:message code="content.introduteUs" />
 				</p>
-				<h4><spring:message code="label.followUs" /></h4>
+				<h4>
+					<spring:message code="label.followUs" />
+				</h4>
 				<div class="social-icons">
 					<i class="facebook"></i> <i class="twitter"></i> <i class="rss"></i>
 					<i class="vimeo"></i> <i class="dribble"></i> <i class="msn"></i>
 				</div>
 			</div>
 			<div class="col-md-3 archives">
-				<h4><spring:message code="label.archives" /></h4>
+				<h4>
+					<spring:message code="label.archives" />
+				</h4>
 				<ul>
 					<li><a href="#">March 2012</a></li>
 					<li><a href="#">February 2012</a></li>
@@ -420,10 +440,13 @@
 				</ul>
 			</div>
 			<div class="col-md-3 contact-us">
-				<h4><spring:message code="label.contactUs" /></h4>
+				<h4>
+					<spring:message code="label.contactUs" />
+				</h4>
 				<ul>
 					<li><i class="message"></i></li>
-					<li><a href="mail-to:info@premiumcoding.com"><spring:message code="contact.mail" />/a></li>
+					<li><a href="mail-to:info@premiumcoding.com"><spring:message
+								code="contact.mail" />/a></li>
 				</ul>
 				<ul>
 					<li><i class="land-phone"></i></li>
@@ -434,15 +457,15 @@
 					<li><spring:message code="contact.homePhone" /></li>
 				</ul>
 			</div>
-<!-- 			<div class="col-md-3 about-us"> -->
-<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
-<!-- 				<input type="text" class="text" value="Name" -->
-<!-- 					onfocus="this.value = '';" -->
-<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
-<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
-<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
-<!-- 					type="submit" value="subscribe"> -->
-<!-- 			</div> -->
+			<!-- 			<div class="col-md-3 about-us"> -->
+			<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
+			<!-- 				<input type="text" class="text" value="Name" -->
+			<!-- 					onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
+			<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
+			<!-- 					type="submit" value="subscribe"> -->
+			<!-- 			</div> -->
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -451,16 +474,18 @@
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-6 bottom-menu">
-<!-- 				<ul> -->
-<!-- 					<li><a href="index.html">HOME</a></li> -->
-<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
-<!-- 					<li><a href="#">SITEMAP</a></li> -->
-<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
-<!-- 				</ul> -->
+				<!-- 				<ul> -->
+				<!-- 					<li><a href="index.html">HOME</a></li> -->
+				<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
+				<!-- 					<li><a href="#">SITEMAP</a></li> -->
+				<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
+				<!-- 				</ul> -->
 			</div>
 			<div class="col-md-6 copy-rights">
 				<p>
-					&copy;<spring:message code="label.author" /><a href="http://traditionalfashion-fontal.rhcloud.com/"
+					&copy;
+					<spring:message code="label.author" />
+					<a href="http://traditionalfashion-fontal.rhcloud.com/"
 						target="target_blank"><spring:message code="label.author.name" /></a>
 				</p>
 			</div>

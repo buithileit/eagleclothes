@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
 	private AddressDAO addressDAO;
 
 	@Override
+	@Transactional
 	public List<User> getUsers() {
 		// TODO Auto-generated method stub
 		return null;
@@ -43,6 +44,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	// @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode =
 	// ScopedProxyMode.TARGET_CLASS)
+	@Transactional
 	public UserVO login(String username, String password)
 			throws DataAccessException {
 		try {
@@ -69,6 +71,7 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Transactional
 	public UserVO loginAdmin(String username, String password)
 			throws DataAccessException {
 		try {
@@ -149,18 +152,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
 	public User updateUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public boolean delete(String username) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	@Transactional
 	public boolean checkEmail(String email) throws DataAccessException {
 		boolean result = false;
 		try {

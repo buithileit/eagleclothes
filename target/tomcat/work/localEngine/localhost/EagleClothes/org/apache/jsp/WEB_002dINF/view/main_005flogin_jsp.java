@@ -684,7 +684,7 @@ public final class main_005flogin_jsp extends org.apache.jasper.runtime.HttpJspB
         out.write("\t\t\t\t\t\t\tstyle=\"background:");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.user.imageThumbnail}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write(";\"></i> <a\r\n");
-        out.write("\t\t\t\t\t\t\thref=\"account.html\">");
+        out.write("\t\t\t\t\t\t\thref=\"loadAccount\">");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.user.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("</a></li>\r\n");
         out.write("\t\t\t\t\t\t<li><a href=\"logout.html\">");

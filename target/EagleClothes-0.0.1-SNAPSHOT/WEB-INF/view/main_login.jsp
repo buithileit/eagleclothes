@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>${appProperties["title.main"] }</title>
+<title><spring:message code="title.main" /></title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -30,6 +30,7 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
 	rel='stylesheet' type='text/css'>
+<link href="css/owl.carousel.css" rel="stylesheet">
 <link
 	href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic'
 	rel='stylesheet' type='text/css'>
@@ -66,21 +67,30 @@
 	<div class="user-desc">
 		<div class="container">
 			<%-- 			<div id="message">${message}</div> --%>
+			<span> <a href="getMain?lang=en"><img
+					src="images/english.png" alt="" /></a> <a href="getMain?lang=vi"><img
+					src="images/vietnam.png" alt="" /></a>
+			</span>
 			<ul>
-				<li><a href="login.html">${appProperties["title.login"] }</a></li>
-				<li>  
-					<c:choose>
-						<c:when test="${session.user !=null }">
-						<i class="user" style="background:${session.user.imageThumbnail};"></i>
-							<a href="account.html">${session.user.name}</a>
-							
-						</c:when>
-						<c:otherwise>
-							<a href="registry.html">${appProperties["title.registry"] }</a>
-						</c:otherwise>
-					</c:choose></li>
-				<li><i class="cart"></i><a href="checkout.html">Cart
-						(${sizeCart})</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.user !=null }">
+						<li><i class="user"
+							style="background:${sessionScope.user.imageThumbnail};"></i> <a
+							href="loadAccount">${sessionScope.user.name}</a></li>
+						<li><a href="logout.html"><spring:message
+									code="title.logout" /></a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="loadLogin"><spring:message
+									code="title.login" /></a></li>
+						<li><a href="loadLogin"><spring:message
+									code="title.registry" /></a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><i class="cart"></i><a href="loadCheckout"> <spring:message
+							code="link.cart" /> (${sizeCart})
+				</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -95,11 +105,16 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a class="active" href="getMain">HOME</a></li>
-						<li><a href="404.html" data-hover="CLOTHER">CLOTHER</a></li>
-						<li><a href="products.html" data-hover="PANTS">PANTS</a></li>
-						<li><a href="404.html" data-hover="DRESS">DRESS</a></li>
-						<li><a href="contact.html" data-hover="CONTACT">CONTACT</a></li>
+						<li><a class="active" href="getMain"><spring:message
+									code="menu.home" /></a></li>
+						<c:forEach items="${catalogsRoot }" var="catalog">
+							<li><a href="getProductByCatalog?catalogId=${ catalog.id}"
+								data-hover="${ catalog.name}">${ catalog.name}</a></li>
+						</c:forEach>
+						<li><a href="contact.html"
+							data-hover="<spring:message
+									code='menu.contact' />"><spring:message
+									code="menu.contact" /></a></li>
 					</ul>
 				</div>
 				<!--script-nav-->
@@ -166,13 +181,16 @@
 			<div class="container">
 				<div class="sales-head text-center">
 					<h3>
-						${appProperties["label.customerRights"] } <span>${appProperties["label.customerRights.W"] }</span>
+						<spring:message code="label.customerRights" />
+						<span><spring:message code="label.customerRights.website" /></span>
 					</h3>
 				</div>
 				<div class="sales-grids">
 					<div class="col-md-4 sales-grid-a">
 						<div class="discount">
-							<h4>Sale %60</h4>
+							<h4>
+								<spring:message code="label.discount.price" />
+							</h4>
 						</div>
 						<div class="s-img">
 							<img src="images/s1.png" alt="" />
@@ -181,7 +199,9 @@
 					</div>
 					<div class="col-md-4 sales-grid-b">
 						<div class="discount">
-							<h4>Free Shipping</h4>
+							<h4>
+								<spring:message code="label.discount.deliver" />
+							</h4>
 						</div>
 						<div class="s-img">
 							<img src="images/s2.png" alt="" />
@@ -190,7 +210,9 @@
 					</div>
 					<div class="col-md-4 sales-grid-c">
 						<div class="discount">
-							<h4>24/7 Support</h4>
+							<h4>
+								<spring:message code="label.discount.support" />
+							</h4>
 						</div>
 						<div class="s-img">
 							<img src="images/s3.png" alt="" />
@@ -206,7 +228,7 @@
 			<div class="container">
 				<div class="product-section-head-text">
 					<h3>
-						FEATURED <span>PRODUCTS</span>
+						<span><spring:message code="label.featuredProducts" /></span>
 					</h3>
 				</div>
 				<div class="bottom-grids collections">
@@ -215,7 +237,6 @@
 							<!----sreen-gallery-cursual---->
 							<div class="sreen-gallery-cursual">
 								<!-- requried-jsfiles-for owl -->
-								<link href="css/owl.carousel.css" rel="stylesheet">
 								<script src="js/owl.carousel.js"></script>
 								<script>
 									$(document).ready(function() {
@@ -235,7 +256,7 @@
 									<c:forEach items="${productsFeatured}" var="product">
 										<div class="item">
 											<div
-												onclick="location.href='shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}';"
+												onclick="location.href='getProduct?productId=${product.id}';"
 												class="product-grid">
 												<div class="product-pic">
 													<img src="${product.image}" title="${product.name}" />
@@ -250,8 +271,9 @@
 														</div>
 														<div class="product-pic-info-cart">
 															<a class="p-btn"
-																href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">Add
-																to Cart</a>
+																href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">
+																<spring:message code="button.name.addCart" />
+															</a>
 														</div>
 														<div class="clearfix"></div>
 													</div>
@@ -266,12 +288,12 @@
 						</div>
 						<div class="d-products product-section-head-text">
 							<h3>
-								RECENT FROM OUR <span> STORE</span>
+								<span><spring:message code="label.newProducts" /></span>
 							</h3>
 							<!----sreen-gallery-cursual---->
 							<div class="sreen-gallery-cursual">
 								<!-- requried-jsfiles-for owl -->
-								<link href="css/owl.carousel.css" rel="stylesheet">
+
 								<script src="js/owl.carousel.js"></script>
 								<script>
 									$(document).ready(function() {
@@ -290,7 +312,8 @@
 								<div id="owl-demo1" class="owl-carousel text-center">
 									<c:forEach items="${productsNew}" var="product">
 										<div class="item">
-											<div onclick="location.href='single.html';"
+											<div
+												onclick="location.href='getProduct?productId=${product.id}';"
 												class="product-grid">
 												<div class="product-pic">
 													<img src="${product.image}" title="${product.name}" />
@@ -305,8 +328,9 @@
 														</div>
 														<div class="product-pic-info-cart">
 															<a class="p-btn"
-																href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">Add
-																to Cart</a>
+																href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">
+																<spring:message code="button.name.addCart" />
+															</a>
 														</div>
 														<div class="clearfix"></div>
 													</div>
@@ -322,13 +346,12 @@
 						</div>
 						<div class="d-products product-section-head-text">
 							<h3>
-								<span>POPULAR FROM OUR STORE</span>
+								<span><spring:message code="label.popularProducts" /></span>
 							</h3>
 							<div class="product-section-head-text">
 								<!----sreen-gallery-cursual---->
 								<div class="sreen-gallery-cursual">
 									<!-- requried-jsfiles-for owl -->
-									<link href="css/owl.carousel.css" rel="stylesheet">
 									<script src="js/owl.carousel.js"></script>
 									<script>
 										$(document).ready(function() {
@@ -347,7 +370,8 @@
 									<div id="owl-demo2" class="owl-carousel text-center">
 										<c:forEach items="${productsPopular}" var="product">
 											<div class="item">
-												<div onclick="location.href='single.html';"
+												<div
+													onclick="location.href='getProduct?productId=${product.id}';"
 													class="product-grid">
 													<div class="product-pic">
 														<img src="${product.image }" title="${product.name }" />
@@ -362,8 +386,9 @@
 															</div>
 															<div class="product-pic-info-cart">
 																<a class="p-btn"
-																	href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">Add
-																	to Cart</a>
+																	href="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">
+																	<spring:message code="button.name.addCart" />
+																</a>
 															</div>
 															<div class="clearfix"></div>
 														</div>
@@ -389,7 +414,7 @@
 		<div class="container">
 			<div class="brands-section-head">
 				<h3>
-					OUR MAJOR <span>BRANDS</span>
+					<span><spring:message code="label.majorBrands" /></span>
 				</h3>
 			</div>
 			<ul class="sponsors">
@@ -403,26 +428,30 @@
 		</div>
 	</div>
 	<!-- brands-section-ends -->
-	</div>
+	<!-- 	</div> -->
 	<!-- content-section-ends -->
 	<!-- contact-section-starts -->
 	<div class="content-section">
 		<div class="container">
 			<div class="col-md-3 about-us">
-				<h4>LITTLE ABOUT US</h4>
+				<h4>
+					<spring:message code="label.introduteUs" />
+				</h4>
 				<p>
-					<span>Sed posuere</span> consectetur est at. Nulla vitae elit
-					libero, a pharetra. Lorem ipsum <span>dolor sit</span> amet,
-					consectetuer adipiscing elit.
+					<spring:message code="content.introduteUs" />
 				</p>
-				<h4>FOLLOW US</h4>
+				<h4>
+					<spring:message code="label.followUs" />
+				</h4>
 				<div class="social-icons">
 					<i class="facebook"></i> <i class="twitter"></i> <i class="rss"></i>
 					<i class="vimeo"></i> <i class="dribble"></i> <i class="msn"></i>
 				</div>
 			</div>
 			<div class="col-md-3 archives">
-				<h4>ARCHIVES</h4>
+				<h4>
+					<spring:message code="label.archives" />
+				</h4>
 				<ul>
 					<li><a href="#">March 2012</a></li>
 					<li><a href="#">February 2012</a></li>
@@ -431,30 +460,34 @@
 				</ul>
 			</div>
 			<div class="col-md-3 contact-us">
-				<h4>CONTACT US</h4>
+				<h4>
+					<spring:message code="label.contactUs" />
+				</h4>
 				<ul>
 					<li><i class="message"></i></li>
-					<li><a href="mail-to:info@premiumcoding.com">info@premiumcoding.com</a></li>
+					<li><a href="mail-to:<spring:message code='contact.mail'/>"><spring:message
+								code="contact.mail" /></a></li>
 				</ul>
 				<ul>
 					<li><i class="land-phone"></i></li>
-					<li>800 756 156</li>
+					<li><spring:message code="contact.phone" /></li>
 				</ul>
 				<ul>
 					<li><i class="smart-phone"></i></li>
-					<li>+386408007561</li>
+					<li><spring:message code="contact.homePhone" /></li>
 				</ul>
 			</div>
-			<div class="col-md-3 about-us">
-				<h4>SIGN TO NEWSLETTER</h4>
-				<input type="text" class="text" value="Name"
-					onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Name';}"> <input
-					type="text" class="text" value="Email" onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Email';}"> <input
-					type="submit" value="subscribe">
-			</div>
+			<!-- 			<div class="col-md-3 about-us"> -->
+			<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
+			<!-- 				<input type="text" class="text" value="Name" -->
+			<!-- 					onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
+			<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
+			<!-- 					type="submit" value="subscribe"> -->
+			<!-- 			</div> -->
 			<div class="clearfix"></div>
+
 		</div>
 	</div>
 	<!-- contact-section-ends -->
@@ -462,22 +495,25 @@
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-6 bottom-menu">
-				<ul>
-					<li><a href="index.html">HOME</a></li>
-					<li><a href="#">PORTFOLIO</a></li>
-					<li><a href="#">SITEMAP</a></li>
-					<li><a href="contact.html"> CONTACT</a></li>
-				</ul>
+				<!-- 				<ul> -->
+				<!-- 					<li><a href="index.html">HOME</a></li> -->
+				<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
+				<!-- 					<li><a href="#">SITEMAP</a></li> -->
+				<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
+				<!-- 				</ul> -->
 			</div>
 			<div class="col-md-6 copy-rights">
 				<p>
-					&copy; 2015 Template by <a href="http://w3layouts.com"
-						target="target_blank">W3layouts</a>
+					&copy;
+					<spring:message code="label.author" />
+					<a href="http://traditionalfashion-fontal.rhcloud.com/"
+						target="target_blank"><spring:message code="label.author.name" /></a>
 				</p>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 	</div>
 	<!-- footer-section-ends -->
+
 </body>
 </html>

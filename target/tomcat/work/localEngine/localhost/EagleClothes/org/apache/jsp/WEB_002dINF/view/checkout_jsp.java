@@ -83,6 +83,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<link href=\"css/bootstrap.css\" rel='stylesheet' type='text/css' />\r\n");
       out.write("<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->\r\n");
       out.write("<script src=\"js/jquery.min.js\"></script>\r\n");
+      out.write("<script src=\"js/validateRegistry.js\"></script>\r\n");
       out.write("<!-- Custom Theme files -->\r\n");
       out.write("<link href=\"css/style.css\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" />\r\n");
       out.write("<link href=\"css/demo1.css\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" />\r\n");
@@ -449,7 +450,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f0);
-    // /WEB-INF/view/checkout.jsp(62,5) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(63,5) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.user !=null }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f0 = _jspx_th_c_005fwhen_005f0.doStartTag();
     if (_jspx_eval_c_005fwhen_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -519,7 +520,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f2 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f2.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f2.setParent(null);
-    // /WEB-INF/view/checkout.jsp(73,51) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(74,51) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f2.setCode("link.cart");
     int[] _jspx_push_body_count_spring_005fmessage_005f2 = new int[] { 0 };
     try {
@@ -546,7 +547,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f3 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f3.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f3.setParent(null);
-    // /WEB-INF/view/checkout.jsp(88,28) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(89,28) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f3.setCode("menu.home");
     int[] _jspx_push_body_count_spring_005fmessage_005f3 = new int[] { 0 };
     try {
@@ -573,9 +574,9 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /WEB-INF/view/checkout.jsp(89,6) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/view/checkout.jsp(89,6) '${catalogsRoot }'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${catalogsRoot }",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
-    // /WEB-INF/view/checkout.jsp(89,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(90,6) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f0.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/view/checkout.jsp(90,6) '${catalogsRoot }'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${catalogsRoot }",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    // /WEB-INF/view/checkout.jsp(90,6) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("catalog");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -620,7 +621,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f4 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f4.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f4.setParent(null);
-    // /WEB-INF/view/checkout.jsp(94,19) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(95,19) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f4.setCode("menu.contact");
     int[] _jspx_push_body_count_spring_005fmessage_005f4 = new int[] { 0 };
     try {
@@ -647,7 +648,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f5 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f5.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f5.setParent(null);
-    // /WEB-INF/view/checkout.jsp(95,33) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(96,33) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f5.setCode("menu.contact");
     int[] _jspx_push_body_count_spring_005fmessage_005f5 = new int[] { 0 };
     try {
@@ -674,7 +675,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f6 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f6.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f6.setParent(null);
-    // /WEB-INF/view/checkout.jsp(119,29) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(120,29) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f6.setCode("menu.home");
     int[] _jspx_push_body_count_spring_005fmessage_005f6 = new int[] { 0 };
     try {
@@ -701,7 +702,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f7 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f7.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f7.setParent(null);
-    // /WEB-INF/view/checkout.jsp(121,29) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(122,29) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f7.setCode("label.basket");
     int[] _jspx_push_body_count_spring_005fmessage_005f7 = new int[] { 0 };
     try {
@@ -762,13 +763,13 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_005fwhen_005f1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _005fjspx_005ftagPool_005fc_005fwhen_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_005fwhen_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fwhen_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fchoose_005f1);
-    // /WEB-INF/view/checkout.jsp(132,6) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(133,6) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fwhen_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.shopCart !=null && sessionScope.shopCart.size > 0 }", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fwhen_005f1 = _jspx_th_c_005fwhen_005f1.doStartTag();
     if (_jspx_eval_c_005fwhen_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t<form action=\"checkout\" method=\"get\">\r\n");
+        out.write("\t\t\t\t\t\t\t<form action=\"checkout\" method=\"get\" id=\"checkout_form\">\r\n");
         out.write("\t\t\t\t\t\t\t\t<div class=\"deliver_info_left\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t<h2 class=\"title-text\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t");
@@ -778,26 +779,27 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t\t\t\t\t\t\t</h2>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t<div class=\"registration_form\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t<label for=\"exampleInputPhone\">Phone person receice</label> <input\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\tname=\"phoneReceice\" type=\"text\" required\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t<label for=\"exampleInputPhone\">Phone person\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t\treceice(*)</label> <input id=\"phoneReceice\" name=\"phoneReceice\"\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\" required\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Phone number of person receice\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t</div>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t<label for=\"exampleInputName\">Name person receice</label> <input\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\tname=\"nameReceice\" type=\"text\" required\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Name person receice\">\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t<label for=\"exampleInputName\">Name person receice(*)</label>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t<input id=\"nameReceice\" name=\"nameReceice\" type=\"text\"\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t\trequired placeholder=\"Name person receice\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t</div>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t\t<label for=\"exampleInputAddress\">Address person\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\treceice</label> <input name=\"addressReceice\" type=\"text\" required\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Address person receice\">\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t\treceice(*)</label> <input id=\"addressReceice\" name=\"addressReceice\"\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\" required placeholder=\"Address person receice\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t</div>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t\t");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${dateDeliverMin}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write(" <label for=\"exampleInputDate\">Date\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\treceice</label> <input name=\"dateReceice\" type=\"date\"\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\tvalue=\"");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t\treceice</label> <input id=\"dateReceice\" name=\"dateReceice\"\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\t\ttype=\"date\" value=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${dateDeliverMin}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("\">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t</div>\r\n");
@@ -807,64 +809,6 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t\t\t\t\t\t</div>\r\n");
         out.write("\t\t\t\t\t\t\t</form>\r\n");
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t<script type=\"text/javascript\">\r\n");
-        out.write("\t\t\t\t\t\t\t\t$(document)\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t.ready(\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\tfunction() {\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t$(\"#checkout_btn\")\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.click(\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfunction() {\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tconsole\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.info(\"run\");\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tvar today = new Date();\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tvar dd = today\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.getDate();\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tvar mm = today\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.getMonth() + 1; //January is 0!\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tvar yyyy = today\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.getFullYear();\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tif (dd < 10) {\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd = '0'\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t+ dd\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tif (mm < 10) {\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tmm = '0'\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t+ mm\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttoday = mm\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t+ '/'\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t+ dd\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t+ '/'\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t+ yyyy;\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tvar dateDeliver = new Date();\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdeliver\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tvar dateDeliver = end_date\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.setDate(date\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.getDate()\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t+ days);\r\n");
-        out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tif ($(\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"[name='dateReceice']\")\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.val() == \"\"\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|| new Date(\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t$(\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"[name='dateReceice']\")\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.val())\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.getTime() < dateDeliver\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.getTime()) {\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t$(\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"[name='dateReceice']\")\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.val(\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdateDeliver\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.val());\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t$(\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"#checkout_btn\")\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.submit();\r\n");
-        out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t});\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t\t\t});\r\n");
-        out.write("\t\t\t\t\t\t\t</script>\r\n");
         out.write("\t\t\t\t\t\t\t<div class=\"products_right\">\r\n");
         out.write("\t\t\t\t\t\t\t\t<div class=\"table-responsive\" align=\"center\"\r\n");
         out.write("\t\t\t\t\t\t\t\t\tstyle=\"padding-left: 5%\">\r\n");
@@ -874,6 +818,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
           return true;
         out.write("\r\n");
         out.write("\t\t\t\t\t\t\t\t\t</h2>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<br>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t<table class=\"table-heading \">\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t<tr class=\"product-section-head-text\">\r\n");
         out.write("\r\n");
@@ -943,7 +888,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f8 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f8.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f1);
-    // /WEB-INF/view/checkout.jsp(137,10) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(138,10) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f8.setCode("label.deliverInfo");
     int[] _jspx_push_body_count_spring_005fmessage_005f8 = new int[] { 0 };
     try {
@@ -970,7 +915,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f9 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f9.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f1);
-    // /WEB-INF/view/checkout.jsp(228,10) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(172,10) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f9.setCode("label.basket.products");
     int[] _jspx_push_body_count_spring_005fmessage_005f9 = new int[] { 0 };
     try {
@@ -997,9 +942,9 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f1);
-    // /WEB-INF/view/checkout.jsp(251,10) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f1.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/view/checkout.jsp(251,10) '${sessionScope.shopCart.orderBeans}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${sessionScope.shopCart.orderBeans}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
-    // /WEB-INF/view/checkout.jsp(251,10) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(196,10) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/view/checkout.jsp(196,10) '${sessionScope.shopCart.orderBeans}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${sessionScope.shopCart.orderBeans}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    // /WEB-INF/view/checkout.jsp(196,10) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVar("orderBean");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {
@@ -1131,7 +1076,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f10 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f10.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f10.setParent(null);
-    // /WEB-INF/view/checkout.jsp(330,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(275,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f10.setCode("label.introduteUs");
     int[] _jspx_push_body_count_spring_005fmessage_005f10 = new int[] { 0 };
     try {
@@ -1158,7 +1103,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f11 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f11.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f11.setParent(null);
-    // /WEB-INF/view/checkout.jsp(333,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(278,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f11.setCode("content.introduteUs");
     int[] _jspx_push_body_count_spring_005fmessage_005f11 = new int[] { 0 };
     try {
@@ -1185,7 +1130,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f12 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f12.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f12.setParent(null);
-    // /WEB-INF/view/checkout.jsp(336,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(281,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f12.setCode("label.followUs");
     int[] _jspx_push_body_count_spring_005fmessage_005f12 = new int[] { 0 };
     try {
@@ -1212,7 +1157,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f13 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f13.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f13.setParent(null);
-    // /WEB-INF/view/checkout.jsp(345,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(290,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f13.setCode("label.archives");
     int[] _jspx_push_body_count_spring_005fmessage_005f13 = new int[] { 0 };
     try {
@@ -1239,7 +1184,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f14 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f14.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f14.setParent(null);
-    // /WEB-INF/view/checkout.jsp(356,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(301,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f14.setCode("label.contactUs");
     int[] _jspx_push_body_count_spring_005fmessage_005f14 = new int[] { 0 };
     try {
@@ -1266,7 +1211,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f15 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f15.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f15.setParent(null);
-    // /WEB-INF/view/checkout.jsp(360,50) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(305,50) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f15.setCode("contact.mail");
     int[] _jspx_push_body_count_spring_005fmessage_005f15 = new int[] { 0 };
     try {
@@ -1293,7 +1238,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f16 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f16.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f16.setParent(null);
-    // /WEB-INF/view/checkout.jsp(365,9) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(310,9) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f16.setCode("contact.phone");
     int[] _jspx_push_body_count_spring_005fmessage_005f16 = new int[] { 0 };
     try {
@@ -1320,7 +1265,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f17 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f17.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f17.setParent(null);
-    // /WEB-INF/view/checkout.jsp(369,9) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(314,9) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f17.setCode("contact.homePhone");
     int[] _jspx_push_body_count_spring_005fmessage_005f17 = new int[] { 0 };
     try {
@@ -1347,7 +1292,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f18 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f18.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f18.setParent(null);
-    // /WEB-INF/view/checkout.jsp(399,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(344,5) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f18.setCode("label.author");
     int[] _jspx_push_body_count_spring_005fmessage_005f18 = new int[] { 0 };
     try {
@@ -1374,7 +1319,7 @@ public final class checkout_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f19 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f19.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f19.setParent(null);
-    // /WEB-INF/view/checkout.jsp(401,28) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/view/checkout.jsp(346,28) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f19.setCode("label.author.name");
     int[] _jspx_push_body_count_spring_005fmessage_005f19 = new int[] { 0 };
     try {

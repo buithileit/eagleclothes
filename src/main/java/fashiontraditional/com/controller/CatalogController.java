@@ -20,8 +20,8 @@ import fashiontraditional.com.session.ShoppingCart;
 public class CatalogController {
 	@Autowired
 	private CatalogService catalogService;
-	@Autowired
-	private ShoppingCart shopCart;
+//	@Autowired
+//	private ShoppingCart shopCart;
 
 	private static final Logger logger = Logger
 			.getLogger(CatalogController.class);

@@ -37,8 +37,8 @@ public class MainController {
 	private BannerService bannerService;
 	@Autowired
 	private ProductService productService;
-	@Autowired
-	private ShoppingCart shopCart;
+//	@Autowired
+//	private ShoppingCart shopCart;
 	@Autowired
 	private CatalogService catalogService;
 	@Autowired
@@ -71,18 +71,34 @@ public class MainController {
 			logger.info(productsPopular);
 			logger.info(catalogsRoot);
 			systemInfo.addSession(session.getId());
-			session.setAttribute("shopCart", shopCart);
+//			session.setAttribute("shopCart", shopCart);
 			model.addAttribute("catalogsRoot", catalogsRoot);
 			model.addAttribute("banners", banners);
 			model.addAttribute("productsFeatured", productsFeatured);
 			model.addAttribute("productsNew", productsNew);
 			model.addAttribute("productsPopular", productsPopular);
-			model.addAttribute("sizeCart", shopCart.numberProduct());
+//			model.addAttribute("sizeCart", shopCart.numberProduct());
 		} catch (DataAccessException e) {
 			logger.error("getMain", e);
 		}
 		return "main_login";
 
+	}
+
+	@RequestMapping(value = "/contact")
+	public String loadPageAccount(HttpSession session, Model model) {
+		String result = "contact";
+		try {
+			List<Catalog> catalogsRoot = catalogService
+					.getCatalogsByParent(null);
+
+			logger.info(catalogsRoot);
+			model.addAttribute("catalogsRoot", catalogsRoot);
+//			model.addAttribute("sizeCart", shopCart.numberProduct());
+		} catch (DataAccessException e) {
+			logger.error("getMain", e);
+		}
+		return result;
 	}
 
 	@RequestMapping("admin/main")

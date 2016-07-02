@@ -76,7 +76,7 @@
 					<c:when test="${sessionScope.user !=null }">
 						<li><i class="user"
 							style="background:${sessionScope.user.imageThumbnail};"></i> <a
-							href="account.html">${sessionScope.user.name}</a></li>
+							href="loadAccount">${sessionScope.user.name}</a></li>
 						<li><a href="logout.html"><spring:message
 									code="title.logout" /></a></li>
 					</c:when>

@@ -39,8 +39,8 @@ public class ProductController {
 	@Autowired
 	private CatalogService catalogService;
 
-	@Autowired
-	private ShoppingCart shopCart;
+//	@Autowired
+//	private ShoppingCart shopCart;
 
 	@Autowired
 	private SystemInfo systemInfo;
@@ -67,11 +67,11 @@ public class ProductController {
 					.getCatalogsByParent(null);
 			logger.info(product);
 			systemInfo.addSession(session.getId());
-			session.setAttribute("shopCart", shopCart);
+//			session.setAttribute("shopCart", shopCart);
 
 			model.addAttribute("catalogsRoot", catalogsRoot);
 			model.addAttribute("product", product);
-			model.addAttribute("sizeCart", shopCart.numberProduct());
+//			model.addAttribute("sizeCart", shopCart.numberProduct());
 		} catch (DataAccessException e) {
 			logger.error("getMain", e);
 		}

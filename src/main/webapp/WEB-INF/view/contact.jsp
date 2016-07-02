@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><spring:message code="title.main" />|<spring:message code="page.name.contact" /></title>
+<title><spring:message code="title.main" />|<spring:message
+		code="page.name.contact" /></title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -16,7 +17,13 @@
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript">
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
 </script>
 <!--webfont-->
 <link
@@ -58,21 +65,29 @@
 	<div class="user-desc">
 		<div class="container">
 			<%-- 			<div id="message">${message}</div> --%>
+			<span> <a href="getMain?lang=en"><img
+					src="images/english.png" alt="" /></a> <a href="getMain?lang=vi"><img
+					src="images/vietnam.png" alt="" /></a>
+			</span>
 			<ul>
-				<li><c:choose>
-						<c:when test="${sessionScope.user !=null }">
-							<i class="user"
-								style="background:${sessionScope.user.imageThumbnail};"></i>
-							<a href="account.html">${sessionScope.user.name}</a>
-
-						</c:when>
-						<c:otherwise>
-							<li><a href="login.html">${appProperties["title.login"] }</a></li>
-							<a href="registry.html">${appProperties["title.registry"] }</a>
-						</c:otherwise>
-					</c:choose></li>
-				<li><i class="cart"></i><a href="checkout.html">Cart
-						(${sizeCart})</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.user !=null }">
+						<li><i class="user"
+							style="background:${sessionScope.user.imageThumbnail};"></i> <a
+							href="loadAccount">${sessionScope.user.name}</a></li>
+						<li><a href="logout.html"><spring:message
+									code="title.logout" /></a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="loadLogin"><spring:message
+									code="title.login" /></a></li>
+						<li><a href="loadLogin"><spring:message
+									code="title.registry" /></a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><i class="cart"></i><a href="loadCheckout"> <spring:message
+							code="link.cart" /> (${sizeCart})
+				</a></li>
 
 			</ul>
 		</div>
@@ -116,10 +131,9 @@
 					<div class="map">
 						<iframe width="100%" height="250" frameborder="0" scrolling="no"
 							marginheight="0" marginwidth="0"
-							src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe>
-						<br>
-						<small><a
-							href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265"
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2052722299854!2d106.79000551480158!3d10.871986192256692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d89ef59be299%3A0x20d2d1eeb48ca154!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1sen!2s!4v1466809365995"></iframe>
+						<br> <small><a
+							href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2052722299854!2d106.79000551480158!3d10.871986192256692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d89ef59be299%3A0x20d2d1eeb48ca154!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOw7RuZyBMw6JtIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1sen!2s!4v1466809365995"
 							style="color: #777777; text-align: left; font-size: 13px; font-family: 'Source Sans Pro', sans-serif;">View
 								Larger Map</a></small>
 					</div>
@@ -159,17 +173,24 @@
 	<div class="content-section">
 		<div class="container">
 			<div class="col-md-3 about-us">
-				<h4><spring:message code="label.introduteUs" /></h4>
-				<p><spring:message code="content.introduteUs" />
+				<h4>
+					<spring:message code="label.introduteUs" />
+				</h4>
+				<p>
+					<spring:message code="content.introduteUs" />
 				</p>
-				<h4><spring:message code="label.followUs" /></h4>
+				<h4>
+					<spring:message code="label.followUs" />
+				</h4>
 				<div class="social-icons">
 					<i class="facebook"></i> <i class="twitter"></i> <i class="rss"></i>
 					<i class="vimeo"></i> <i class="dribble"></i> <i class="msn"></i>
 				</div>
 			</div>
 			<div class="col-md-3 archives">
-				<h4><spring:message code="label.archives" /></h4>
+				<h4>
+					<spring:message code="label.archives" />
+				</h4>
 				<ul>
 					<li><a href="#">March 2012</a></li>
 					<li><a href="#">February 2012</a></li>
@@ -178,10 +199,13 @@
 				</ul>
 			</div>
 			<div class="col-md-3 contact-us">
-				<h4><spring:message code="label.contactUs" /></h4>
+				<h4>
+					<spring:message code="label.contactUs" />
+				</h4>
 				<ul>
 					<li><i class="message"></i></li>
-					<li><a href="mail-to:info@premiumcoding.com"><spring:message code="contact.mail" />/a></li>
+					<li><a href="mail-to:info@premiumcoding.com"><spring:message
+								code="contact.mail" />/a></li>
 				</ul>
 				<ul>
 					<li><i class="land-phone"></i></li>
@@ -192,15 +216,15 @@
 					<li><spring:message code="contact.homePhone" /></li>
 				</ul>
 			</div>
-<!-- 			<div class="col-md-3 about-us"> -->
-<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
-<!-- 				<input type="text" class="text" value="Name" -->
-<!-- 					onfocus="this.value = '';" -->
-<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
-<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
-<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
-<!-- 					type="submit" value="subscribe"> -->
-<!-- 			</div> -->
+			<!-- 			<div class="col-md-3 about-us"> -->
+			<!-- 				<h4>SIGN TO NEWSLETTER</h4> -->
+			<!-- 				<input type="text" class="text" value="Name" -->
+			<!-- 					onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Name';}"> <input -->
+			<!-- 					type="text" class="text" value="Email" onfocus="this.value = '';" -->
+			<!-- 					onblur="if (this.value == '') {this.value = 'Email';}"> <input -->
+			<!-- 					type="submit" value="subscribe"> -->
+			<!-- 			</div> -->
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -209,16 +233,18 @@
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-6 bottom-menu">
-<!-- 				<ul> -->
-<!-- 					<li><a href="index.html">HOME</a></li> -->
-<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
-<!-- 					<li><a href="#">SITEMAP</a></li> -->
-<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
-<!-- 				</ul> -->
+				<!-- 				<ul> -->
+				<!-- 					<li><a href="index.html">HOME</a></li> -->
+				<!-- 					<li><a href="#">PORTFOLIO</a></li> -->
+				<!-- 					<li><a href="#">SITEMAP</a></li> -->
+				<!-- 					<li><a href="contact.html"> CONTACT</a></li> -->
+				<!-- 				</ul> -->
 			</div>
 			<div class="col-md-6 copy-rights">
 				<p>
-					&copy;<spring:message code="label.author" /><a href="http://traditionalfashion-fontal.rhcloud.com/"
+					&copy;
+					<spring:message code="label.author" />
+					<a href="http://traditionalfashion-fontal.rhcloud.com/"
 						target="target_blank"><spring:message code="label.author.name" /></a>
 				</p>
 			</div>

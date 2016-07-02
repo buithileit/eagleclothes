@@ -38,11 +38,11 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public Product findProductById(Long productId) throws DataAccessException {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		// Transaction transaction = session.beginTransaction();
 		try {
 			Product product = (Product) session.get(Product.class, productId);
 			// transaction.commit();
-			session.close();
+			session.flush();
 			return product;
 		} catch (HibernateException e) {
 			// transaction.rollback();
@@ -56,8 +56,10 @@ public class ProductDAOImpl implements ProductDAO {
 	public Product createProduct(Product product) throws DataAccessException {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.beginTransaction();
-			return (Product) session.save(product);
+			// session.beginTransaction();
+			Product p = (Product) session.save(product);
+			session.flush();
+			return p;
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is saving data");
@@ -69,8 +71,8 @@ public class ProductDAOImpl implements ProductDAO {
 	public boolean updateProduct(Product product) throws DataAccessException {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.beginTransaction();
 			session.update(product);
+			session.flush();
 			return true;
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
@@ -83,8 +85,8 @@ public class ProductDAOImpl implements ProductDAO {
 	public boolean deleteProduct(Product product) throws DataAccessException {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.beginTransaction();
 			session.delete(product);
+			session.flush();
 			return true;
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
@@ -100,7 +102,6 @@ public class ProductDAOImpl implements ProductDAO {
 		List<ProductVO> result = null;
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.beginTransaction();
 
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT p.id AS id, ");
@@ -109,12 +110,12 @@ public class ProductDAOImpl implements ProductDAO {
 			sql.append(" p.image AS image, ");
 			sql.append(" p.color AS color, ");
 			sql.append(" p.size AS size ");
-			sql.append(" FROM Product AS p ");
-			sql.append(" INNER JOIN Catalog_detail AS c ");
+			sql.append(" FROM PRODUCT AS p ");
+			sql.append(" INNER JOIN CATALOG_DETAIL AS c ");
 			sql.append(" ON p.id = c.product_id ");
 			sql.append(" WHERE c.catalog_id = :catalogId ");
 			sql.append(" OR EXISTS ( SELECT 1 ");
-			sql.append(" 				FROM Catalog c1 ");
+			sql.append(" 				FROM CATALOG c1 ");
 			sql.append(" 				WHERE c1.ID = c.catalog_id ");
 			sql.append(" 				AND c1.PARENT_ID= :catalogId ) ");
 			sql.append(" ORDER BY p.price ");
@@ -125,7 +126,7 @@ public class ProductDAOImpl implements ProductDAO {
 			result = query.list();
 			paging.setList(result);
 			result = paging.getList(page);
-			session.close();
+			session.flush();
 		} catch (HibernateException e) {
 			throw new DataAccessException(ErrorCode.COMMON_EXCEPTION,
 					"Error is getting data: " + e.getMessage());

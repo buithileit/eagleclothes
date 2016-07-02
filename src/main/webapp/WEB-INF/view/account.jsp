@@ -66,7 +66,7 @@
 					<c:when test="${sessionScope.user !=null }">
 						<li><i class="user"
 							style="background:${sessionScope.user.imageThumbnail};"></i> <a
-							href="404.html">${sessionScope.user.name}</a></li>
+							href="loadAccount">${sessionScope.user.name}</a></li>
 						<li><a href="logout.html"><spring:message
 									code="title.logout" /></a></li>
 					</c:when>
@@ -117,128 +117,103 @@
 	<!-- header-section-ends -->
 	<!-- content-section-starts -->
 	<!-- start registration -->
-	<div class="container">
-		<div class="registration">
-			<div class="registration_left">
-				<h2>
-					<span> create An account </span>
-				</h2>
-				<!-- 				<a href="#"><div class="reg_fb"> -->
-				<!-- 						<img src="images/facebook.png" alt=""><i>register using -->
-				<!-- 							Facebook</i> -->
-				<!-- 						<div class="clearfix"></div> -->
-				<!-- 					</div></a> -->
-				<!-- [if IE] 
-		    < link rel='stylesheet' type='text/css' href='ie.css'/>  
-		 [endif] -->
+	
+		<div class="single">
+		<!-- start span1_of_1 -->
+		<div class="left_content">
+			<div class="span_1_of_left">
+				<div class="grid images_3_of_2">
+					<ul id="etalage">
+						<li><a href="optionallink.html"> <img
+								class="etalage_thumb_image" src="${product.image }"
+								class="img-responsive" /> <img class="etalage_source_image"
+								src="${product.image }" class="img-responsive" title="" />
+						</a></li>
+						<li><img class="etalage_thumb_image" src="${product.image }"
+							class="img-responsive" /> <img class="etalage_source_image"
+							src="${product.image }" class="img-responsive" title="" /></li>
+						<li><img class="etalage_thumb_image" src="${product.image }"
+							class="img-responsive" /> <img class="etalage_source_image"
+							src="${product.image }" class="img-responsive" /></li>
+						<li><img class="etalage_thumb_image" src="${product.image }"
+							class="img-responsive" /> <img class="etalage_source_image"
+							src="${product.image }" class="img-responsive" /></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
 
-				<!-- [if lt IE 7]>  
-		    < link rel='stylesheet' type='text/css' href='ie6.css'/>  
-		<! [endif] -->
-				<script>
-					$(document).ready(function() {
-
-						// Create input element for testing
-						// 						var inputs = document.createElement('input');
-
-						// Create the supports object
-						// 						var supports = {};
-
-						// 						supports.autofocus = 'autofocus' in inputs;
-						// 						supports.required = 'required' in inputs;
-						// 						supports.placeholder = 'placeholder' in inputs;
-
-						// Fallback for autofocus attribute
-						// 						if (!supports.autofocus) {
-
-						// 						}
-
-						// Fallback for required attribute
-						// 						if (!supports.required) {
-
-						// 						}
-
-						// Fallback for placeholder attribute
-						// 						if (!supports.placeholder) {
-
-						// 						}
-						// 						$("#register-submit").click(function() {
-						// 							console.info(" Email: " + $("[name=email]").val());
-						// 						});
-						// Change text inside send button on submit
-						// 						
-						// 					var send = document.getElementById('register-submit');
-						// 						if (send) {
-						// 							send.onclick = function() {
-						// 								this.innerHTML = '...Sending';
-						// 							}
-						// 						}
-
-					});
-				</script>
-				<div class="registration_form">
-					<!-- Form -->
-					<form:form modelAttribute="register" id="registration_form"
-						action="registry" method="POST">
-						<!-- 					<form id="registration_form" action="registry" method="post"> -->
-						<div>
-							<label> <form:input path="name" placeholder="Name:" />
-							</label>
+				<!-- start span1_of_1 -->
+				<div class="span1_of_1_des">
+					<div class="desc1">
+						<h3>${product.name }</h3>
+						<p>${product.description }</p>
+						<h5>
+							<!-- 							Rs. 399 <a href="#">click for offer</a> -->
+						</h5>
+						<div class="available">
+							<h4>Available Options :</h4>
+							<ul>
+								<li>Color: <!-- 								<select> --> <%-- 								<c:forEach items="${product.color }"></c:forEach> --%>
+									<input type="color" value="#${product.color  }"> <%-- 										<option style="background:${product.color }" --%>
+									<!-- 											selected="selected"></option> --> <!-- 																				<option>Black</option> -->
+									<!-- 																				<option>Dark Black</option> --> <!-- 																				<option>Red</option> -->
+									<!-- 								</select> -->
+								</li>
+								<li>Size: <select>
+										<option>${product.size }</option>
+										<!-- 										<option>XL</option> -->
+										<!-- 										<option>S</option> -->
+										<!-- 										<option>M</option> -->
+								</select>
+								</li>
+								<li><div class="block">
+									<div class="starbox small ghosting"> </div>
+								</div>
+								</li>
+							</ul>
+							<div class="btn_form">
+								<form
+									action="shop?productId=${product.id}&color=${product.color}&amount=1&size=${product.size}">
+									<input type="submit" value="add to cart" title="" />
+								</form>
+							</div>
+							<!-- 							<span class="span_right"><a href="#">login to save in -->
+							<!-- 									wishlist </a></span> -->
+							<div class="clearfix"></div>
 						</div>
-						<div>
-							<label> <form:input id="phone" path="phoneNumber"
-									placeholder="Phone number:" />
-							</label>
-						</div>
-						<div>
-							<label> <form:input id="email" path="email"
-									onkeyup="validateEmail()" placeholder="Email:" />
-							</label>
-							<div id="emailMessage"></div>
-						</div>
-						<div>
-							<label> <form:input path="address" placeholder="Address:"
-									autocomplete="" />
-							</label>
+						<!-- 						<div class="filter-by-color"> -->
+						<!-- 							<h3>Filter by Color</h3> -->
+						<!-- 							<ul class="w_nav2"> -->
+						<!-- 								<li><a class="color1" href="#"></a></li> -->
+						<!-- 								<li><a class="color2" href="#"></a></li> -->
+						<!-- 								<li><a class="color3" href="#"></a></li> -->
+						<!-- 								<li><a class="color4" href="#"></a></li> -->
+						<!-- 								<li><a class="color5" href="#"></a></li> -->
+						<!-- 								<li><a class="color10" href="#"></a></li> -->
+						<!-- 								<li><a class="color7" href="#"></a></li> -->
+						<!-- 								<li><a class="color8" href="#"></a></li> -->
+						<!-- 								<li><a class="color9" href="#"></a></li> -->
+						<!-- 								<li><a class="color10" href="#"></a></li> -->
+						<!-- 								<li><a class="color6" href="#"></a></li> -->
+						<!-- 								<li><a class="color13" href="#"></a></li> -->
+						<!-- 								<li><a class="color14" href="#"></a></li> -->
+						<!-- 								<li><a class="color15" href="#"></a></li> -->
+						<!-- 								<li><a class="color16" href="#"></a></li> -->
+						<!-- 								<li><a class="color17" href="#"></a></li> -->
+						<!-- 								<li><a class="color1" href="#"></a></li> -->
+						<!-- 								<li><a class="color3" href="#"></a></li> -->
+						<!-- 								<li><a class="color2" href="#"></a></li> -->
+						<!-- 							</ul> -->
 
-						</div>
-						<!-- 						<div class="sky-form"> -->
-						<!-- 							<div class="sky_form1"> -->
-						<!-- 								<ul> -->
-						<!-- 									<li><label class="radio left"><input type="radio" -->
-						<!-- 											name="radio" checked=""><i></i>Male</label></li> -->
-						<!-- 									<li><label class="radio"><input type="radio" -->
-						<!-- 											name="radio"><i></i>Female</label></li> -->
-						<!-- 									<div class="clearfix"></div> -->
-						<!-- 								</ul> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-						<div>
-							<label> <form:password path="password" id="password"
-									placeholder="password" />
-							</label>
-						</div>
-						<div>
-							<label> <form:password path="prePassword"
-									id="pre_password" placeholder="retype password" /></label>
-						</div>
-						<div>
-							<input type="button" value="create an account"
-								id="register-submit">
-						</div>
-						<!-- 						<div class="sky-form"> -->
-						<!-- 							<label class="checkbox"><input type="checkbox" -->
-						<!-- 								name="checkbox"><i></i>i agree to shoppe.com &nbsp;<a -->
-						<!-- 								class="terms" href="#"> terms of service</a> </label> -->
-						<!-- 						</div> -->
-					</form:form>
-					<!-- /Form -->
+					</div>
 				</div>
 			</div>
+			<div class="clearfix"></div>
+		</div>
 
 			<div class="clearfix"></div>
 		</div>
-	</div>
+	<!-- 	</div> -->
 	<!-- 	</div> -->
 	<!-- 	</div> -->
 	<!-- content-section-ends -->
